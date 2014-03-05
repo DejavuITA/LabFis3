@@ -24,22 +24,29 @@ I_exp_valle = dat_R(:,8);
 	dI_exp_valle = dat_R(:,9);
 
 
-R_exp_monte = V_exp_monte./I_exp_monte
-R_exp_valle = V_exp_valle./I_exp_valle
+R_exp_valle = V_exp_valle./I_exp_valle;
+R_exp_monte = V_exp_monte./I_exp_monte;
+
+display("T_teo   -   R_exp_valle   -   R_exp_monte");
+[R_teo R_exp_valle R_exp_monte]
 
 ##### per le correzioni #####
 
 	# per le misure a monte!
-R_eq_amp = [1,2,3,4,5,6,7]';
+R_eq_amp = [2000,588.8,63.488,63.488,6.395,6.395,6.395]';
 
 	# per le misure a valle!
-#R_eq_vol = [];
+R_eq_vol = [200000,1000000,1000000,200000,200000,40000,2000]';
 
 
+		# amperometro a valle del voltmetro
+R_corr_valle = (V_exp_valle .* R_eq_vol) ./(R_eq_vol.*I_exp_valle .- V_exp_valle);
 
-# Rx = V Rv /(Rv Ia - V)		# amperometro a valle del voltmetro
+		# amperometro a monte del voltmetro
+R_corr_monte = (V_exp_monte .- R_eq_amp .* I_exp_monte)./I_exp_monte;
 
-# Rx = (V - Ra Ia)/Ia		# amperometro a monte del voltmetro
+display("R_teo   -   R_corr_valle   -   R_corr_monte");
+[R_teo R_corr_valle R_corr_monte]
 
 
 display("Lampadina");
