@@ -109,7 +109,7 @@ dVv = (
 # Errori?
 
 # Creo un grafico la dimensione è in pollici
-f1 = plt.figure(figsize=(12, 6))
+f1 = plt.figure(figsize=(11, 6))
 # Titolo del grafico
 f1.suptitle("Caratteristica volt-amperometrica di una lampadina",
     y=0.96, fontsize=15)
@@ -120,38 +120,31 @@ ax1 = f1.add_subplot(1, 1, 1)
 # crea plot con le barre d'errore (o anche senza)
 monte = ax1.errorbar(x=Vm, y=Im,
     yerr=dI, xerr=dVm,
-    fmt='o:', c='black')
+    fmt='s:', c='black')
 valle = ax1.errorbar(x=Vv, y=Iv,
     yerr=dI, xerr=dVv,
-    fmt='h:', c='grey')
+    fmt='o:', c='grey')
     
 ax1.set_xlabel(u'Differenza di potenziale [V]',
     labelpad=12, fontsize=14)
 ax1.set_ylabel(u'Intensità di corrente [mA]',
     labelpad=6, fontsize=14)
 
-# creo linee verticali
-#ax1.fill(-0.50132, 0.050018, 'b', -0.50132, 0, 'b') scusa pasa ma questo non sono capace di farlo andare
-#ax1.plot([-0.5013177, -0.5013177], [0.05, 0], color='grey', linestyle='-', linewidth=1)
-#ax1.plot([0.5050421, 0.5050421], [0.05, 0], color='grey', linestyle='-', linewidth=1)
-
 ax1.grid(True)
 ax1.set_ylim((0, 55))
-ax1.set_xlim((0, 12.8))
+ax1.set_xlim((1.2, 12.8))
 # questo produce una legenda
 ax1.legend((valle, monte), ("configurazione amperomentro a valle", "configurazione amperomentro a monte"), 'lower right',
     prop={'size': 12})
 
-ax1.annotate('Misure errate', ((40.8, 41.7)), xytext=(-20, 80), 
-    textcoords='offset points', arrowprops=dict(arrowstyle='-|>', connectionstyle="arc3,rad=0.2"))        
-#ax.annotate('', ((38.4, 42)), xytext=(30, 70), 
-#    textcoords='offset points', arrowprops=dict(arrowstyle='-|>', connectionstyle="arc3,rad=-0.2"))
+ax1.annotate('cambio fondoscala', ((9.65, 43)), xytext=(25, -60), 
+    textcoords='offset points', arrowprops=dict(facecolor='black',arrowstyle='-|>', connectionstyle="arc3,rad=-0.4"))
     
 ######
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.07, right=0.97,
-    top=0.88, bottom=0.12, hspace=0, wspace=0.1)
+    top=0.90, bottom=0.12, hspace=0, wspace=0.1)
 # mostra grafico
 plt.show()  
 
