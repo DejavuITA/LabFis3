@@ -12,7 +12,7 @@ Abbiamo dunque chiuso il circuito e annotati i valori di tensione e corrente for
 
 \section{Analisi dati}
 
-Abbiamo calcolato il valore delle resistenze applicando semplicemente l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una differenza consistente con i valori misurati dal multimetro digitale. Tale discrepanza, dovuta al fatto che il Voltmetro e l'Amperometro da noi utilizzati non erano ideali, è stata risolta risolvendo il circuito. Dunque, utilizzando le equazioni di Kirkikof(Voldemort), abbiamo calcolato i valori di $R$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:
+Abbiamo calcolato il valore delle resistenze applicando semplicemente l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una differenza consistente con i valori misurati dal multimetro digitale. Tale discrepanza, dovuta al fatto che il Voltmetro e l'Amperometro da noi utilizzati non erano ideali, è stata risolta risolvendo il circuito. Dunque, utilizzando le equazioni di Kirchhoff, abbiamo calcolato i valori di $R$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:
 \begin{equation}
 R=\frac{R_VV}{V-IR_V}
 \label{casapagliaccio}
@@ -28,7 +28,10 @@ Ricordiamo che per calcolare i valori $R_V$ e $R_A$ sono stati risolti i circuit
 
 Riportiamo ora il grafico delle resistenze, misurate tramite multimetro digitale e tester ICE. 
 
-\begin{center}
-Grafico pagliaccio
-\end{center}
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=\textwidth]{Res.eps}
+        \caption{Il primo grafico mostra i valori sperimentali delle resistenze, sia corretti con le resistenze interne agli strumenti di misura che senza correzione, in funzione dei valori teorici delle resistenze. Si noti che il grafico ha entrambi gli assi in scala logaritmica. Il secondo granfico mostra invece gli scarti in percentuale tra il valore teorico delle resistenze e quello sperimentale. In questo grafico solo la scala sull'asse delle ascisse è logaritmica.}
+        \label{fig:resistenze}
+\end{figure}
 
