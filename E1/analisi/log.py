@@ -71,14 +71,14 @@ dRv = (
    0.21779)
 
 # scarti
-scar_Rm = ( #(R_teo .- R_corr_monte)./R_teo * 100
-   0.95526,
-   0.40954,
-   0.0049109,
-   0.98663,
-   0.011976,
-  -10.294,
-  -12.639)
+scar_Rm = ( #-(R_teo .- R_corr_monte)./R_teo * 100
+  -0.95526,
+  -0.40954,
+  -0.0049109,
+  -0.98663,
+  -0.011976,
+  10.294,
+  12.639)
 dscar_Rm = ( # dR_corr_monte.*100./R_teo;
     1.7332,
     1.7710,
@@ -87,14 +87,14 @@ dscar_Rm = ( # dR_corr_monte.*100./R_teo;
     2.4060,
     4.7553,
    52.8462)
-scar_Rv = ( #(R_teo .- R_corr_valle)./R_teo * 100
-   -1.72940,
-   -0.18032,
-    0.85321,
-   -3.26422,
-   -2.24890,
-    6.07930,
-   16.43194)
+scar_Rv = ( #-(R_teo .- R_corr_valle)./R_teo * 100
+    1.72940,
+    0.18032,
+   -0.85321,
+    3.26422,
+    2.24890,
+   -6.07930,
+   -16.43194)
 dscar_Rv = ( # dR_corr_valle.*100./R_teo;
    11.3505,
     1.8616,
@@ -118,7 +118,7 @@ ax1.set_yscale('log')
 # crea plot con le barre d'errore (o anche senza)
 rough_monte = ax1.errorbar(x=Rt, y=Rm_rough,
     #yerr=dy, #xerr=,
-    fmt='.:', c='red')
+    fmt='x:', c='red')
 rough_valle = ax1.errorbar(x=Rt, y=Rv_rough,
     #yerr=dy, #xerr=,
     fmt='.:', c='green')
@@ -139,7 +139,8 @@ ax1.grid(True)
 ax1.set_ylim((0.6, 1800000))
 ax1.set_xlim((0.6, 1800000))
 # questo produce una legenda
-ax1.legend((valle, monte, rough_valle, rough_monte), ("amperometro a valle", "amperometro a monte", "'a valle' non corretto", "'a monte' non corretto"), 'lower right',
+#ax1.legend((valle, monte, rough_valle, rough_monte), ("amperometro a valle", "amperometro a monte", "'a valle' non corretto", "'a monte' non corretto"), 'lower right',
+ax1.legend((monte, valle, rough_monte, rough_valle), ("amperometro a valle", "amperometro a monte", "'a valle' non corretto", "'a monte' non corretto"), 'lower right',
     prop={'size': 12})
     
 ######
@@ -149,10 +150,10 @@ ax2.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
 scar_monte = ax2.errorbar(x=Rt, y=scar_Rm,
     yerr=dscar_Rm, #xerr=,
-    fmt='o-', c='black')
+    fmt='s-', c='black')
 scar_valle = ax2.errorbar(x=Rt, y=scar_Rv,
     yerr=dscar_Rv, #xerr=,
-    fmt='.-', c='grey')
+    fmt='o-', c='grey')
 
 ax2.set_xlabel(u'Resistenza teorica [$\Omega$]',
     labelpad=2, fontsize=14)
@@ -169,7 +170,8 @@ ax2.set_ylim((-18, 18))
 #ax2.set_ylim((-70, 70))
 ax2.set_xlim((0.6, 1800000))
 # questo produce una legenda
-ax2.legend(( scar_valle, scar_monte), ("amperometro a valle", "amperometro a monte"), 'lower center',
+#ax2.legend(( scar_valle, scar_monte), ("amperometro a valle", "amperometro a monte"), 'lower center',
+ax2.legend(( scar_monte, scar_valle), ("amperometro a valle", "amperometro a monte"), 'lower center',
     prop={'size': 12})
     
 ######
