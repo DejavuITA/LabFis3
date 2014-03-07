@@ -7,7 +7,7 @@ Sapendo che vi era necessità di cambiare spesso configurazione tra ``amperometr
 %Si è passati dunque a montare il circuito. Ricordiamo che sono state sfruttate le bocchette della breadboard per collegare la resistenza al circuito. Così facendo, è stato assicurato un buon contatto con i cavi principali (evitando così che accidentalmente potesse staccarsi nel momento in cui trafficavamo con il cablaggio).
 Solo allora abbiamo aggiunto il voltmetro in modo tale che bastasse spostare un solo contatto per cambiare la posizione circuitale dell'amperometro. In Figura \ref{fig:circuiti} sono riportati gli schemi circuitali delle due configurazioni.
 
-Prima di procedere all'acquisizione dati, abbiamo calcolato il valore massimo di tensione applicabile al circuito. Infatti, le resistenze da noi utilizzate potevano dissipare una potenza massima di $0.1\si{\watt}$ per le più piccole ($100 \si{\kilo\ohm}$ e $1\si{\ohm}$) a di $0.5\si{\watt}$ per le più grandi (le restanti 5). Utilizzando la legge di Joule, $P=\frac{V^2}{R}$ e invertendola, abbiamo ottenuto la $V_{MAX}$ applicabile. % avevi scritto 0.5W per entrambe le resistenze, qual è il valore corretto?
+Prima di procedere all'acquisizione dati, abbiamo calcolato il valore massimo di tensione applicabile al circuito. Infatti, le resistenze da noi utilizzate potevano dissipare una potenza massima di $0.25\si{\watt}$ per le più piccole ($100 \si{\kilo\ohm}$ e $1\si{\ohm}$) a di $0.5\si{\watt}$ per le più grandi (le restanti 5). Utilizzando la legge di Joule, $P=\frac{V^2}{R}$ e invertendola, abbiamo ottenuto la $V_{MAX}$ applicabile. % avevi scritto 0.5W per entrambe le resistenze, qual è il valore corretto?
 
 Abbiamo dunque chiuso il circuito e annotati i valori di tensione e corrente forniti dai due tester ICE. Ricordiamo che per evitare di rovinare i fragili strumenti abbiamo sempre lasciato il tester usato per misurare correnti sulla scala $5A$, cambiando poi scala progressivamente facendo attenzione a non uscire dal $range$. E' importante ricordare che l'incertezza sul valore letto è $\frac{1}{50}$ del fondo-scala utilizzato. Per questo motivo si è sempre cercato di mantenere la lancetta degli strumenti oltre la metà del quadrante graduato anche se non sempre è stato possibile ottenere tale situazione per entrambi i tester.
 
@@ -15,7 +15,7 @@ Abbiamo dunque chiuso il circuito e annotati i valori di tensione e corrente for
 
 \subsection{Analisi dati}
 
-Abbiamo inizialmente calcolato il valore delle resistenze applicando l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una notevole differenza con i valori misurati dal multimetro digitale. Tale discrepanza è dovuta alle resistenze interne al voltmetro e all'amperometro che ne distubano la misura. Questo problema è stato risolto considerando il circuito con gli strumenti di misura non ideali. Dunque, utilizzando le equazioni di Kirchhoff, abbiamo calcolato i valori di $R$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:\\
+Abbiamo inizialmente calcolato il valore delle resistenze applicando l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una notevole differenza con i valori misurati dal multimetro digitale per i valori di resistenza $1 \Omega$ e $1M \Omega$. Tale discrepanza è dovuta alle resistenze interne al voltmetro e all'amperometro che ne disturbano la misura. Questo problema è stato risolto considerando il circuito con gli strumenti di misura non ideali. Dunque, utilizzando le equazioni di Kirchhoff, abbiamo calcolato i valori di $R$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:\\
 \\
 \noindent\begin{minipage}{.5\linewidth}
 \begin{equation}
@@ -33,7 +33,7 @@ R=\frac{V}{I}-R_A
 dove l'equazione (\ref{casapagliaccio}) è riferita al circuito (a) mentre l'equazione (\ref{brugnagay}) è relativa a (b). Abbiamo indicato con $R_V$ e $R_A$ le resistenze interne degli strumenti utilizzati. 
 Ricordiamo che per calcolare i valori $R_V$ e $R_A$ sono stati risolti i circuiti interni degli strumenti stessi, forniti dal produttore. 
 
-Riportiamo ora il grafico delle resistenze, misurate tramite multimetro digitale e tester ICE. 
+Riportiamo ora il grafico delle resistenze, misurate tramite multimetro digitale e tester ICE\footnote{Per il calcolo delle incertezze sulle misure derivate abbiamo utilizzato le usuali leggi di propagazione degli errori.}. 
 
 \begin{figure}[h]
     \centering
