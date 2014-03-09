@@ -23,20 +23,6 @@ V_exp_valle = dat_R(:,10);
 I_exp_valle = dat_R(:,8);
 	dI_exp_valle = dat_R(:,9);#./sqrt(12);
 
-# dati lampadina da plottare
-
-V_lamp_monte = dat_lamp_monte(:,3);
-	dV_lamp_monte = dat_lamp_monte(:,4);
-I_lamp_monte = dat_lamp_monte(:,1);
-	dI_lamp_monte = dat_lamp_monte(:,2);
-
-V_lamp_valle = dat_lamp_valle(:,3);
-	dV_lamp_valle = dat_lamp_valle(:,4);
-I_lamp_valle = dat_lamp_valle(:,1);
-	dI_lamp_valle = dat_lamp_valle(:,2);
-
-clear dat_R dat_lamp_monte dat_lamp_valle
-
 # valori NON corretti
 R_exp_valle = V_exp_valle./I_exp_valle;
 R_exp_monte = V_exp_monte./I_exp_monte;
@@ -73,4 +59,41 @@ scar_Rm = (R_teo .- R_corr_monte)./R_teo * 100;
 scar_Rv = (R_teo .- R_corr_valle)./R_teo * 100;
 	dscar_Rv = dR_corr_valle.*100./R_teo;
 
-#display("Lampadina");
+display("Lampadina");
+
+# dati lampadina da plottare
+
+V_lamp_monte = dat_lamp_monte(:,3);
+	dV_lamp_monte = dat_lamp_monte(:,4);
+I_lamp_monte = dat_lamp_monte(:,1);
+	dI_lamp_monte = dat_lamp_monte(:,2);
+
+V_lamp_valle = dat_lamp_valle(:,3);
+	dV_lamp_valle = dat_lamp_valle(:,4);
+I_lamp_valle = dat_lamp_valle(:,1);
+	dI_lamp_valle = dat_lamp_valle(:,2);
+
+clear dat_R dat_lamp_monte dat_lamp_valle
+
+Pm = 0.562320
+V_lamp_log_monte = log(V_lamp_monte);
+I_lamp_log_monte = log(I_lamp_monte);
+	dV_lamp_log_monte = (dV_lamp_monte./V_lamp_monte);
+	dI_lamp_log_monte = (dI_lamp_monte./I_lamp_monte);
+	dy = sqrt(dI_lamp_log_monte.^2 + Pm^2 .* dV_lamp_log_monte.^2);
+	w = dy .^ (-2);
+[A, B, sA, sB] = fit(I_lamp_log_monte,V_lamp_log_monte, w)
+chiM = chi2(I_lamp_monte, V_lamp_monte, sqrt(dI_lamp_monte.^2 .+ A*B.*(V_lamp_monte).^(B-1).*dV_lamp_monte.^2), A, B)
+sqrt(dI_lamp_monte.^2 .+ A*B.*(V_lamp_monte).^(B-1).*dV_lamp_monte.^2)
+display("");
+Pv = 0.58327
+V_lamp_log_valle = log(V_lamp_valle);
+I_lamp_log_valle = log(I_lamp_valle);
+	dV_lamp_log_valle = (dV_lamp_valle./V_lamp_valle);
+	dI_lamp_log_valle = (dI_lamp_valle./I_lamp_valle);
+	dy = sqrt(dI_lamp_log_valle.^2 + Pv^2 .* dV_lamp_log_valle.^2);
+	w = dy .^ (-2);
+[A, B, sA, sB] = fit(I_lamp_log_valle,V_lamp_log_valle, w)
+chiV = chi2(I_lamp_valle, V_lamp_valle, sqrt(dI_lamp_valle.^2 .+ A*B.*(V_lamp_valle).^(B-1).*dV_lamp_valle.^2), A, B)
+display("");
+sqrt(dI_lamp_valle.^2 .+ A*B.*(V_lamp_valle).^(B-1).*dV_lamp_valle.^2)
