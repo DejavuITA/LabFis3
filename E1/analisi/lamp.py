@@ -151,10 +151,10 @@ ax1 = f1.add_subplot(1, 1, 1)
 # crea plot con le barre d'errore (o anche senza)
 monte = ax1.errorbar(x=Vm, y=Im,
     yerr=dyM, #xerr=dVm,
-    fmt='o:', c='black')
-#valle = ax1.errorbar(x=Vv, y=Iv,
-#    yerr=dyV, #xerr=dVv,
-#    fmt='o:', c='grey')
+    fmt='s:', c='black')
+valle = ax1.errorbar(x=Vv, y=Iv,
+    yerr=dyV, #xerr=dVv,
+    fmt='o:', c='grey')
 teo1   = ax1.errorbar(x=[i/1000 for i in range(1000, 14000)], y=[a*(i/1000)**(b) for i in range(1000, 14000)],
         fmt='-', c='#666666')
 #teo2   = ax1.errorbar(x=[i/1000 for i in range(1000, 14000)], y=[a2*(i/1000)**(b2) for i in range(1000, 14000)],
@@ -169,9 +169,7 @@ ax1.grid(True)
 ax1.set_ylim((0, 55))
 ax1.set_xlim((1.2, 12.8))
 # questo produce una legenda
-ax1.legend((#valle,
-		monte, teo1), (#"configurazione amperomentro a valle",
-				"configurazione amperomentro a monte", "fit configurazione a monte: $I=aV^{\,b}$ \n $a=12.679670971$, $b=0.56232$"), 'lower right',
+ax1.legend((valle, monte, teo1), ("configurazione amperomentro a valle", "configurazione amperomentro a monte", "fit configurazione a monte:\n$I=aV^{\,b}$ con $a=12.7$ e $b=0.56$"), 'lower right',
     prop={'size': 12})
 
 ax1.annotate('cambio fondoscala', ((9.65, 43)), xytext=(25, -60), 
