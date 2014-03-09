@@ -7,25 +7,25 @@ Sapendo che vi era necessità di cambiare spesso configurazione tra ``amperometr
 %Si è passati dunque a montare il circuito. Ricordiamo che sono state sfruttate le bocchette della breadboard per collegare la resistenza al circuito. Così facendo, è stato assicurato un buon contatto con i cavi principali (evitando così che accidentalmente potesse staccarsi nel momento in cui trafficavamo con il cablaggio).
 Solo allora abbiamo aggiunto il voltmetro in modo tale che bastasse spostare un solo contatto per cambiare la posizione circuitale dell'amperometro. In Fig. \ref{fig:circuiti} sono riportati gli schemi circuitali delle due configurazioni.
 
-Prima di procedere all'acquisizione dati, abbiamo calcolato il valore massimo di tensione applicabile al circuito. Infatti, le resistenze da noi utilizzate potevano dissipare una potenza massima di $0.25\si{\watt}$ per le più piccole ($100 \si{\kilo\ohm}$ e $1\si{\ohm}$) a di $0.5\si{\watt}$ per le più grandi (le restanti 5). Utilizzando la legge di Joule, $P=\frac{V^2}{R}$ e invertendola, abbiamo ottenuto la $V_{MAX}$ applicabile. % avevi scritto 0.5W per entrambe le resistenze, qual è il valore corretto?
+Prima di procedere all'acquisizione dati, abbiamo calcolato il valore massimo di tensione applicabile al circuito. Infatti, 2 delle resistenze da noi utilizzate potevano dissipare una potenza massima di $0.25\si{\watt}$  ($100 \si{\kilo\ohm}$ e $1\si{\ohm}$) mentre le rimanenti di $0.5\si{\watt}$ . Utilizzando la legge di Joule, $P=\frac{V^2}{R}$ e invertendola, abbiamo ottenuto la $V_{MAX}$ applicabile. % avevi scritto 0.5W per entrambe le resistenze, qual è il valore corretto?
 
-Abbiamo dunque chiuso il circuito e annotati i valori di tensione e corrente forniti dai due tester ICE. Ricordiamo che per evitare di rovinare i delicati strumenti abbiamo sempre lasciato il tester usato per misurare correnti sulla scala $5A$, cambiando poi scala progressivamente facendo attenzione a non uscire dal $range$. È importante ricordare che l'incertezza sul valore letto è $\frac{1}{50}$ del fondo-scala utilizzato. Per questo motivo si è sempre cercato di mantenere la lancetta degli strumenti oltre la metà del quadrante graduato anche se non sempre è stato possibile ottenere tale situazione per entrambi i tester.
+Abbiamo dunque chiuso il circuito e annotati i valori di tensione e corrente forniti dai due tester ICE. Ricordiamo che per evitare di rovinare i delicati strumenti abbiamo sempre lasciato il tester usato per misurare correnti sulla scala $5A$, cambiando poi scala progressivamente facendo attenzione a non uscire dal $range$. È importante notare che l'incertezza sul valore letto è $\frac{1}{50}$ del fondo-scala utilizzato. Per questo motivo si è sempre cercato di mantenere la lancetta degli strumenti oltre la metà del quadrante graduato anche se non sempre è stato possibile ottenere tale situazione per entrambi i tester.
 
- Abbiamo inoltre provato a valutare l'errore statistico su una singola misura aprendo e chiudendo il circuito. Si è subito notato che il valore riportato dagli strumenti rimaneva invariato, indice che la precisione dello strumento non ci permetteva di apprezzare l'errore statistico.
+ Abbiamo inoltre provato a valutare l'errore statistico su una singola misura aprendo e chiudendo il circuito. Si è subito visto che il valore riportato dagli strumenti rimaneva invariato, indice che la precisione dello strumento non ci permetteva di apprezzare l'errore statistico.
 
 \paragraph{Analisi dati\\}
 
-Abbiamo inizialmente calcolato il valore delle resistenze applicando l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una notevole differenza con i valori misurati dal multimetro digitale per i valori di resistenza $1 \Omega$ e $1M \Omega$. Tale discrepanza è dovuta alle resistenze interne al voltmetro e all'amperometro che ne disturbano la misura. Questo problema è stato risolto considerando il circuito con gli strumenti di misura non ideali. Dunque, utilizzando le equazioni di Kirchhoff, abbiamo calcolato i valori di $R$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:\\
+Abbiamo inizialmente calcolato il valore delle resistenze applicando l'equazione $R_m=\frac{V_m}{I_m}$. Si è notata subito una notevole differenza con i valori misurati dal multimetro digitale per i valori di resistenza $1 \Omega$ e $1M \Omega$. Tale discrepanza è dovuta alle resistenze interne del voltmetro e dell'amperometro che ne disturbano la misura. Questo problema è stato risolto considerando il circuito con gli strumenti di misura non ideali. Dunque, utilizzando le equazioni di Kirchhoff, abbiamo calcolato i valori di $R_X$ in funzione delle resistenze interne degli strumenti di misura e dei valori di corrente e tensione misurati. Le relazioni da noi ottenute sono:\\
 \\
 \noindent\begin{minipage}{.5\linewidth}
 \begin{equation}
-R=\frac{R_VV}{V-IR_V}
+R_X=\frac{R_VV}{V-IR_V}
 \label{casapagliaccio}
 \end{equation}
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \begin{equation}
-R=\frac{V}{I}-R_A
+R_X=\frac{V}{I}-R_A
 \label{brugnagay}
 \end{equation}
 \end{minipage}
