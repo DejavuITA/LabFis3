@@ -3,11 +3,16 @@ Per eseguire l'analisi di un carico resistivo non ohmico abbiamo utilizzato come
 
 \begin{figure}[h]
     \centering
-        \includegraphics[width=\textwidth]{lamp.eps}
+        \includegraphics[width=0.9\textwidth]{lamp.eps}
         \caption{Il grafico mostra la caratteristica volt-amperometrica di un carico resistivo non ohmico (lampadina).}
         \label{fig:lampadina}
 \end{figure}
 
 Si può notare che il circuito è sicuramente non ohmico, ma dai dati non risulta ovvia la funzione che definisce la caratteristica volt-amperomentrica della lampadina.
 
-Abbiamo deciso di ipotizzare una legge del tipo $I=a \cdot V^{b}$. Proviamo una linearizzazione applicando $Log_{10}$ da entrambe le parti. Si ottiene dunque la relazione $Log_{10}I=b \cdot Log_{10}V + Log_{10}a$. Dal grafico riportato \footnote{E' stato eseguito il test del $\chi ^2_{exp}$, ottenendo come valore **, ampiamente compatibile con il valore teorico $\chi ^2_{teo}=** \pm **$ [intervallo di confidenza sul $\chi ^2_{teo}$ del 20\% ] } si vede come la linearizzazione sia stata efficace. I parametri stimati sono $a=** \pm **$ e $b=** \pm **$. 
+Abbiamo deciso di ipotizzare una legge del tipo $I=a \cdot V^{b}$. Proviamo una linearizzazione applicando $Log_{10}$ da entrambe le parti. Si ottiene dunque la relazione $Log_{10}I=b \cdot Log_{10}V + Log_{10}a$. Dal grafico riportato \footnote{E' stato eseguito il test del $\chi ^2_{exp}$, ottenendo come valore **, ampiamente compatibile con il valore teorico $\chi ^2_{teo}=** \pm **$ [intervallo di confidenza sul $\chi ^2_{teo}$ del 20\% ] } si vede come la linearizzazione sia stata efficace. I parametri stimati sono $a=** \pm **$ e $b=** \pm **$.
+
+\paragraph{Considerazioni\\}
+È interessante notare come il cambio scala è stato il fattore determinante sugli errori sulle misure. Nel grafico in Fig. \ref{fig:lampadina} si vede infatti chiaramente che nel momento in cui si è passati dalla scala $10V$ a quella $50V$ gli errori sono cresciuti di 5 volte.
+ 
+Siamo inoltre riusciti ad ipotizzare una legge per la lampadina che lega tensione e corrente. Non sappiamo se tale legge sia corretta, tuttavia possiamo dire che nel range di valori dove sono compresi i nostri dati essa è verificata. Il valore di $b<1$ implica inoltre che aumentando la tensione la curva tende ad appiattirsi, ovvero la resistenza aumenta. 

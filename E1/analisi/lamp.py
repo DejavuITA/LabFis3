@@ -106,7 +106,9 @@ dVv = (
 	0.500000,
 )
 
-# Errori?
+# plot teorico
+a = 0.149568619/log(10)/log(10)/log(10)
+b = 0.5691
 
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(11, 6))
@@ -124,6 +126,8 @@ monte = ax1.errorbar(x=Vm, y=Im,
 valle = ax1.errorbar(x=Vv, y=Iv,
     yerr=dI, xerr=dVv,
     fmt='o:', c='grey')
+teo   = ax1.errorbar(x=[i/1000 for i in range(1000, 14000)], y=[1000*a*(i/1000)**b for i in range(1000, 14000)],
+        fmt='-', c='#666666')
     
 ax1.set_xlabel(u'Differenza di potenziale [V]',
     labelpad=12, fontsize=14)
