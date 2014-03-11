@@ -48,4 +48,19 @@ dR2=0.1;
 
 %tau misurati
 t2=[780e-09 888e-09 1025e-09 1150e-09];
-dt2[10];
+dt2=[10e-09 10e-09 0.01e-06 0.01e-06];
+
+%capacità ed errore
+
+for i=1:4
+   C2(i)=t2(i)/R2(i); 
+   dC2(i)=sqrt((dt2(i)/R2(i))^2+(dR2*t2(i)/(R2(i))^2)^2); 
+end
+
+C2
+dC2
+
+
+w_C2 = 1./(dC2.^2);
+mean_pes= sum(w_C2 .* C2)/sum(w_C2)
+dmean_pes= 1 / sqrt(sum(w_C2))
