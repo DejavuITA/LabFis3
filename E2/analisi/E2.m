@@ -5,16 +5,16 @@ R=[2992.4 3998.5 3998.4];
 C=[1.13e-09 73.2e-09 0.226e-06];
 
 %vettore incertezze resistenze
-dR=[0.1 0.1 0.1];
+dR=[1 01 1];
 
 %vettore incertezze capacità
-dC=[0.01e-09 0.1e-09 0.002e-06];
+dC=[0.05e-09 0.3e-09 0.002e-06];
 
 %vettore tau
 tauexp=[3.698e-06 300e-06 920e-06];
 
 %incertezza tauexp
-dt=0.002e-06;
+dt=[0.005e-06 2e-06 5e-06];
 
 %voltaggio
 V=0.6325;
@@ -35,7 +35,7 @@ dtt
 
 for i=1:3
    detau(i)=-tauteo(i)+tauexp(i);
-   dt2(i)=sqrt((dtt(i))^2+(dt)^2);
+   dt2(i)=sqrt((dtt(i))^2+(dt(i))^2);
    k(i)=detau(i)/dt2(i);
 end    
 

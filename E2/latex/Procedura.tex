@@ -1,3 +1,30 @@
 \section{Studio di circuiti RC: R e C conosciute.}
 \subsection{Procedura di acquisizione dati}
+L'oscilloscopio permette di visualizzare su uno schermo la forma d'onda di un segnale. Noi cercheremo dunque di stimare graficamente la costante di tempo di un circuito RC. Per fare ciò consideriamo anzitutto l'equazione di un circuito RC:
+\begin{equation}
+V(t)=V_0(1-e^{-\frac{t}{\tau}})
+\label{RC}
+\end{equation}
+con $\tau=RC$. Se fissiamo arbitrariamente un tempo $t=\tau$, è evidente che il valore di tensione raggiunto agli estremi del condensatore dovrà essere $V=V_0(1-e^{-1})$. Poichè è stato scelto di usare come voltaggio massimo, ovvero come $V_0$, $1V$, il valore di tensione raggiunto dal condensatore sarà proprio $V=(1-e^{-1})$. 
 
+****
+
+***
+
+***
+
+
+Riportiamo ora i dati da noi rilevati.
+
+\begin{center}\centerline{
+\label{Tabella}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Resistenza [$\Omega$] & Capacità [$nF$] & $\tau_{exp}$ [$\mu s$] & $\tau_{teo}$ [$\mu s$]&frequenza [$Hz$]\\
+\hline
+$2992.4 \pm 1$ & $1.13 \pm 0.05$ & $3.698 \pm 0.005$ & $3.4 \pm 0.1$ & 10k \\
+$3988.5 \pm 1$ & $73.2 \pm 0.3$ & $300 \pm 2 $ & $293 \pm 1$ & 100 \\
+$3988.4 \pm 1$ & $226 \pm 2$ & $920 \pm 5$ & $903 \pm 8$ & 20 \\
+\hline
+\end{tabular}}
+\end{center}
