@@ -6018,7 +6018,7 @@ S32 = (
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(11, 6))
 # Titolo del grafico
-f1.suptitle("Carica del condensatore",
+f1.suptitle("Grafico dei segnali",
     y=0.96, fontsize=15)
 
 
