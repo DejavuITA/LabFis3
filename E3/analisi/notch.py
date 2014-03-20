@@ -9,7 +9,7 @@ import numpy as np
 # Qui vanno i dati
 # freQ
 freQ = (
-10E3,
+#10E3,
 6.9E3,
 3.6E3,
 2.35E3,
@@ -57,57 +57,55 @@ freQ = (
 
 # Vout./Vin
 V = (
-   0.0063291,
-   0.0506329,
-   0.1526316,
-   0.2492114,
-   0.3242392,
-   0.4058577,
-   0.4968750,
-   0.5757261,
-   0.6404959,
-   0.7037037,
-   0.7676561,
-   0.8154944,
-   0.8629442,
-   0.9028340,
-   0.9385081,
-   0.9647887,
-   0.9839196,
-   0.9949799,
-   0.9979920,
-   0.0432489,
-   0.1643836,
-   0.2473684,
-   0.3273872,
-   0.4104712,
-   0.4958246,
-   0.5677083,
-   0.6446281,
-   0.6969072,
-   0.7589744,
-   0.8333333,
-   0.8737271,
-   0.9026369,
-   0.9433198,
-   0.9656912,
-   0.9818548,
-   0.9929648,
-   0.9969758,
-   0.9757576,
-   0.9238579,
-   0.8221994,
-   0.7016632,
-   0.5756303,
-   0.3758099,
-   0.1750000,
-   0.1186441)
-
-#V20 = ()
+#-43.973142,
+  -25.911342,
+  -16.327112,
+  -12.068643,
+   -9.782688,
+   -7.832523,
+   -6.075057,
+   -4.795681,
+   -3.869673,
+   -3.052203,
+   -2.296666,
+   -1.771580,
+   -1.280346,
+   -0.887842,
+   -0.551240,
+   -0.311356,
+   -0.140808,
+   -0.043714,
+   -0.017459,
+  -27.280490,
+  -15.682832,
+  -12.133115,
+   -9.698766,
+   -7.734346,
+   -6.093438,
+   -4.917495,
+   -3.813815,
+   -3.136501,
+   -2.395458,
+   -1.583625,
+   -1.172484,
+   -0.889738,
+   -0.506821,
+   -0.303234,
+   -0.159054,
+   -0.061323,
+   -0.026308,
+   -0.213161,
+   -0.687897,
+   -1.700457,
+   -3.077426,
+   -4.797128,
+   -8.500635,
+  -15.139239,
+  -18.515079)
 
 # phi
 phi = (
--90,	
+#-90,	
 -84,	
 -80,	
 -75,	
@@ -157,6 +155,7 @@ phi = (
 R = 997.81
 C = 250.4E-9
 L = 1E-3
+S = 2.41
 
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(8, 8))
@@ -168,23 +167,25 @@ f1.suptitle("Filtro a reiezione di banda",
 # GRAFICO 1
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
-ax1.set_yscale('log')
 # crea plot con le barre d'errore (o anche senza)
-signal = ax1.errorbar(x=freQ, y=V,#V20,
+signal = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
     fmt='.', c='black')
-teo1 = ax1.errorbar(x=[10*i for i in range(1, 10000000)], y=[((((2*pi*i*10*L-1/(2*pi*i*10*C)))**2)**(0.5)*(R*R + ((2*pi*i*10*L-1/(2*pi*i*10*C)))**2)**(-0.5)) for i in range(1, 10000000)],
-    fmt='-', c='red')
+teo1 = ax1.errorbar(x=[i**2 for i in range(1, 4500)], y=[20*log10(np.absolute(((((2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + ((2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(1, 4500)],
+     fmt='-', c='red')
+teo1corr = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
+	y=[20*log10(np.absolute(( (S*(S+R) + ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 )**2 + ( R * (2*pi*i**2*L - 1/(2*pi*i**2*C) ) )**2 )**(0.5) * 1/(  ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 + (R+S)**2  ))) for i in range(1, 4500)],
+    fmt='-', c='blue')
+
     
-ax1.set_ylabel(u'Attenuazione segnale [$db$]',
+ax1.set_ylabel(u'Attenuazione segnale [$dB$]',
     labelpad=2, fontsize=14)
-ax1.set_xlabel(u'Frequenza [$\omega$]',
+ax1.set_xlabel(u'Frequenza [$Hz$]',
     labelpad=2, fontsize=14)
-#ax1.yaxis.labelpad = 0
 
 ax1.grid(True)
-ax1.set_ylim((0.005, 1.5))
-ax1.get_yaxis().set_ticklabels(("-60", "-40", "-20", "0"))
+ax1.set_ylim((-50, 1))
+ax1.set_xlim((10,20000000))
 # questo produce una legenda
 ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'lower right',
     prop={'size': 12})
@@ -197,14 +198,17 @@ ax2.set_xscale('log')
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
     fmt='.', c='black')
-teo2 = ax2.errorbar(x=[i*10 for i in range(1, 10000000)], y=[360/(pi*2)*np.arctan(R/(2*pi*i*10*L-1/(2*pi*i*10*C))) for i in range(1, 10000000)],
+teo2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)], y=[360/(pi*2)*np.arctan(R/(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(1, 4500)],
     fmt='-', c='red')
+teo2corr = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
+	y=[360/(pi*2)*np.arctan(R*(2*pi*i**2*L-1/(2*pi*i**2*C))/(S*(R+S)+(2*pi*i**2*L-1/(2*pi*i**2*C))**2)) for i in range(1, 4500)],
+    fmt='-', c='blue')
 
-
-ax2.set_ylabel(u'Fase [$\mu s$]', labelpad=2, fontsize=14)
-ax2.set_xlabel(u'Frequenza [$\omega$ ]', labelpad=2, fontsize=14)
+ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
+ax2.set_xlabel(u'Frequenza [$Hz$ ]', labelpad=2, fontsize=14)
 
 ax2.set_ylim((-91, 91))
+ax2.set_xlim((10,20000000))
 #ax2.yaxis.set_label_position("right") # posiziona il label sulla destra
 #ax2.yaxis.tick_right() # posiziona i ticks sulla destra
 #ax2.set_yticks(np.arange(-18, 18.1, 3))
@@ -212,7 +216,7 @@ ax2.set_yticks(np.arange(-90, 91, 30))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'upper right',
+ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'upper left',
     prop={'size': 12})
     
 ######
