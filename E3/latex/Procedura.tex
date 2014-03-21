@@ -1,7 +1,62 @@
-\section{Circuiti utilizzati}
-Ricordiamo che per la realizzazione dei filtri abbiamo usato circuiti RC e RLC. In Fig. sono riportati i 3 schemi seguiti per realizzare i diversi filtri. 
+\section{Acquisizione dati}
+Come fatto nell'esperienza precedente,dopo aver montato i vari circuiti è stato collegato l'oscilloscopio sia direttamente al generatore di forme d'onda sia al circuito in analisi.  \`E stata fissata anche questa volta di tensione a 1$Vpp$ e, dopo aver $triggerato$ le forme d'onda sullo schermo e averle allineate, sono state impostate le funzioni integrate dell'oscilloscopio che permettevano di ottenere direttamente sullo schermo valore picco picco dei due segnali e loro differenza di fase. Abbiamo scelto di prendere misure di tensione e differenza di fase circa ogni $5^{\circ}$, sapendo a priori che nei grafici l'unico valore non logaritmizzato sarebbe stata la $\phi$.  
 
 
-\section{Procedura di acquisizione dati}
+\section{Passa basso}
+Analizziamo per primo il filtro passa basso. Esso, come mostrato in Fig. (??) è composto da una resistenza e da un condensatore. Intuitivamente, poichè il condensatore si comporta come un filo ideale per alte frequenze mentre come circuito aperto per le basse, si vede immediatamente che per frequenze alte i due capi dell'oscilloscopio si troveranno cortocircuitati tra loro. Dunque tale filtro farà passare le frequenze basse. Quantitativamente, utilizzando la legge di Ohm generalizzata ($V=Z \cdot I$), ovvero introducendo il concetto di impedenze, è possibile trattare tale circuito come un partitore generalizzato. Risulta dunque semplice trovare il valore di tensione ai capi del condensatore in funzione della frequenza in input nel circuito. Una volta determinata tale funzione, è possibile calcolare il rapporto tra valore picco-picco di $V_{out}$ con $V_{in}$. \`E anche semplice ricavare la differenza di fase con il segnale in input, utilizzando la formula $\phi=arctan[\frac{Im(V_{out})}{Re(V_{out})}]$. Riportiamo le equazioni da noi calcolate analiticamente, ricordando che $Z_R=R$ e $Z_C=-\frac{j}{\omega C}$.
 
-\section{Analisi dati}
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\end{equation}
+
+\begin{equation}
+\phi=arctan[3.6]
+\end{equation}
+
+I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53) \Omega$ e $C=(73+6 \pm 213) nF$.
+
+Riportiamo ora la funzione di trasferimento del circuito passa basso in un diagramma di Bose. Tale diagramma è composto da due grafici. In entrambi troviamo sull'asse $x$ il Log($\nu$) mentre in asse $y$ rispettivamente il 20Log($\frac{|V_{out}|}{|V_{in}|}$) e $\phi$. Nel caso di questo filtro, si definisce una frequenza, detta di taglio ($\nu_{taglio}=\frac{1}{2 \pi RC}$). A tale frequenza, $\phi=-45 ^{\circ}$ e 20Log($\frac{|V_{out}|}{|V_{in}|}$)=-3. Il valore -3 sta a indicare che l'intensità di segnale è diminuita di 3 dB. Ricordiamo che ogni -20 dB il segnale si è indebolito di 20 volte. 
+
+Nel primo diagramma, vediamo che per valori di frequenza maggiori di quella di taglio l'attenuazione è lineare. In base alla pendenza di tale retta, si definisce la ``bontà'' del filtro passa-basso.
+
+Notiamo inoltre come leggi teoriche sopra calcolate e dati sperimentali siano compatibili tra loro.
+
+$$**Grafici Dave**$$
+
+\section{Passa banda}
+Questo secondo filtro analizzato, oltre che resistenza e condensatore, prevede l'utilizzo di un'induttanza. In Fig.(??) è rappresentato il circuito utilizzato. Il parallelo di induttanza e condensatore fa si che sia per frequenze basse che per quelle alte l'oscilloscopio sia cortocircuitato. Infatti l'induttanza si comporta come filo ideale per frequenze basse mentre come circuito aperto per quelle alte. Tale filtro lascerà passare dunque solo un range di frequenze attorno al valore $\nu_0$, detta frequenza di risonanza e definita come $\nu_0=\frac{1}{2 \pi \sqrt{LC}}$. Come fatto nel paragrafo precedente, è possibile utilizzare il concetto di partitore generalizzato per risolvere il circuito. Ricordiamo che l'induttanza ha una impedenza $Z_L=j\omega L$. Ricaviamo con qualche calcolo:
+
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\end{equation}
+
+\begin{equation}
+\phi=arctan[3.6]
+\end{equation}
+
+I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53) \Omega$ , $C=(73+6 \pm 213) nF$ e $L=(weraas54 \pm 864) H$.
+
+
+Riportiamo ora i diagrammi di Bose. Come vediamo, sebbene i dati sperimentali riguardanti la fase siano compatibili con i valori teorici, non possiamo dire lo stesso riguardo l'attenuazione di segnale. Sembra dunque sia stato trascurato qualche effetto parassita. Sicuramente non si tratta di elementi attivi (induttanze o capacità parassite) in quanto esse produrrebbero un errore sulla fase oltre che sull'ampiezza del segnale (infatti hanno componente complessa). E' dunque probabile sia stata trascurata qualche resistenza nelle componenti circuitali. Fortunatamente abbiamo misurato la resistenza dell'induttanza, ottendendo come valore $(R_L=2.41\pm 0.01) \Omega$. Inserendo dunque tale resistenza in serie all'induttanza e risolvendo nuovamente il circuito, troviamo delle nuove equazioni (che non riportiamo analiticamente per ragioni di spazio). Nel grafico è possibile apprezzare le correzioni che tale soluzione produce.
+
+
+
+\section{Reiezione di Banda}
+L'ultimo filtro analizzato, e quello che più ci ha causato più problemi nell'analisi, è stato quello a reiezione di banda. In Fig.(??) riportiamo anche in questo caso lo schema del circuito. Come vediamo subito, per la sua struttura esso lascerà sempre passare il segnale tranne per una determinata frequenza, detta anche in questo caso di risonanza ($\nu_0=\frac{1}{2 \pi \sqrt{LC}}$), alla quale la serie di capacità e induttanza avrà impedenza complessiva nulla. Riportiamo le leggi teoriche calcolate.
+
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\end{equation}
+
+\begin{equation}
+\phi=arctan[3.6]
+\end{equation}
+
+Sono state usate le stesse $R$,$L$ e $C$ del circuito passa banda. In questo caso tuttavia, come è possibile vedere dal diagramma di Bose riportato, la legge teorica non è compatibile per alte frequenze in nessuno dei due grafici. I dati sembrano infatti seguire una legge ben diversa da quella stimata. Abbiamo dunque cercato un motivo di tale incompatibilità. Dai dati sembra che per alte frequenze ci sia qualcosa che smorza l'intensità del segnale e ne cambia la fase. Abbiamo dunque avanzato varie ipotesi.
+La prima è stata l'effetto pelle. Esso è un effetto che si presenta per alte frequenze, e consiste nel fatto che la corrente tende a scorrere con più facilità sulla superficie del conduttore (ricordiamo che in regime quasi stazionario la corrente scorre uniformemente all'interno di un conduttore omogeneo e isotropo). Tale effetto potrebbe causare una capacità parassita. Tuttavia, provando ad aggiungere condensatori in serie al circuito, abbiamo visto subito che essi non causerebbero modifiche nella legge teorica per alte frequenze. Abbiamo dunque escluso l'effetto pelle.
+
+Come seconda ipotesi abbiamo le induttanze parassite dei fili. Infatti, come è noto, ogni filo ho una propria induttanza. Abbiamo dunque risolto nuovamente il circuito mettendo un'induttanza subito prima della resistenza e poi, eseguendo vari plot per diversi valori di induttanza parassita, ne abbiamo analizzato l'andamento. Anche in questo caso l'analisi ha dato esito negativo. Tale correzione infatti non porta un miglioramento di compatibilità con i dati da noi raccolti. 
+
+Non sappiamo dunque ancora quale sia la causa di tale discrepanza.
+
+Adesso gioco a Dota.

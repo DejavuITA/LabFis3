@@ -54,93 +54,48 @@ freQ = (
 
 # Vout./Vin
 V = (
-   0.5821355,
-   0.5876923,
-   0.5745118,
-   0.5621788,
-   0.5458290,
-   0.5232198,
-   0.4963806,
-   0.4647300,
-   #0.6455331,
-   0.4376299,
-   0.4041667,
-   0.3622129,
-   0.3242678,
-   0.2780693,
-   0.2276551,
-   0.1773684,
-   0.1264489,
-   0.0680380,
-   0.0210970,
-   0.0105485,
-   0.0042150,
-   0.0027397,
-   0.0015717,
-   0.5846154,
-   0.5790554,
-   0.5724563,
-   0.5504115,
-   0.5381443,
-   0.5175620,
-   0.4896480,
-   0.4600208,
-   0.4229167,
-   0.3956159,
-   0.3556485,
-   0.3137461,
-   0.2712934,
-   0.2231579,
-   0.1719409,
-   0.1191983,
-   0.0675818,
-   0.0274841,
-   0.0137566,
-   0.0093122)
-
-V20 = (
-   1.9975e-05,
-   2.4155e-05,
-   1.5345e-05,
-   9.9424e-06,
-   5.5098e-06,
-   2.3642e-06,
-   8.2470e-07,
-   2.2081e-07,
-   6.6396e-08,
-   1.3527e-08,
-   1.5111e-09,
-   1.6523e-10,
-   7.6394e-12,
-   1.3981e-13,
-   9.4957e-16,
-   1.0922e-18,
-   4.5188e-24,
-   3.0509e-34,
-   2.9096e-40,
-   3.1324e-48,
-   5.6773e-52,
-   8.4637e-57,
-   2.1747e-05,
-   1.7964e-05,
-   1.4284e-05,
-   6.5125e-06,
-   4.1493e-06,
-   1.9022e-06,
-   6.2760e-07,
-   1.8011e-07,
-   3.3504e-08,
-   8.8201e-09,
-   1.0481e-09,
-   8.5421e-11,
-   4.6643e-12,
-   9.3809e-14,
-   5.1002e-16,
-   3.3528e-19,
-   3.9500e-24,
-   6.0485e-32,
-   5.8916e-38,
-   2.4045e-41)
+   -4.6995,
+   -4.6170,
+   -4.8140,
+   -5.0025,
+   -5.2589,
+   -5.6263,
+   -6.0837,
+   -6.6560,
+   -7.1779,
+   -7.8688,
+   -8.8207,
+   -9.7819,
+  -11.1169,
+  -12.8545,
+  -15.0225,
+  -17.9617,
+  -23.3450,
+  -33.5156,
+  -39.5362,
+  -47.5041,
+  -51.2459,
+  -56.0724,
+   -4.6626,
+   -4.7456,
+   -4.8452,
+   -5.1862,
+   -5.3820,
+   -5.7208,
+   -6.2023,
+   -6.7445,
+   -7.4749,
+   -8.0545,
+   -8.9796,
+  -10.0684,
+  -11.3312,
+  -13.0278,
+  -15.2924,
+  -18.4746,
+  -23.4034,
+  -31.2184,
+  -37.2298,
+  -40.6190)
 
 # phi
 phi = (
@@ -191,6 +146,7 @@ phi = (
 R = 997.81
 C = 250.4E-9
 L = 1E-3
+S = 2.41
 
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(8, 8))
@@ -202,23 +158,26 @@ f1.suptitle("Filtro passa banda",
 # GRAFICO 1
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
-ax1.set_yscale('log')
 # crea plot con le barre d'errore (o anche senza)
-signal = ax1.errorbar(x=freQ, y=V,#V20,
+signal = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
     fmt='.', c='black')
-teo1 = ax1.errorbar(x=[i for i in range(10, 100000)], y=[(((L/C/(2*pi*i*L-1/(2*pi*i*C)))**2)**(0.5)*(R*R + (L/C/(2*pi*i*L-1/(2*pi*i*C)))**2)**(-0.5)) for i in range(10, 100000)],
+teo1 = ax1.errorbar(x=[i**2 for i in range(1, 1000)], y=[20*log10(np.absolute((((L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + (L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(1, 1000)],
     fmt='-', c='red')
+
+teo1corr = ax1.errorbar(x=[i**2 for i in range(1, 1000)],
+	y=[10*log10(((L**2)*((i**2)**2)*4*pi**2+S**2)/((R+S)**2+(((i**2)**2)*4*pi**2)*(L**2+C*(L*(-2+C*L*((i**2)**2)*4*pi**2)+C*S**2)*(R**2))))
+	for i in range(1,1000)],
+    fmt='-', c='blue')
     
-ax1.set_ylabel(u'Attenuazione segnale [$db$]',
-    labelpad=2, fontsize=14)
-ax1.set_xlabel(u'Frequenza [$\omega$]',
-    labelpad=2, fontsize=14)
+ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
+ax1.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
 #ax1.yaxis.labelpad = 0
 
 ax1.grid(True)
-ax1.set_ylim((0.001, 1.5))
-ax1.get_yaxis().set_ticklabels(("-60", "-40", "-20", "0"))
+ax1.set_ylim((-60, 1))
+ax1.set_xlim((10,100000))
+#ax1.get_yaxis().set_ticklabels(("-60", "-40", "-20", "0"))
 # questo produce una legenda
 ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'upper center',
     prop={'size': 12})
@@ -231,17 +190,19 @@ ax2.set_xscale('log')
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
     fmt='.', c='black')
-teo2 = ax2.errorbar(x=[i for i in range(10, 100000)], y=[360/(pi*2)*np.arctan(-R*C/L*(2*pi*i*L-1/(2*pi*i*C))) for i in range(10, 100000)],
+teo2 = ax2.errorbar(x=[i**2 for i in range(1, 1000)], y=[360/(pi*2)*np.arctan(-R*C/L*(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(1, 1000)],
     fmt='-', c='red')
+teo2corr = ax2.errorbar( x=[i**2 for i in range(1, 1000)], y=[360/(2*pi)*np.arctan(((i**2)*2*pi*(L-C*L**2*(i**2)**2*4*pi**2-C*S**2)*R)/(L**2*(i**2)**2*4*pi**2+S*(S+R))) for i in range(1,1000)],
+    fmt='-', c='blue')
 
+ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=-6, fontsize=14)
+ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
 
-ax2.set_ylabel(u'Fase [$\mu s$]', labelpad=2, fontsize=14)
-ax2.set_xlabel(u'Frequenza [$\omega$ ]', labelpad=2, fontsize=14)
-
+ax2.set_xlim((10,100000))
 #ax2.yaxis.set_label_position("right") # posiziona il label sulla destra
 #ax2.yaxis.tick_right() # posiziona i ticks sulla destra
 #ax2.set_yticks(np.arange(-18, 18.1, 3))
-#ax2.set_yticks(np.arange(-70, 70.1, 10))
+ax2.set_yticks(np.arange(-90, 90.1, 30))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
@@ -252,6 +213,6 @@ ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'lower cent
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.10, right=0.94,
-    top=0.92, bottom=0.10, hspace=0.25, wspace=0.05)
+    top=0.93, bottom=0.10, hspace=0.25, wspace=0.05)
 # mostra grafico
 plt.show()
