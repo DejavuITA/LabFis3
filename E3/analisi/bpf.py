@@ -159,7 +159,30 @@ f1.suptitle("Filtro passa banda",
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
-teo1 = ax1.errorbar(x=[i**2 for i in range(8, 1000)], y=[20*log10(np.absolute((((L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + (L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(8, 1000)],
+teo1 = ax1.errorbar(x=[i**2 for i in range(8, 1000)],
+y=[20*log10(
+			np.absolute(
+							(
+								(
+									(
+										L/
+										C/
+										(2*pi*i**2*L-1/(2*pi*i**2*C))
+									)**2
+								)**(0.5)
+								*
+								(
+									R*R
+									+
+									(
+										L/
+										C/
+										(2*pi*i**2*L-1/(2*pi*i**2*C))
+									)**2
+								)**(-0.5)
+							)
+						)
+			) for i in range(8, 1000)],
     fmt=':', c='red')
 
 teo1corr = ax1.errorbar(x=[i**2 for i in range(8, 1000)],

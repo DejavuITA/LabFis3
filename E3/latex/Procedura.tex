@@ -13,25 +13,24 @@ Per quanto riguarda il filtro passa basso abbiamo scelto di prendere misure di t
 
 Come mostrato in Fig.\ref{fig:circuito}, il filtro passa basso è composto da una resistenza e da un condensatore. Intuitivamente, poichè il condensatore si comporta come un filo ideale per alte frequenze mentre come circuito aperto per le basse, si vede immediatamente che per frequenze alte i due capi dell'oscilloscopio si troveranno cortocircuitati tra loro. Dunque tale filtro farà passare le frequenze basse.
 
-Quantitativamente, utilizzando la legge di Ohm generalizzata ($V=Z \cdot I$), ovvero introducendo il concetto di impedenze, è possibile trattare tale circuito come un partitore generalizzato. Risulta dunque semplice trovare il valore di tensione ai capi del condensatore in funzione della frequenza in input nel circuito. Una volta determinata tale funzione, è possibile calcolare il rapporto tra valore picco-picco di $V_{out}$ con $V_{in}$. \`E anche semplice ricavare la differenza di fase con il segnale in input, utilizzando la formula $\phi=arctan[\frac{Im(V_{out})}{Re(V_{out})}]$. Riportiamo le equazioni da noi calcolate analiticamente, ricordando che $Z_R=R$ e $Z_C=-\frac{j}{\omega C}$.\\
+Quantitativamente, utilizzando la legge di Ohm generalizzata ($V=Z \cdot I$), ovvero introducendo il concetto di impedenze, è possibile trattare tale circuito come un partitore generalizzato. Risulta dunque semplice trovare il valore di tensione ai capi del condensatore in funzione della frequenza in input nel circuito. Una volta determinata tale funzione, è possibile calcolare il rapporto tra valore picco-picco di $V_{out}$ con $V_{in}$. \`E anche semplice ricavare la differenza di fase con il segnale in input, utilizzando la formula $\phi=arctan[\frac{Im(V_{out})}{Re(V_{out})}]$. Riportiamo le equazioni da noi calcolate analiticamente, ricordando che $Z_R=R$ e $Z_C=-\frac{j}{\omega C}$ e che $\omega\,=\,2\pi\nu$.
 
 \noindent
 \begin{minipage}{.5\linewidth}
 \begin{equation}
-\frac{|V_{out}|}{|V_{in}|}=
+\frac{|V_{out}|}{|V_{in}|}\,=\,\frac{1}{\sqrt{1+(RC\omega)^2}}
 \label{eq:lowGain}
 \end{equation}
-
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \begin{equation}
-\phi=arctan[3.6]
+\phi=arctan(-\omega R C)
 \label{eq:lowPhi}
 \end{equation}
-\end{minipage}
-\break
+\end{minipage}\\
+%\break
 
-I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53)\,\si{\ohm}$ e $C=(73+6 \pm 213)\,\si{\nano\farad}$.
+\noindent I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53)\,\si{\ohm}$ e $C=(73+6 \pm 213)\,\si{\nano\farad}$.
 
 Il diagramma di Bode\footnote{Un diagramma di Bode è una rappresentazione grafica della risposta in frequenza di un circuito e che consiste in due grafici che rappresentano rispettivamente l'ampiezza e la fase della funzione complessa di risposta in frequenza. In entrambi i grafici l'asse delle ascisse è logaritmica, mentre in quella delle ordinate vengono riportate rispettivamente il guadagno di segnale (in $\si{\decibel}$) e la fase (in gradi o radianti)} in Fig. \ref{fig:low} riporta i valori acquisiti per il filtro passa basso. Nel caso di questo filtro, si definisce una frequenza, detta di taglio, ($\nu_{taglio}=\frac{1}{2 \pi RC}$) tale per cui il rapporto fra l'ampiezza\footnote{la scala in decibel per la potenza è definita diversamente} dei segnali uscente ed entrante valga $\frac{|V_{out}|}{|V_{in}|}\,=\,\frac{\sqrt{2}}{2}\,=\,\frac{1}{\sqrt{2}}$. Si osserva che in questo caso il valore di guadagno vale $20Log(\frac{|V_{out}|}{|V_{in}|})\,=\,-3\,\si{\decibel}$ e quello di fase $\phi=-45 ^{\circ}$. Come si vede in Fig. \ref{fig:low} tale previsione teorica è confermata dai dati sperimentali.
 
@@ -61,15 +60,32 @@ Come fatto nel paragrafo precedente, è possibile utilizzare il concetto di part
 %\end{minipage}%
 %\begin{minipage}{.5\linewidth}
 \begin{equation}
-\phi=arctan[3.6]
+\phi=arctan\left[\frac{-RC(\omega L-\frac{1}{\omega C})}{L}\right]
+%\frac{-RC(wL-\frac{}{wC}}{L}
 \label{eq:bpfPhi}
 \end{equation}
 %\end{minipage}
 %\break
 
-I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53)\,\si{\ohm}$ , $C=(73+6 \pm 213)\,\si{\nano\farad}$ e $L=(weraas54 \pm 864)\,\si{\henry}$.
+\noindent I valori delle componenti circuitali utilizzate sono $R=(8746 \pm 53)\,\si{\ohm}$, $C=(73+6 \pm 213)\,\si{\nano\farad}$ e $L=(54 \pm 864)\,\si{\henry}$.
 
-Come vediamo dal diagramma di Bode, sebbene i dati sperimentali riguardanti la fase siano compatibili con i valori teorici, non possiamo dire lo stesso per l'attenuazione di segnale. Sembra dunque sia stato trascurato qualche effetto parassita. Sicuramente non si tratta di elementi attivi (induttanze o capacità parassite) in quanto esse produrrebbero un uno sfasamento del segnale oltre che un'attenuazione dell'ampiezza di segnale (infatti hanno componente complessa). E' dunque probabile sia stata trascurata qualche resistenza nelle componenti circuitali. Fortunatamente abbiamo misurato la resistenza dell'induttanza, ottendendo come valore $(R_L=2.41\pm 0.01) \Omega$. Inserendo dunque tale resistenza in serie all'induttanza e risolvendo analiticamente il circuito, troviamo delle nuove equazioni (che non riportiamo analiticamente per ragioni di spazio). Nel grafico è possibile apprezzare le correzioni che tale soluzione produce.
+Come vediamo dal diagramma di Bode, sebbene i dati sperimentali riguardanti la fase siano compatibili con i valori teorici, non possiamo dire lo stesso per l'attenuazione di segnale. Sembra dunque sia stato trascurato qualche effetto parassita. Sicuramente non si tratta di elementi attivi (induttanze o capacità parassite) in quanto esse produrrebbero un uno sfasamento del segnale oltre che un'attenuazione dell'ampiezza di segnale (infatti hanno componente complessa). E' dunque probabile sia stata trascurata qualche resistenza nelle componenti circuitali. Fortunatamente abbiamo misurato la resistenza dell'induttanza, ottendendo come valore $(R_L=2.41\pm 0.01) \Omega$. Inserendo dunque tale resistenza in serie all'induttanza e risolvendo analiticamente il circuito, troviamo due nuove equazioni:\\
+
+\noindent
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\label{bpfGain_corr}
+\end{equation}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\phi=arctan\left[\frac{R}{\omega L-\frac{1}{\omega C}}\right]
+\label{bpfPhi_corr}
+\end{equation}
+\end{minipage}
+\break
+\noindent Nel grafico è possibile apprezzare le correzioni che tale soluzione produce.
 
 \section{Reiezione di Banda o Notch}
 L'ultimo filtro analizzato, e quello che più ci ha dato filo da torcere nell'analisi, è stato quello a reiezione di banda.
@@ -80,24 +96,47 @@ La struttura del filtro notch, riportata in Fig. \ref{fig:circuito}, attenua l'a
 \begin{minipage}{.5\linewidth}
 \begin{equation}
 \frac{|V_{out}|}{|V_{in}|}=
+\label{notchGain}
 \end{equation}
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \begin{equation}
-\phi=arctan[3.6]
+\phi=arctan\left[\frac{R}{\omega L-\frac{1}{\omega C}}\right]
+\label{notchPhi}
 \end{equation}
 \end{minipage}
 \break
-\begin{wrapfigure}[28]{r}[0pt]{100mm}
-%	\centering
-    \includegraphics[width=105mm]{notch.pdf}
-    \caption{Diagrammi di Bode per il filtro a reiezione di banda.}
-    \label{fig:notch}
-\end{wrapfigure}
 
 Come osserviamo dal diagramma di Bode per questo circuito, la legge teorica non è compatibile per alte frequenze in nessuno dei due grafici. I dati sembrano infatti seguire una legge ben diversa da quella stimata. Pertanto inizialmente abbiamo risolto analiticamente il circuito considerando anche la resistenza parassita interna all'induttanza. La legge ricavata ha ridotto la discrepanza tra previsione teorica e dati sperimentali solo per le frequenze vicine a $\nu_0$, ma non ad alte frequenze.
 
+Le formule ricavate sono le seguenti:\\
+
+\noindent
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\label{eq:notchGain_corr}
+\end{equation}
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\phi=arctan\left[
+R \frac{\omega L-\frac{1}{\omega C}}{S (R+S)+(\omega L-\frac{1}{\omega C})^2}
+\right]\\
+\label{eq:notchPhi_corr}
+\end{equation}
+\end{minipage}
+\break
+
 Abbiamo dunque cercato un motivo di tale incompatibilità. Dai dati sembra che per alte frequenze ci sia qualcosa che smorza l'intensità del segnale e ne cambia la fase. Abbiamo dunque avanzato varie ipotesi.
+
+\begin{wrapfigure}[32]{r}[0pt]{115mm}
+%	\centering
+    \includegraphics[width=120mm]{notch.pdf}
+    \caption{Diagrammi di Bode per il filtro a reiezione di banda.}
+    \label{fig:notch}
+\end{wrapfigure}
 
 Poiché il comportamento ad alte frequenze è simile a quello del filtro passa basso, la prima ipotesi da noi considerata è stata l'\emph{effetto pelle}. Tale fenomeno si presenta in maniera visibile per lo più ad alte frequenze e consiste nel fatto che la corrente tende a scorrere con più facilità sulla superficie del conduttore (ricordiamo che in regime quasi stazionario la corrente scorre uniformemente all'interno di un conduttore omogeneo e isotropo) che al centro del conduttore. Tale effetto potrebbe causare una capacità parassita. Tuttavia, provando ad aggiungere condensatori in serie al circuito, abbiamo visto subito che essi non causerebbero modifiche nella legge teorica per alte frequenze. Abbiamo dunque escluso l'effetto pelle.
 
