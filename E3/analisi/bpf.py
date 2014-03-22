@@ -159,60 +159,63 @@ f1.suptitle("Filtro passa banda",
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
+teo1 = ax1.errorbar(x=[i**2 for i in range(8, 1000)], y=[20*log10(np.absolute((((L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + (L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(8, 1000)],
+    fmt=':', c='red')
+
+teo1corr = ax1.errorbar(x=[i**2 for i in range(8, 1000)],
+	y=[10*log10(((L**2)*((i**2)**2)*4*pi**2+S**2)/((R+S)**2+(((i**2)**2)*4*pi**2)*(L**2+C*(L*(-2+C*L*((i**2)**2)*4*pi**2)+C*S**2)*(R**2))))
+	for i in range(8,1000)],
+    fmt='-.', c='blue')
 signal = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
     fmt='.', c='black')
-teo1 = ax1.errorbar(x=[i**2 for i in range(1, 1000)], y=[20*log10(np.absolute((((L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + (L/C/(2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(1, 1000)],
-    fmt='-', c='red')
 
-teo1corr = ax1.errorbar(x=[i**2 for i in range(1, 1000)],
-	y=[10*log10(((L**2)*((i**2)**2)*4*pi**2+S**2)/((R+S)**2+(((i**2)**2)*4*pi**2)*(L**2+C*(L*(-2+C*L*((i**2)**2)*4*pi**2)+C*S**2)*(R**2))))
-	for i in range(1,1000)],
-    fmt='-', c='blue')
+v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
+#db = ax1.axhline(y=-3, linewidth=1, color='grey')
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
-ax1.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
-#ax1.yaxis.labelpad = 0
+
+ax1.annotate(r'$\nu_0$', ((1/(2*pi*(L*C)**(0.5)), -60)), xytext=(5, 5), textcoords='offset points')
 
 ax1.grid(True)
 ax1.set_ylim((-60, 1))
-ax1.set_xlim((10,100000))
 #ax1.get_yaxis().set_ticklabels(("-60", "-40", "-20", "0"))
-# questo produce una legenda
-ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'upper center',
-    prop={'size': 12})
+#ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'upper center', prop={'size': 12})
+plt.setp(ax1.get_xticklabels(), visible=False)
     
 ######
 # GRAFICO 2 - grafico R-Scarti
 ax2 = f1.add_subplot(2, 1, 2, sharex=ax1)
 ax2.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
+teo2 = ax2.errorbar(x=[i**2 for i in range(8, 1000)], y=[360/(pi*2)*np.arctan(-R*C/L*(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(8, 1000)],
+    fmt=':', c='red')
+teo2corr = ax2.errorbar( x=[i**2 for i in range(8, 1000)], y=[360/(2*pi)*np.arctan(((i**2)*2*pi*(L-C*L**2*(i**2)**2*4*pi**2-C*S**2)*R)/(L**2*(i**2)**2*4*pi**2+S*(S+R))) for i in range(8,1000)],
+    fmt='-.', c='blue')
+
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
     fmt='.', c='black')
-teo2 = ax2.errorbar(x=[i**2 for i in range(1, 1000)], y=[360/(pi*2)*np.arctan(-R*C/L*(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(1, 1000)],
-    fmt='-', c='red')
-teo2corr = ax2.errorbar( x=[i**2 for i in range(1, 1000)], y=[360/(2*pi)*np.arctan(((i**2)*2*pi*(L-C*L**2*(i**2)**2*4*pi**2-C*S**2)*R)/(L**2*(i**2)**2*4*pi**2+S*(S+R))) for i in range(1,1000)],
-    fmt='-', c='blue')
 
-ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=-6, fontsize=14)
+v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
+
+ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
 
-ax2.set_xlim((10,100000))
-#ax2.yaxis.set_label_position("right") # posiziona il label sulla destra
-#ax2.yaxis.tick_right() # posiziona i ticks sulla destra
 #ax2.set_yticks(np.arange(-18, 18.1, 3))
 ax2.set_yticks(np.arange(-90, 90.1, 30))
+ax2.set_ylim((-93,93))
+ax2.set_xlim((64,100000))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'lower center',
+ax2.legend((fase, teo2, teo2corr), ("Dati sperimentali", "andamento teorico", "correzione con resistenza parassita"), 'lower left',
     prop={'size': 12})
     
 ######
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.10, right=0.94,
-    top=0.93, bottom=0.10, hspace=0.25, wspace=0.05)
+f1.subplots_adjust(left=0.10, right=0.96,
+    top=0.94, bottom=0.08, hspace=0.05, wspace=0.05)
 # mostra grafico
 plt.show()

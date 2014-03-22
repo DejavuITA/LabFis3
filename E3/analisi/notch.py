@@ -168,41 +168,43 @@ f1.suptitle("Filtro a reiezione di banda",
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
-signal = ax1.errorbar(x=freQ, y=V,
-    #yerr=dy, #xerr=,
-    fmt='.', c='black')
 teo1 = ax1.errorbar(x=[i**2 for i in range(1, 4500)], y=[20*log10(np.absolute(((((2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(0.5)*(R*R + ((2*pi*i**2*L-1/(2*pi*i**2*C)))**2)**(-0.5)))) for i in range(1, 4500)],
-     fmt='-', c='red')
+     fmt=':', c='red')
 teo1corr = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
 	y=[20*log10(np.absolute(( (S*(S+R) + ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 )**2 + ( R * (2*pi*i**2*L - 1/(2*pi*i**2*C) ) )**2 )**(0.5) * 1/(  ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 + (R+S)**2  ))) for i in range(1, 4500)],
-    fmt='-', c='blue')
+    fmt='-.', c='blue')
 
+gain = ax1.errorbar(x=freQ, y=V,
+    #yerr=dy, #xerr=,
+    fmt='.', c='black')
+
+v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
+#db = ax1.axhline(y=-3, linewidth=1, color='grey')
     
-ax1.set_ylabel(u'Attenuazione segnale [$dB$]',
-    labelpad=2, fontsize=14)
-ax1.set_xlabel(u'Frequenza [$Hz$]',
-    labelpad=2, fontsize=14)
+ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
+
+ax1.annotate(r'$\nu_0$', ((1/(2*pi*(L*C)**(0.5)), -50)), xytext=(5, 5), textcoords='offset points')
 
 ax1.grid(True)
 ax1.set_ylim((-50, 1))
-ax1.set_xlim((10,20000000))
-# questo produce una legenda
-ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'lower right',
-    prop={'size': 12})
+plt.setp(ax1.get_xticklabels(), visible=False)
     
 ######
 # GRAFICO 2 - grafico R-Scarti
 ax2 = f1.add_subplot(2, 1, 2, sharex=ax1)
 ax2.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
+teo2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)], y=[360/(pi*2)*np.arctan(R/(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(1, 4500)],
+    fmt=':', c='red')
+teo2corr = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
+	y=[360/(pi*2)*np.arctan(R*(2*pi*i**2*L-1/(2*pi*i**2*C))/(S*(R+S)+(2*pi*i**2*L-1/(2*pi*i**2*C))**2)) for i in range(1, 4500)],
+    fmt='--', c='blue')
+
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
     fmt='.', c='black')
-teo2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)], y=[360/(pi*2)*np.arctan(R/(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(1, 4500)],
-    fmt='-', c='red')
-teo2corr = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
-	y=[360/(pi*2)*np.arctan(R*(2*pi*i**2*L-1/(2*pi*i**2*C))/(S*(R+S)+(2*pi*i**2*L-1/(2*pi*i**2*C))**2)) for i in range(1, 4500)],
-    fmt='-', c='blue')
+
+v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 
 ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$ ]', labelpad=2, fontsize=14)
@@ -216,13 +218,13 @@ ax2.set_yticks(np.arange(-90, 91, 30))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'upper left',
+ax2.legend((fase, teo2, teo2corr), ("Dati sperimentali", "andamento teorico", "correzione con\nresistenza parassita"), 'upper left',
     prop={'size': 12})
     
 ######
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.10, right=0.94,
-    top=0.92, bottom=0.10, hspace=0.25, wspace=0.05)
+f1.subplots_adjust(left=0.10, right=0.96,
+    top=0.94, bottom=0.08, hspace=0.05, wspace=0.05)
 # mostra grafico
 plt.show()

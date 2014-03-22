@@ -87,22 +87,22 @@ signal = ax1.errorbar(x=freQ, y=V,#**20,
     fmt='o', c='black')
 teo1 = ax1.errorbar(x=[i for i in range(10, 100000)], y=[20*log10((1+(R*C*2*pi*i)**2)**(-0.5)) for i in range(10, 100000)],
     fmt='-', c='red')
+v0 = ax1.axvline(x=1/(2*pi*C*R), linewidth=1, color='grey')
+db = ax1.axhline(y=-3, linewidth=1, color='grey')
+
+ax1.annotate(r'$\nu_0$', ((1/(2*pi*C*R)+60, -28.5)), xytext=(0, 0), textcoords='offset points')
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]',
     labelpad=2, fontsize=14)
-ax1.set_xlabel(u'Frequenza [$Hz$]',
-    labelpad=2, fontsize=14)
-#ax1.yaxis.labelpad = 0
 
 ax1.grid(True)
-ax1.set_ylim((-30, 1))
-# questo produce una legenda
-ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'lower left',
-    prop={'size': 12})
+ax1.set_ylim((-29, 1))
+#ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'lower left', prop={'size': 12})
+plt.setp(ax1.get_xticklabels(), visible=False)
     
 ######
 # GRAFICO 2 - grafico R-Scarti
-ax2 = f1.add_subplot(2, 1, 2, sharex=ax1)
+ax2 = f1.add_subplot(212)#, sharex=ax1)
 ax2.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
 fase = ax2.errorbar(x=freQ, y=phi,
@@ -110,25 +110,25 @@ fase = ax2.errorbar(x=freQ, y=phi,
     fmt='o', c='black')
 teo2 = ax2.errorbar(x=[i for i in range(10, 100000)], y=[360/pi/2*np.arctan(-2*pi*i*R*C) for i in range(10, 100000)],
     fmt='-', c='red')
+v0 = ax2.axvline(x=1/(2*pi*C*R), linewidth=1, color='grey')
 
 
 ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
-ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
+ax2.set_xlabel(u'Frequenza [$Hz}$]', labelpad=2, fontsize=14)
 
 #ax2.yaxis.set_label_position("right") # posiziona il label sulla destra
 #ax2.yaxis.tick_right() # posiziona i ticks sulla destra
-#ax2.set_yticks(np.arange(-18, 18.1, 3))
 ax2.set_yticks(np.arange(-90, 1, 15))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'lower left',
+ax2.legend((fase, teo2), ("Dati sperimentali", "andamento teorico"), 'upper right',
     prop={'size': 12})
     
 ######
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.10, right=0.94,
-    top=0.94, bottom=0.10, hspace=0.25, wspace=0.05)
+f1.subplots_adjust(left=0.10, right=0.96,
+    top=0.94, bottom=0.08, hspace=0.05, wspace=0.05)
 # mostra grafico
 plt.show()
