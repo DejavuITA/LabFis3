@@ -198,7 +198,7 @@ v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
 
-ax1.annotate(r'$\nu_0$', ((1/(2*pi*(L*C)**(0.5)), -60)), xytext=(5, 5), textcoords='offset points')
+ax1.text(1/(2*pi*(L*C)**(0.5))+500, -60+1.5, r'$\nu_0$', size=15, va='center')
 
 ax1.grid(True)
 ax1.set_ylim((-60, 1))
@@ -232,7 +232,7 @@ ax2.set_xlim((64,100000))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2, teo2corr), ("Dati sperimentali", "andamento teorico", "correzione con resistenza parassita"), 'lower left',
+ax2.legend((fase, teo2, teo2corr), ("Dati sperimentali", "andamento teorico", r'correzione con resistenza $R_L$ parassita'), 'lower left',
     prop={'size': 12})
     
 ######

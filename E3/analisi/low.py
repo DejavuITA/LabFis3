@@ -46,6 +46,7 @@ V = (
   -11.510329,
   -15.382439,
   -21.703432)
+#(-21.703432+15.382439)/(12200-5.7)
 
 # phi
 phi = (
@@ -81,16 +82,24 @@ f1.suptitle("Filtro passa basso",
 # GRAFICO 1
 ax1 = f1.add_subplot(2, 1, 1)
 ax1.set_xscale('log')
-# crea plot con le barre d'errore (o anche senza)
-signal = ax1.errorbar(x=freQ, y=V,#**20,
-    #yerr=dy, #xerr=,
-    fmt='o', c='black')
+
+slope = ax1.errorbar(x=[i for i in range(100, 100000)], y=[(-21.9+15.4)/(log10(12200)-log10(5700))*log10(i)+(-15.4-(-21.9+15.4)/(log10(12200)-log10(5700))*log10(5700))
+			for i in range(100, 100000)],
+			fmt='--', c='blue')
 teo1 = ax1.errorbar(x=[i for i in range(10, 100000)], y=[20*log10((1+(R*C*2*pi*i)**2)**(-0.5)) for i in range(10, 100000)],
     fmt='-', c='red')
+
+signal = ax1.errorbar(x=freQ, y=V,
+    #yerr=dy, #xerr=,
+    fmt='o', c='black')
+
 v0 = ax1.axvline(x=1/(2*pi*C*R), linewidth=1, color='grey')
 db = ax1.axhline(y=-3, linewidth=1, color='grey')
 
-ax1.annotate(r'$\nu_0$', ((1/(2*pi*C*R)+60, -28.5)), xytext=(0, 0), textcoords='offset points')
+#ax1.annotate(r'$\nu_0$', (1/(2*pi*C*R)+60, -28.5), xytext=(0, 0), textcoords='offset points')
+ax1.text(1/(2*pi*C*R)+60, -28, r'$\nu_0$', size=15, va='center')
+ax1.annotate("", (3000, -7), xytext=(40, 0), textcoords='offset points', arrowprops=dict(facecolor='black',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
+ax1.text(7200, -7, u' approx slope:\n$-20\,dB/decade$', size=13, va='center')
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]',
     labelpad=2, fontsize=14)

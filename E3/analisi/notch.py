@@ -184,15 +184,15 @@ teo1corr2 = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
 					))
  	for i in range(1, 4500)],
 	fmt='-', c='green')
-teo1corr3 = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
-		y=[20*log10(np.absolute(
-					sqrt((1 + C*(2*pi*i**2)**2*(C*S**2 + L*(-2 + C*L*(2*pi*i**2)**2)))/
-					(1 + (D**2*R**2 - 2*C*(L - D*R**2) + C**2*(R + S)**2)*(2*pi*i**2)**2 +
-					C*(L*(C*L - 2*D*(C + D)*R**2) + C*D**2*R**2*S**2)*(2*pi*i**2)**4 +
-					C**2*D**2*L**2*R**2*(2*pi*i**2)**6))
-					))
- 	for i in range(1, 4500)],
-	fmt='-', c='yellow')
+#teo1corr3 = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
+#		y=[20*log10(np.absolute(
+#					sqrt((1 + C*(2*pi*i**2)**2*(C*S**2 + L*(-2 + C*L*(2*pi*i**2)**2)))/
+#					(1 + (D**2*R**2 - 2*C*(L - D*R**2) + C**2*(R + S)**2)*(2*pi*i**2)**2 +
+#					C*(L*(C*L - 2*D*(C + D)*R**2) + C*D**2*R**2*S**2)*(2*pi*i**2)**4 +
+#					C**2*D**2*L**2*R**2*(2*pi*i**2)**6))
+#					))
+# 	for i in range(1, 4500)],
+#	fmt='-', c='yellow')
 
 gain = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
@@ -203,7 +203,7 @@ v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
 
-ax1.annotate(r'$\nu_0$', ((1/(2*pi*(L*C)**(0.5)), -50)), xytext=(5, 5), textcoords='offset points')
+ax1.text(1/(2*pi*(L*C)**(0.5))+1000, -50+1.5, r'$\nu_0$', size=15, va='center')
 
 ax1.grid(True)
 ax1.set_ylim((-50, 1))
@@ -219,7 +219,7 @@ teo2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)], y=[360/(pi*2)*np.arctan(R/
 teo2corr = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
 	y=[360/(pi*2)*np.arctan(R*(2*pi*i**2*L-1/(2*pi*i**2*C))/(S*(R+S)+(2*pi*i**2*L-1/(2*pi*i**2*C))**2)) for i in range(1, 4500)],
     fmt='-.', c='blue')
-teo2corr1 = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
+teo2corr2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
 	y=[360/(pi*2)*np.arctan(
 				(C*R*(2*pi*i**2)*(-1 + ((C + 2*D)*L - D*(C + D)*S**2)*(2*pi*i**2)**2 -
 				D*(C + D)*L**2*(2*pi*i**2)**4))/
@@ -246,7 +246,7 @@ ax2.set_yticks(np.arange(-90, 91, 30))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
 
 ax2.grid(True)
-ax2.legend((fase, teo2, teo2corr), ("Dati sperimentali", "andamento teorico", "correzione con\nresistenza parassita"), 'upper left',
+ax2.legend((fase, teo2, teo2corr, teo2corr2), ("Dati sperimentali", "andamento teorico", r'correzione con resistenza $R_L$', r'correzione con $R_L$ e $C_p$'), 'upper left',
     prop={'size': 12})
     
 ######
