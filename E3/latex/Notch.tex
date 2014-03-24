@@ -40,13 +40,12 @@ Le formule ricavate sono le seguenti:\\
 
 Abbiamo dunque cercato un motivo di tale incompatibilità. Dai dati sembra che per alte frequenze ci sia qualcosa che smorza l'intensità del segnale e ne cambia la fase. Abbiamo dunque avanzato varie ipotesi.
 
-\begin{wrapfigure}[32]{r}[0pt]{115mm}
+\begin{wrapfigure}[32]{r}[0pt]{110mm}
 %	\centering
-    \includegraphics[width=120mm]{notch.pdf}
+    \includegraphics[width=115mm]{notch.pdf}
     \caption{Diagrammi di Bode per il filtro a reiezione di banda.}
     \label{fig:notch}
 \end{wrapfigure}
-
 
 Come si vede graficamente, considerare la sola esistenza della resistenza relativa all'induttanza non è sufficiente per correggere il modello teorico da noi adottato.
 Poiché il comportamento ad alte frequenze è simile a quello del filtro passa basso, la prima idea che ci è venuta è stata quella di provare ad aggiungere in parallelo all'induttanza un condensatore. Così facendo, infatti, ci si trova in una configurazione tale per cui il segnale per alte frequenze subisce uno smorzamento. Sono state dunque calcolate le leggi teoriche per il circuito mostrato in Fig. (??), eseguendo poi un fit numerico per trovare dei valori di una possibile capacità parassita $C_p$ che rendesse compatibile la legge ipotizzata. Ricordiamo che tale scelta è del tutto arbitraria e sarà discussa nelle conclusioni. Il valore stimato della capacità parassita risulta essere $C_p \approx 140 \si{\pico\farad}$. Abbiamo notato che variando il valore di $C_p$ di $10 \si{\pico\farad}$ la legge teorica non era compatibile per eccesso o per difetto rispetto ai dati sperimentali nella fascia di frequenze più alte. Non possiamo dunque stimare l'incertezza su $C_p$ partendo dai dati da noi rilevati. Le equazioni da noi trovate sono:
