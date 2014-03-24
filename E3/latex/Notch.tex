@@ -1,5 +1,7 @@
 \section{Reiezione di Banda o Notch}
-La struttura del filtro notch, riportata in Fig. \ref{fig:circuito}, attenua l'ampiezza di segnale solo per una determinata frequenza, detta anche in questo caso di risonanza ($\nu_0=\frac{1}{2 \pi \sqrt{LC}}$), alla quale la serie di capacità e induttanza avrà impedenza complessiva nulla. Considerando come valori di $R$, $L$ e $C$ le stesse del circuito passa banda, riportiamo le leggi teoriche calcolate:\\
+La struttura del filtro notch, riportata in Fig. \ref{fig:circuito} c), attenua l'ampiezza di segnale solo per una determinata frequenza, detta anche in questo caso di risonanza ($\nu_0=\frac{1}{2 \pi \sqrt{LC}}$), alla quale la serie di capacità e induttanza avrà impedenza complessiva nulla. Pertanto abbiamo preso misure circa ogni 5$^\circ$ a salire e a scendere in frequenza partendo da $\nu_0$, come già fatto per il filtro passa banda.
+
+Considerando come valori di $R$, $L$ e $C$ le stesse del circuito passa banda, riportiamo le leggi teoriche calcolate:\\
 
 \noindent
 \begin{minipage}{.5\linewidth}
@@ -16,9 +18,11 @@ La struttura del filtro notch, riportata in Fig. \ref{fig:circuito}, attenua l'a
 \end{minipage}
 \break
 
-Come osserviamo dal diagramma di Bode (Fig. \ref{fig:notch}), per questo circuito la legge teorica non è compatibile per alte frequenze in nessuno dei due grafici. I dati sembrano infatti seguire una legge ben diversa da quella stimata. Inizialmente abbiamo pertanto risolto analiticamente il circuito considerando anche la resistenza parassita interna all'induttanza, come nel caso del filtro passa banda. La legge ricavata ha ridotto la discrepanza tra previsione teorica e dati sperimentali solo per le frequenze vicine a $\nu_0$, ma non ad alte frequenze.
+Come osserviamo dal diagramma di Bode (Fig.$\,$\ref{fig:notch}), per questo circuito la legge teorica del filtro ideale (linea punteggiata) non è compatibile per alte frequenze in nessuno dei due grafici. I dati sembrano infatti seguire una legge ben diversa da quella stimata. Inoltre si nota una certa discrepanza anche nei valori più vicini a $\nu_0$.
 
-Le formule ricavate sono le seguenti:\\
+Pertanto abbiamo inizialmente risolto analiticamente il circuito considerando anche la resistenza parassita interna all'induttanza, come nel caso del filtro passa banda. La legge ricavata ha ridotto la discrepanza tra previsione teorica e dati sperimentali solo per le frequenze vicine a $\nu_0$, ma non ad alte frequenze.
+
+Le formule ricavate sono le seguenti:
 
 \noindent
 \begin{minipage}{.5\linewidth}
@@ -38,18 +42,21 @@ Le formule ricavate sono le seguenti:\\
 }
 \end{minipage}\\
 
-Abbiamo dunque cercato un motivo di tale incompatibilità. Dai dati sembra che per alte frequenze ci sia qualcosa che smorza l'intensità del segnale e ne cambia la fase. Abbiamo dunque avanzato varie ipotesi.
+Abbiamo dunque cercato un motivo di tale incompatibilità. Dai dati sembra che per alte frequenze ci sia qualcosa che smorza l'intensità del segnale e ne cambia la fase.
 
-\begin{wrapfigure}[32]{r}[0pt]{110mm}
-%	\centering
-    \includegraphics[width=115mm]{notch.pdf}
-    \caption{Diagrammi di Bode per il filtro a reiezione di banda.}
-    \label{fig:notch}
+\begin{wrapfigure}[18]{r}[0pt]{90mm}
+	\centering
+    \includegraphics[width=50mm]{circ2.pdf}
+    \caption{Circuito del filtro a reiezione di banda con correzione di resistenza e capacità parassite.}
+    \label{fig:circ2}
 \end{wrapfigure}
 
-Come si vede graficamente, considerare la sola esistenza della resistenza relativa all'induttanza non è sufficiente per correggere il modello teorico da noi adottato.
-Poiché il comportamento ad alte frequenze è simile a quello del filtro passa basso, la prima idea che ci è venuta è stata quella di provare ad aggiungere in parallelo all'induttanza un condensatore. Così facendo, infatti, ci si trova in una configurazione tale per cui il segnale per alte frequenze subisce uno smorzamento. Sono state dunque calcolate le leggi teoriche per il circuito mostrato in Fig. (??), eseguendo poi un fit numerico per trovare dei valori di una possibile capacità parassita $C_p$ che rendesse compatibile la legge ipotizzata. Ricordiamo che tale scelta è del tutto arbitraria e sarà discussa nelle conclusioni. Il valore stimato della capacità parassita risulta essere $C_p \approx 140 \si{\pico\farad}$. Abbiamo notato che variando il valore di $C_p$ di $10 \si{\pico\farad}$ la legge teorica non era compatibile per eccesso o per difetto rispetto ai dati sperimentali nella fascia di frequenze più alte. Non possiamo dunque stimare l'incertezza su $C_p$ partendo dai dati da noi rilevati. Le equazioni da noi trovate sono:
+Come si vede graficamente (Fig.$\,$\ref{fig:notch}, linea tratteggiata), considerare la sola resistenza relativa all'induttanza non è sufficiente per correggere il modello teorico da noi adottato.
+Poiché il comportamento ad alte frequenze è simile a quello del filtro passa basso, abbiamo provato ad aggiungere in parallelo all'induttanza un condensatore. Così facendo, infatti, ci si trova in una configurazione tale per cui il segnale per alte frequenze subisce uno smorzamento.
 
+Sono state dunque calcolate le leggi teoriche per il circuito mostrato in Fig.$\,$\ref{fig:circ2}, cercando graficamente tramite il metodo della bisezione il valore di una possibile capacità parassita $C_p$ che rendesse compatibile la legge ipotizzata e i dati sperimentali. Ricordiamo che tale scelta è del tutto arbitraria e sarà discussa nelle conclusioni. Il valore stimato della capacità parassita risulta essere $C_p \approx 140 \si{\pico\farad}$. Abbiamo notato che variando il valore di $C_p$ di $10 \si{\pico\farad}$ la legge teorica non era compatibile per eccesso o per difetto rispetto ai dati sperimentali nella fascia di frequenze più alte. Non possiamo inoltre stimare l'incertezza su $C_p$ partendo dai dati da noi rilevati in quanto il valore è stato ricavato grazie ad una stima puramente grafica.
+
+Le equazioni da noi trovate sono:\\
  
 \noindent
 %\begin{minipage}{.5\linewidth}
@@ -68,9 +75,5 @@ Poiché il comportamento ad alte frequenze è simile a quello del filtro passa b
 \end{equation*}
 }
 %\end{minipage}
-\break
-
-
-
 
 

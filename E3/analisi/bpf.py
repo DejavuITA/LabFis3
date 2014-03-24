@@ -183,12 +183,12 @@ y=[20*log10(
 							)
 						)
 			) for i in range(8, 1000)],
-    fmt=':', c='red')
+    fmt='-.', c='red')
 
 teo1corr = ax1.errorbar(x=[i**2 for i in range(8, 1000)],
 	y=[10*log10(((L**2)*((i**2)**2)*4*pi**2+S**2)/((R+S)**2+(((i**2)**2)*4*pi**2)*(L**2+C*(L*(-2+C*L*((i**2)**2)*4*pi**2)+C*S**2)*(R**2))))
 	for i in range(8,1000)],
-    fmt='-.', c='blue')
+    fmt='-', c='blue')
 signal = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
     fmt='.', c='black')
@@ -212,9 +212,9 @@ ax2 = f1.add_subplot(2, 1, 2, sharex=ax1)
 ax2.set_xscale('log')
 # crea plot con le barre d'errore (o anche senza)
 teo2 = ax2.errorbar(x=[i**2 for i in range(8, 1000)], y=[360/(pi*2)*np.arctan(-R*C/L*(2*pi*i**2*L-1/(2*pi*i**2*C))) for i in range(8, 1000)],
-    fmt=':', c='red')
+    fmt='-.', c='red')
 teo2corr = ax2.errorbar( x=[i**2 for i in range(8, 1000)], y=[360/(2*pi)*np.arctan(((i**2)*2*pi*(L-C*L**2*(i**2)**2*4*pi**2-C*S**2)*R)/(L**2*(i**2)**2*4*pi**2+S*(S+R))) for i in range(8,1000)],
-    fmt='-.', c='blue')
+    fmt='-', c='blue')
 
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
