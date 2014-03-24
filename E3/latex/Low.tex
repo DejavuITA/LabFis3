@@ -1,6 +1,6 @@
-\begin{wrapfigure}[26]{r}[0pt]{100mm}
+\begin{wrapfigure}[29]{r}[0pt]{115mm}
 %	\centering
-    \includegraphics[width=105mm]{low.pdf}
+    \includegraphics[width=120mm]{low.pdf}
     \caption{Diagrammi di Bode per il filtro passa basso.}
     \label{fig:low}
 \end{wrapfigure}
@@ -28,9 +28,9 @@ Quantitativamente, utilizzando la legge di Ohm generalizzata ($V=Z \cdot I$), ov
 
 \noindent I valori delle componenti circuitali utilizzate sono $R=(997.81 \pm 0.01)\,\si{\ohm}$ e $C=(161 \pm 2)\,\si{\nano\farad}$.
 
-Il diagramma di Bode\footnote{Un diagramma di Bode è una rappresentazione grafica della risposta in frequenza di un circuito e che consiste in due grafici che rappresentano rispettivamente l'ampiezza e la fase della funzione complessa di risposta in frequenza. In entrambi i grafici l'asse delle ascisse è logaritmica, mentre in quella delle ordinate vengono riportate rispettivamente il guadagno di segnale (in $\si{\decibel}$) e la fase (in gradi o radianti)} in Fig. \ref{fig:low} riporta i valori acquisiti per il filtro passa basso. Nel caso di questo filtro, si definisce una frequenza, detta di taglio, ($\nu_0=\frac{1}{2 \pi RC}\,=\,(990\pm10)\,\si{\hertz}$) tale per cui il rapporto fra l'ampiezza\footnote{la scala in decibel per la potenza è definita diversamente} dei segnali uscente ed entrante valga $\frac{|V_{out}|}{|V_{in}|}\,=\,\frac{\sqrt{2}}{2}\,=\,\frac{1}{\sqrt{2}}$. Si osserva che in questo caso il valore di guadagno vale $20Log(\frac{|V_{out}|}{|V_{in}|})\,=\,-3\,\si{\decibel}$ e quello di fase $\phi=-45 ^{\circ}$. Come si vede in Fig. \ref{fig:low} tale previsione teorica è confermata dai dati sperimentali.
+Il diagramma di Bode\footnote{Un diagramma di Bode è una rappresentazione grafica della risposta in frequenza di un circuito e che consiste in due grafici che rappresentano rispettivamente l'ampiezza e la fase della funzione complessa di risposta in frequenza. In entrambi i grafici l'asse delle ascisse è logaritmica, mentre in quella delle ordinate vengono riportate rispettivamente il guadagno di segnale (in $\si{\decibel}$) e la fase (in gradi o radianti)} in Fig. \ref{fig:low} riporta i valori acquisiti per il filtro passa basso. Nel caso di questo filtro, si definisce una frequenza, detta di taglio, ($\nu_0=\frac{1}{2 \pi RC}\,=\,(990\pm10)\,\si{\hertz}$) tale per cui il rapporto fra l'ampiezza\footnote{la scala in decibel per la potenza è definita diversamente} dei segnali uscente ed entrante valga $\frac{|V_{out}|}{|V_{in}|}\,=\,\frac{\sqrt{2}}{2}\,=\,\frac{1}{\sqrt{2}}$. Si osserva che in questo caso il valore di guadagno vale $20Log(\frac{1}{\sqrt{2}})\,\simeq\,-3\,\si{\decibel}$ e quello di fase $\phi=-45 ^{\circ}$. Come si vede in Fig. \ref{fig:low} tale previsione teorica è confermata dai dati sperimentali.
 
-Inoltre, nel primo diagramma, osserviamo che per valori di frequenza maggiori di quella di taglio l'attenuazione tende asintoticamente ad una retta. In base alla pendenza di tale retta, che nel nostro caso è di $-\textbf{??}\frac{\si{\decibel}}{decade}$, si definisce il \emph{fattore di bontà} del filtro passa-basso.
+Inoltre, nel primo diagramma, osserviamo che per valori di frequenza maggiori di quella di taglio l'attenuazione tende asintoticamente ad una retta. In base alla pendenza di tale retta, che nel nostro caso è di $-20\frac{\si{\decibel}}{decade}$, si definisce il \emph{fattore di bontà} del filtro passa-basso.
 
 Notiamo infine come leggi teoriche sopra calcolate e dati sperimentali siano compatibili tra loro.
 %
