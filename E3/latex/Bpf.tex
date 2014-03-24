@@ -1,0 +1,48 @@
+\begin{wrapfigure}[28]{r}[0pt]{100mm}
+%	\centering
+    \includegraphics[width=105mm]{bpf.pdf}
+    \caption{Diagrammi di Bode per il filtro passa banda.}
+    \label{fig:bpf}
+\end{wrapfigure}
+
+\section{Passa banda}
+Questo secondo filtro analizzato, oltre che resistenza e condensatore, prevede l'utilizzo di un'induttanza. In Fig. \ref{fig:circuito} è rappresentato il circuito utilizzato. Il parallelo di induttanza e condensatore fa si che sia per frequenze basse che per quelle alte l'oscilloscopio sia cortocircuitato. Infatti l'induttanza si comporta come filo ideale per frequenze basse mentre come circuito aperto per quelle alte. Tale filtro lascerà passare dunque solo un range di frequenze attorno al valore $\nu_0$, detta frequenza di risonanza e definita come $\nu_0=\frac{1}{2 \pi \sqrt{LC}}$. Per questo motivo abbiamo deciso di prendere misure circa ogni $5^\circ$ a salire e a scendere in frequenza partendo da $\nu_0$.
+
+Come fatto nel paragrafo precedente, è possibile utilizzare il concetto di partitore generalizzato per risolvere il circuito. Ricordiamo che l'induttanza ha una impedenza $Z_L=j\omega L$. Ricaviamo pertanto le seguenti leggi:
+
+%\noindent
+%\begin{minipage}{.5\linewidth}
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\label{eq:bpfGain}
+\end{equation}
+
+%\end{minipage}%
+%\begin{minipage}{.5\linewidth}
+\begin{equation}
+\phi=arctan\left[\frac{-RC(\omega L-\frac{1}{\omega C})}{L}\right]
+%\frac{-RC(wL-\frac{}{wC}}{L}
+\label{eq:bpfPhi}
+\end{equation}
+%\end{minipage}
+%\break
+
+\noindent I valori delle componenti circuitali utilizzate sono $R=(997.81 \pm 0.01)\,\si{\ohm}$, $C=(250.4 \pm 0.1)\si{\nano\farad}$ e $L=(1 \pm 0.01)\,\si{\milli\henry}$, da cui segue che la frequenza di risonanza è $\nu_0 = (10060 \pm 50)\,\si{\hertz}$.
+
+Come vediamo dal diagramma di Bode, sebbene i dati sperimentali riguardanti la fase siano compatibili con i valori teorici, non possiamo dire lo stesso per l'attenuazione di segnale. Sembra dunque sia stato trascurato qualche effetto parassita. Sicuramente non si tratta di elementi attivi (induttanze o capacità parassite) in quanto esse produrrebbero un uno sfasamento del segnale oltre che un'attenuazione dell'ampiezza di segnale (infatti hanno componente complessa). E' dunque probabile sia stata trascurata qualche resistenza nelle componenti circuitali. Fortunatamente abbiamo misurato la resistenza dell'induttanza, ottendendo come valore $(R_L=2.41\pm 0.01) \Omega$. Inserendo dunque tale resistenza in serie all'induttanza e risolvendo analiticamente il circuito, troviamo due nuove equazioni:\\
+
+\noindent
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\frac{|V_{out}|}{|V_{in}|}=
+\label{bpfGain_corr}
+\end{equation}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+\phi=arctan\left[\frac{R}{\omega L-\frac{1}{\omega C}}\right]
+\label{bpfPhi_corr}
+\end{equation}
+\end{minipage}
+\break
+\noindent Nel grafico è possibile apprezzare le correzioni che tale soluzione produce.
