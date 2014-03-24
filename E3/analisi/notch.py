@@ -156,6 +156,7 @@ R = 997.81
 C = 250.4E-9
 L = 1E-3
 S = 2.41
+D = 1.4E-10
 
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(8, 8))
@@ -173,6 +174,25 @@ teo1 = ax1.errorbar(x=[i**2 for i in range(1, 4500)], y=[20*log10(np.absolute(((
 teo1corr = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
 	y=[20*log10(np.absolute(( (S*(S+R) + ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 )**2 + ( R * (2*pi*i**2*L - 1/(2*pi*i**2*C) ) )**2 )**(0.5) * 1/(  ( 2*pi*i**2*L - 1/(2*pi*i**2*C) )**2 + (R+S)**2  ))) for i in range(1, 4500)],
     fmt='-.', c='blue')
+teo1corr2 = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
+		y=[20*log10(np.absolute(
+					sqrt((1 + (C + D)*(2*pi*i**2)**2*((C + D)*S**2 + L*(-2 + (C + D)*L*(2*pi*i**2)**2)))/
+					(1 + (2*pi*i**2)**2*(D*(D*S**2 + L*(-2 + D*L*(2*pi*i**2)**2)) +
+					2*C*(D*S**2 + L*(-1 + D*L*(2*pi*i**2)**2)) +
+					C**2*(2*R*S + S**2 + L**2*(2*pi*i**2)**2 +
+					R**2*(1 + D*(2*pi*i**2)**2*(D*S**2 + L*(-2 + D*L*(2*pi*i**2)**2)))))))
+					))
+ 	for i in range(1, 4500)],
+	fmt='-', c='green')
+teo1corr3 = ax1.errorbar(x=[i**2 for i in range(1, 4500)],
+		y=[20*log10(np.absolute(
+					sqrt((1 + C*(2*pi*i**2)**2*(C*S**2 + L*(-2 + C*L*(2*pi*i**2)**2)))/
+					(1 + (D**2*R**2 - 2*C*(L - D*R**2) + C**2*(R + S)**2)*(2*pi*i**2)**2 +
+					C*(L*(C*L - 2*D*(C + D)*R**2) + C*D**2*R**2*S**2)*(2*pi*i**2)**4 +
+					C**2*D**2*L**2*R**2*(2*pi*i**2)**6))
+					))
+ 	for i in range(1, 4500)],
+	fmt='-', c='yellow')
 
 gain = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
@@ -198,7 +218,15 @@ teo2 = ax2.errorbar(x=[i**2 for i in range(1, 4500)], y=[360/(pi*2)*np.arctan(R/
     fmt=':', c='red')
 teo2corr = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
 	y=[360/(pi*2)*np.arctan(R*(2*pi*i**2*L-1/(2*pi*i**2*C))/(S*(R+S)+(2*pi*i**2*L-1/(2*pi*i**2*C))**2)) for i in range(1, 4500)],
-    fmt='--', c='blue')
+    fmt='-.', c='blue')
+teo2corr1 = ax2.errorbar(x=[i**2 for i in range(1, 4500)],
+	y=[360/(pi*2)*np.arctan(
+				(C*R*(2*pi*i**2)*(-1 + ((C + 2*D)*L - D*(C + D)*S**2)*(2*pi*i**2)**2 -
+				D*(C + D)*L**2*(2*pi*i**2)**4))/
+				(1 + (-2*(C + D)*L + C**2*R*S + (C + D)**2*S**2)*(2*pi*i**2)**2 +
+				(C + D)**2*L**2*(2*pi*i**2)**4)
+				) for i in range(1, 4500)],
+	fmt='-', c='green')
 
 fase = ax2.errorbar(x=freQ, y=phi,
     #yerr=, #xerr=,
