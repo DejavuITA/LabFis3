@@ -13,14 +13,14 @@ Come fatto nel paragrafo precedente, è possibile utilizzare il concetto di part
 %\noindent
 %\begin{minipage}{.5\linewidth}
 \begin{equation}
-\frac{|V_{out}|}{|V_{in}|}=
+\frac{|V_{out}|}{|V_{in}|}=\sqrt{\frac{L^2 \omega ^2}{R^2 \left(C L \omega ^2-1\right)^2+L^2 \omega ^2}}
 \label{eq:bpfGain}
 \end{equation}
 
 %\end{minipage}%
 %\begin{minipage}{.5\linewidth}
 \begin{equation}
-\phi=arctan\left[\frac{-RC(\omega L-\frac{1}{\omega C})}{L}\right]
+\phi=arctan\left[\frac{R}{L \omega}-C R \omega \right]
 %\frac{-RC(wL-\frac{}{wC}}{L}
 \label{eq:bpfPhi}
 \end{equation}
@@ -32,17 +32,17 @@ Come fatto nel paragrafo precedente, è possibile utilizzare il concetto di part
 Come vediamo dal diagramma di Bode, sebbene i dati sperimentali riguardanti la fase siano compatibili con i valori teorici, non possiamo dire lo stesso per l'attenuazione di segnale. Sembra dunque sia stato trascurato qualche effetto parassita. Sicuramente non si tratta di elementi attivi (induttanze o capacità parassite) in quanto esse produrrebbero un uno sfasamento del segnale oltre che un'attenuazione dell'ampiezza di segnale (infatti hanno componente complessa). E' dunque probabile sia stata trascurata qualche resistenza nelle componenti circuitali. Fortunatamente abbiamo misurato la resistenza dell'induttanza, ottendendo come valore $(R_L=2.41\pm 0.01) \Omega$. Inserendo dunque tale resistenza in serie all'induttanza e risolvendo analiticamente il circuito, troviamo due nuove equazioni:\\
 
 \noindent
-\begin{minipage}{.5\linewidth}
+%\begin{minipage}{.5\linewidth}
 \begin{equation}
-\frac{|V_{out}|}{|V_{in}|}=
+\frac{|V_{out}|}{|V_{in}|}=\sqrt{\frac{L^2 \omega ^2+R_L^2}{R^2 \left(C \omega ^2 \left(L \left(C L \omega ^2-2\right)+C R_L^2\right)+1\right)+L^2 \omega ^2+2 R R_L+R_L^2}}
 \label{bpfGain_corr}
 \end{equation}
-\end{minipage}%
-\begin{minipage}{.5\linewidth}
+%\end{minipage}%
+%\begin{minipage}{.5\linewidth}
 \begin{equation}
-\phi=arctan\left[\frac{R}{\omega L-\frac{1}{\omega C}}\right]
+\phi=arctan\left[R \omega \left(\frac{C R R_L+L}{L^2 \omega ^2+R_L (R+R_L)}-C\right)\right]
 \label{bpfPhi_corr}
 \end{equation}
-\end{minipage}
+%\end{minipage}
 \break
 \noindent Nel grafico è possibile apprezzare le correzioni che tale soluzione produce.
