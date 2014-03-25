@@ -235,6 +235,10 @@ fase = ax2.errorbar(x=freQ, y=phi,
 v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 db = ax1.axhline(y=-3, linewidth=1, color='grey')
 
+ax1.annotate("", (650, -3), xytext=(20, 0), textcoords='offset points', arrowprops=dict(facecolor='grey',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
+ax1.annotate("", (141000, -3), xytext=(-20, 0), textcoords='offset points', arrowprops=dict(facecolor='grey',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
+ax1.text(1/(2*pi*(C*L)**(0.5))+500, -4.5, r'$\Delta\nu$', size=13, va='center')
+
 ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$ ]', labelpad=2, fontsize=14)
 

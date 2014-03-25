@@ -96,7 +96,6 @@ signal = ax1.errorbar(x=freQ, y=V,
 v0 = ax1.axvline(x=1/(2*pi*C*R), linewidth=1, color='grey')
 db = ax1.axhline(y=-3, linewidth=1, color='grey')
 
-#ax1.annotate(r'$\nu_0$', (1/(2*pi*C*R)+60, -28.5), xytext=(0, 0), textcoords='offset points')
 ax1.text(1/(2*pi*C*R)+60, -28, r'$\nu_0$', size=15, va='center')
 ax1.annotate("", (3000, -7), xytext=(40, 0), textcoords='offset points', arrowprops=dict(facecolor='black',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
 ax1.text(7200, -7, u' approx slope:\n$-20\,dB/decade$', size=13, va='center')
