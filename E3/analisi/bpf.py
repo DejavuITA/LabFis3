@@ -193,8 +193,14 @@ signal = ax1.errorbar(x=freQ, y=V,
     #yerr=dy, #xerr=,
     fmt='.', c='black')
 
+dbv0 = 10*log10(((L**2)*((1/(2*pi*(C*L)**(0.5)))**2)*4*pi**2+S**2)/((R+S)**2+(((1/(2*pi*(C*L)**(0.5)))**2)*4*pi**2)*(L**2+C*(L*(-2+C*L*((1/(2*pi*(C*L)**(0.5)))**2)*4*pi**2)+C*S**2)*(R**2))))-3
 v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
-#db = ax1.axhline(y=-3, linewidth=1, color='grey')
+db = ax1.axhline(y=dbv0, linewidth=1, color='grey')
+ax1.annotate("", (10680, dbv0), xytext=(20, 0), textcoords='offset points', arrowprops=dict(facecolor='grey',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
+ax1.annotate("", (9555, dbv0), xytext=(-20, 0), textcoords='offset points', arrowprops=dict(facecolor='grey',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
+ax1.text(11400, dbv0+3, r'$\Delta\nu$', size=13, va='center')
+
+
     
 ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
 
