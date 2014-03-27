@@ -30,7 +30,7 @@ R=0.980E3
 C=0.099E-6
 A = (R*C*2*pi*np.logspace(2,5,500))**2
 
-teo2 = ax1.errorbar(x=np.logspace(2,5,500),
+teo1 = ax1.errorbar(x=np.logspace(2,5,500),
 y=20*np.log10(( (A)**4 + 6*(A)**3 - 5*(A)**2 + 6*(A) + 1 )**(0.5) * ( 2*(A)**2 + 14*(A) + 2)**(-1)),
  fmt='-', c='blue')
 gain = ax1.errorbar(x=FREQ, y=20*np.log10(VM/(V2*2)),
@@ -45,7 +45,7 @@ ax1.set_ylabel(u'Attenuazione segnale [$dB$]', labelpad=2, fontsize=14)
 #ax1.text(1/(2*pi*(L*C)**(0.5))+1000, -50+1.5, r'$\nu_0$', size=15, va='center')
 
 ax1.grid(True)
-#ax1.set_ylim((-50, 1))
+ax1.set_ylim((-16, -5))
 plt.setp(ax1.get_xticklabels(), visible=False)
     
 ######
@@ -55,6 +55,10 @@ ax2.set_xscale('log')
 fase = ax2.errorbar(x=FREQ, y=-PHI,
     #yerr=, #xerr=,
     fmt='.', c='black')
+w = 2*pi*np.logspace(2,5,500)
+teo2 = ax2.errorbar(x=np.logspace(2,5,500),
+y=180/pi*np.arctan(3*R/(C*(R**2-(C*w)**(-2))*w)),
+ fmt='-', c='blue')
 
 #v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 #db = ax1.axhline(y=-3, linewidth=1, color='grey')
