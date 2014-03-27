@@ -15,6 +15,13 @@ VM = dati[:,2]
 PHI = dati[:,3]
 FREQ = dati[:,4]
 
+#print(PHI)
+for i in range (1,15):
+	PHI[i]=PHI[i]+90
+for i in range (16,33):
+	PHI[i]=PHI[i]-90
+#print(PHI)
+
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(8, 8))
 # Titolo del grafico
@@ -54,10 +61,10 @@ ax2.set_xscale('log')
 fase = ax2.errorbar(x=FREQ, y=-PHI,
     #yerr=, #xerr=,
     fmt='.', c='black')
-
-wrc = R*C*2*pi*np.logspace(2,5,500)
+w = 2*pi*np.logspace(2,5,500)
 teo2 = ax2.errorbar(x=np.logspace(2,5,500),
-y=180/pi*np.arctan(1/(3*wrc)-wrc/3),
+y=180/pi*np.arctan(3*R/(C*(R**2-(C*w)**(-2))*w)),
+#y=180/pi*np.arctan(-1/(C*R*w)),
  fmt='-', c='blue')
 
 #v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
@@ -70,12 +77,12 @@ y=180/pi*np.arctan(1/(3*wrc)-wrc/3),
 ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
 
-ax2.set_ylim((-91, 91))
+#ax2.set_ylim((-91, 91))
 #ax2.set_xlim((10,20000000))
-ax2.set_yticks(np.arange(-90, 91, 30))
+#ax2.set_yticks(np.arange(-90, 91, 30))
 
 ax2.grid(True)
-ax2.legend((fase,teo2), ("Dati sperimentali", "Andamento teorico"), 'upper right', prop={'size': 12})
+ax1.legend((fase,teo2), ("Dati sperimentali", "Andamento teorico"), 'lower right', prop={'size': 12})
     
 ######
 
