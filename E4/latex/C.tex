@@ -4,11 +4,11 @@
 	\centering
     \includegraphics[width=0.30\textwidth]{schema1.pdf}
     \caption{Schema del circuito utilizzato per la misura di impedenza}
-    \label{fig:circuito}
+    \label{fig:circuito1}
 \end{wrapfigure}
 
 \subsection{Acquisizione dati}
-Una volta montato il circuito e collegato al generatore di forme d'onda sono stati collegati i due canali dell'oscilloscopio alle uscite del circuito (CH1 e CH2, come in Figura \ref{fig:circuito}). 
+Una volta montato il circuito e collegato al generatore di forme d'onda sono stati collegati i due canali dell'oscilloscopio alle uscite del circuito (CH1 e CH2, come in Figura \ref{fig:circuito1}). 
 \`E stata fissata una tensione di $5\,Vpp$ e, dopo aver stabilizzato con il comando $trigger$ le forme d'onda sullo schermo e averle allineate, sono state impostate le funzioni integrate dell'oscilloscopio che permettevano di ricavare valori più stabili e meno affetti da rumore tramite la media di più misure.
 
 Per calcolare il valore di capacità del condensatore incognito $C_3$ è stato necessario bilanciare il ponte. Ciò significa variare gli elementi circuitali, nel nostro caso $R_1$ (la decade di resistenze) e la frequenza $\omega$ a cui veniva generata la \emph{ddp} dal generatore finché i segnali che l'oscilloscopio leggeva da CH1 e CH2 fossero stati i medesimi.
@@ -24,18 +24,35 @@ La frequenza e la resistenza necessarie per bilanciare il ponte si sono rivelate
 \qquad R_1 \, = \, (14389 \pm 1) \, \si{\ohm}
 \end{equation*}
 
+
+\noindent Quindi, utilizzando le equazioni di bilanciamento \ref{eq:1bilanciamento} e \ref{eq:2bilanciamento}:\\
+
+\noindent
+\begin{minipage}{.5\linewidth}
 \begin{equation}
 \frac{R_4}{R_3} + \frac{C_3}{C_4} = \frac{R_2}{R_1}
 \label{eq:1bilanciamento}
 \end{equation}
-
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
 \begin{equation}
 \omega^2 \, R_3 \, C_3 \, R_4 \, C_4 \, = \, 1
 \label{eq:2bilanciamento}
 \end{equation}
+\end{minipage}
 
-da \ref{eq:1bilanciamento} e \ref{eq:2bilanciamento} si ottiene:
+si ottiene:
 
 \begin{equation}
 C_3 \, = \, \frac{C_4 \, R_2}{R_1 \, (1 \, + \, \omega^2 \, R_4^2 \, C_4^2)}
+\label{eq:C3}
 \end{equation}
+
+I valori da noi ottenuti sono stati:\\
+
+\centering
+\begin{tabular}{c|c|c|c|c}
+ & multimetro & Eq. \ref{eq:1bilanciamento} & Eq. \ref{eq:2bilanciamento} & Eq. \ref{eq:C3} \\ 
+\hline 
+ Capacità [$\si{\nano\farad}$] & • & • & • & (3.6 \pm 0.6) \\ 
+\end{tabular} 
