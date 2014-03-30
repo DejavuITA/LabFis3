@@ -59,6 +59,9 @@ wrc = R*C*2*pi*np.logspace(2,5,500)
 teo2 = ax2.errorbar(x=np.logspace(2,5,500),
 y=180/pi*np.arctan(1/(3*wrc)-wrc/3),
  fmt='-', c='blue')
+varphi=ax2.errorbar(x=np.logspace(2,5,500),
+y=180/pi*np.arctan(2*wrc*(wrc**2-1)/(wrc**4+wrc**2+1)),
+ fmt='-.', c='red')
 
 #v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 #db = ax1.axhline(y=-3, linewidth=1, color='grey')

@@ -3,7 +3,7 @@
 \begin{wrapfigure}[15]{r}[0pt]{80mm}
 	\centering
     \includegraphics[width=0.30\textwidth]{schema1.pdf}
-    \caption{Schema del circuito utilizzato per la misura di impedenza}
+    \caption{Schema del circuito utilizzato per la misura di impedenza.}
     \label{fig:circuito1}
 \end{wrapfigure}
 
@@ -29,16 +29,20 @@ La frequenza e la resistenza necessarie per bilanciare il ponte si sono rivelate
 
 \noindent
 \begin{minipage}{.5\linewidth}
+
 \begin{equation}
 \frac{R_4}{R_3} + \frac{C_3}{C_4} = \frac{R_2}{R_1}
 \label{eq:1bilanciamento}
 \end{equation}
+
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
+
 \begin{equation}
 \omega^2 \, R_3 \, C_3 \, R_4 \, C_4 \, = \, 1
 \label{eq:2bilanciamento}
 \end{equation}
+
 \end{minipage}
 
 si ottiene:
@@ -48,14 +52,29 @@ C_3 \, = \, \frac{C_4 \, R_2}{R_1 \, (1 \, + \, \omega^2 \, R_4^2 \, C_4^2)}
 \label{eq:C3}
 \end{equation}
 
-I valori da noi ottenuti sono stati\footnote{Valori di resistenze e capacità sono stati misurati utilizzando il multimetro digitale, che permette misure più precise. Per stimare gli errori sui dai calcolati analiticamente sono state sfruttate le formule di propagazione degli errori}\\
+Ricordiamo che i valori di resistenze e di capacità noti del circuito erano:\\
+I valori da noi ottenuti per la capacità incognita sono stati\footnote{Valori di resistenze e capacità sono stati misurati utilizzando il multimetro digitale, che permette misure più precise. Per stimare gli errori sui dati calcolati analiticamente sono state sfruttate le formule di propagazione degli errori}\\
 
-\centerline{
+%\begin{SCtable}[20]
+%\centering
+%\caption{In tabella sono riportati i valori della capacità incognita $C_3$ calcolati mediante le tre formule sopra riportate e il multimetro a nostra disposizione.}
+%\begin{tabular}{m{75pt}|m{48pt}|m{48pt}|m{48pt}|m{48pt}}
+%\vspace{12pt} & multimetro\\&hai & Eq. \ref{eq:1bilanciamento} & Eq. \ref{eq:2bilanciamento} & Eq. \ref{eq:C3} \\
+%\hline
+%\vspace{0pt} & & & &\\
+%\vspace{8pt} \centering Capacità $C_3$ [$\si{\nano\farad}$] & \vspace{8pt} \centering $(3.4 \pm 0.1)$ & \vspace{8pt} \centering $(3.7 \pm 0.2)$ & \vspace{8pt} \centering $(3.5 \pm 0.2)$ & \vspace{8pt} \centering ($3.5 \pm 0.1$)
+%\label{tab:C}
+%\end{tabular}
+%\end{SCtable}
+
+\begin{SCtable}[20]
+\centering
+\caption{In tabella sono riportati i valori della capacità incognita $C_3$ calcolati mediante le tre formule sopra riportate e il multimetro a nostra disposizione.}
+{\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
- & multimetro & Eq. \ref{eq:1bilanciamento} & Eq. \ref{eq:2bilanciamento} & Eq. \ref{eq:C3} \\ 
-\hline 
-Capacità $C_3$ [$\si{\nano\farad}$] & $(3.4 \pm 0.1)$ & $(3.7 \pm 0.2)$ & $(3.5 \pm 0.2)$ & ($3.5 \pm 0.1$) \\ 
+ & multimetro & Eq. \ref{eq:1bilanciamento} & Eq. \ref{eq:2bilanciamento} & Eq. \ref{eq:C3} \\      \hline
+Capacità $C_3$ [$\si{\nano\farad}$] & $(3.4 \pm 0.1)$ & $(3.7 \pm 0.2)$ & $(3.5 \pm 0.2)$ & ($3.5 \pm 0.1$) \\
 \end{tabular}}
-
+\end{SCtable}
 
 Come vediamo, i valori ottenuti con tutti e tre i calcoli si rivelano compatibili con il valore misurato dal multimetro. Ci siamo informati sul valore di capacità fornito dal costruttore ed esso risulta essere $(3.3 	\pm 0.3 )\si{\pico\farad}$. Notiamo come la terza procedura (quella che tiene conto sia di $R1$ che di $\omega$) sia la più precisa.
