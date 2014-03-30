@@ -13,7 +13,7 @@ Una volta montato il circuito e collegato al generatore di forme d'onda sono sta
 
 Per calcolare il valore di capacità del condensatore incognito $C_3$ è stato necessario bilanciare il ponte. Ciò significa variare gli elementi circuitali, nel nostro caso $R_1$ (la decade di resistenze) e la frequenza $\omega$ a cui veniva generata la \emph{ddp} dal generatore finché i segnali che l'oscilloscopio leggeva da CH1 e CH2 fossero stati i medesimi.
 
-Lavorando sulla frequenza e sulla resistenza abbiamo cercato quindi di bilanciare il circuito in modo tale che, in ogni momento, lo sfasamento tra CH1 e CH2 fosse nullo e l'ampiezza di segnale la stessa.
+Lavorando sulla frequenza e sulla resistenza abbiamo cercato quindi di bilanciare il circuito in modo tale che, in ogni momento, lo sfasamento tra CH1 e CH2 fosse nullo e l'ampiezza di segnale identica. Così facendo, infatti, a qualsiasi instante di tempo $t, \,\,\,\, V(CH1)=V(CH2)$, ovvero il ponte risulta essere bilanciato. 
 
 \subsection{Analisi dati}
 
@@ -48,11 +48,14 @@ C_3 \, = \, \frac{C_4 \, R_2}{R_1 \, (1 \, + \, \omega^2 \, R_4^2 \, C_4^2)}
 \label{eq:C3}
 \end{equation}
 
-I valori da noi ottenuti sono stati:\\
+I valori da noi ottenuti sono stati\footnote{Valori di resistenze e capacità sono stati misurati utilizzando il multimetro digitale, che permette misure più precise. Per stimare gli errori sui dai calcolati analiticamente sono state sfruttate le formule di propagazione degli errori}\\
 
-\centering
+\centerline{
 \begin{tabular}{c|c|c|c|c}
  & multimetro & Eq. \ref{eq:1bilanciamento} & Eq. \ref{eq:2bilanciamento} & Eq. \ref{eq:C3} \\ 
 \hline 
- Capacità [$\si{\nano\farad}$] & • & • & • & (3.6 \pm 0.6) \\ 
-\end{tabular} 
+Capacità $C_3$ [$\si{\nano\farad}$] & $(3.4 \pm 0.1)$ & $(3.7 \pm 0.2)$ & $(3.5 \pm 0.2)$ & ($3.5 \pm 0.1$) \\ 
+\end{tabular}}
+
+
+Come vediamo, i valori ottenuti con tutti e tre i calcoli si rivelano compatibili con il valore misurato dal multimetro. Ci siamo informati sul valore di capacità fornito dal costruttore ed esso risulta essere $(3.3 	\pm 0.3 )\si{\pico\farad}$. Notiamo come la terza procedura (quella che tiene conto sia di $R1$ che di $\omega$) sia la più precisa.
