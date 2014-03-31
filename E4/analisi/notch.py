@@ -35,6 +35,8 @@ y=20*np.log10(( (A)**4 + 6*(A)**3 - 5*(A)**2 + 6*(A) + 1 )**(0.5) * ( 2*(A)**2 +
 gain = ax1.errorbar(x=FREQ, y=20*np.log10(VM/(V2*2)),
     #yerr=dy, #xerr=,
     fmt='.', c='black')
+#boja = ax1.errorbar(x=np.logspace(2,5,500), y=20*np.log10(1/2 *(1 - (8 *A)/(1 + 7 *A + A**2))**(0.5)),
+#    fmt='--', c='red')
 
 #v0 = ax1.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 #db = ax1.axhline(y=-3, linewidth=1, color='grey')
@@ -59,9 +61,9 @@ wrc = R*C*2*pi*np.logspace(2,5,500)
 teo2 = ax2.errorbar(x=np.logspace(2,5,500),
 y=180/pi*np.arctan(1/(3*wrc)-wrc/3),
  fmt='-', c='blue')
-varphi=ax2.errorbar(x=np.logspace(2,5,500),
-y=180/pi*np.arctan(2*wrc*(wrc**2-1)/(wrc**4+wrc**2+1)),
- fmt='-.', c='red')
+#varphi=ax2.errorbar(x=np.logspace(2,5,500),
+#y=180/pi*np.arctan(2*wrc*(wrc**2-1)/(wrc**4+wrc**2+1)),
+# fmt='-.', c='red')
 
 #v0 = ax2.axvline(x=1/(2*pi*(C*L)**(0.5)), linewidth=1, color='grey')
 #db = ax1.axhline(y=-3, linewidth=1, color='grey')
@@ -70,7 +72,7 @@ y=180/pi*np.arctan(2*wrc*(wrc**2-1)/(wrc**4+wrc**2+1)),
 #ax1.annotate("", (141000, -3), xytext=(-20, 0), textcoords='offset points', arrowprops=dict(facecolor='grey',arrowstyle='-|>', connectionstyle="arc3,rad=0.0"))
 #ax1.text(1/(2*pi*(C*L)**(0.5))+500, -4.5, r'$\Delta\nu$', size=13, va='center')
 
-ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=2, fontsize=14)
+ax2.set_ylabel(u'Fase $CH_{1}|CH_{2}$ [$^\circ$]', labelpad=2, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=2, fontsize=14)
 
 ax2.set_ylim((-91, 91))
