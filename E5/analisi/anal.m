@@ -13,26 +13,25 @@ V0 = 7.5*sqrt(2);
 
 % At = acos(C.*w.*V0./Ohm) + Tau - T;
 k = 10^10;
-for i = 1:100
-	C = i*0.01/w/V0;
-	
-	for j = 1:100000
-		Tau = j*10^-6;
+for i = 1:100	
+	for j = 1:500
+		Tau = j*10^-4;
 		for l = 1:4
-			At(l,1) = acos(C.*w.*V0./Ohm(l,1)) + Tau - T;
+			C = i*0.01/w/V0*Ohm(l,1);
+			At(l,1) = acos(C) + Tau - T;
 		endfor
 	
-		ki = sqrt( (1/4) .* sum( (At.-Delta_t).^2) );
+		khi = sqrt( (1/4) .* sum( (At.-Delta_t).^2) );
 	
-		if (ki<k	)
-			k = ki;
+		if ( khi<k )
+			k = khi;
 			ki = i;
 			kj = j;
 		endif
 	endfor
 endfor
 
-kTau = kj*10^-6;
-kC = i*0.01/w/V0;
-[i j]
+kTau = kj*10^-4;
+kC = ki*0.01;
+[ki kj]
 [k kTau kC]
