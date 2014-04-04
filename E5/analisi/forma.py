@@ -22,11 +22,31 @@ ax1 = f1.add_subplot(1, 1, 1)
 
 # crea plot con le barre d'errore (o anche senza)
 
-CH1 = ax1.errorbar(x=TIM*10**(3), y=CH1,
-    fmt='--', c='#888888', linewidth=2)
+CH1 = ax1.errorbar(x=TIM*10**(3), y=CH1,#+0.6,
+    fmt='-', c='#888888', linewidth=2)
 #    markersize=7, markeredgewidth=1)
-CH2 = ax1.errorbar(x=TIM*10**(3), y=CH2,
-    fmt='--', c='#AAFF33', linewidth=2)
+CH2 = ax1.errorbar(x=TIM*10**(3), y=CH2,#-0.6,
+    fmt='--', c='red', linewidth=2)
+
+annDt = ax1.annotate('', xy=(8.75, -1),  xycoords='data',
+                xytext=(17.25, -1), textcoords='data', va='center',
+                arrowprops=dict(arrowstyle="<->",
+                           #     connectionstyle="bar",
+                           #     ec="k",
+                           #     shrinkA=5, shrinkB=5,
+                                )
+                )
+textDt = ax1.annotate(r'$\Delta$ t', xy=(13,-1.5), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center')
+
+annTau = ax1.annotate('', xy=(7.25, +1),  xycoords='data',
+                xytext=(17.25, +1), textcoords='data', va='center',
+                arrowprops=dict(arrowstyle="<->",
+                           #     connectionstyle="bar",
+                           #     ec="k",
+                           #     shrinkA=5, shrinkB=5,
+                                )
+                )
+textTau = ax1.annotate(r'$t_{att}$', xy=(12.25,+2), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center')
     
 ax1.set_ylabel(u'd.d.p. [V]',
     labelpad=10, fontsize=16)
