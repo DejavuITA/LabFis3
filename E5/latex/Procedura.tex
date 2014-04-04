@@ -41,7 +41,7 @@ Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ ch
 
 \begin{table}[h]
 \centering
-\caption{estiqatsi}
+\caption{Media dei tempi di intervento dell'interruttore differenziale per diversi valori di $R$.}
 {\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
  & $R=50 \si{\ohm}$ & $R=100 \si{\ohm}$ & $R=200 \si{\ohm}$ & $R=250 \si{\ohm}$ \\      \hline
@@ -49,11 +49,13 @@ $t_{att}$ [$\si{\milli\second}$] & $(13 \pm 2)$ & $(14 \pm 2)$ & $(18 \pm 7)$ & 
 \end{table}
 
 
-Abbiamo casualmente notato che, sebbene i tempi di attivazione a parità di resistenza fossero diversi, il tempo tra l'ultimo passaggio del segnale sull'asse delle $x$ e l'apertura dell'interruttore rimaneva costante. Abbiamo dunque ipotizzato l'esistenza di un tempo di attivazione ``meccanico'' (ovvero dal momento in cui l'interruttore sente la differenza di corrente critica e inizia il processo meccanico di apertura del circuito fino al completamento dello stesso), fosse una costante (che chiameremo $\tau$).  Riportiamo i tempi tra ultimo passaggio del segnale sull'asse $x$ e apertura del circuito nella seguente tabella. 
+Il valore massimo di tempo campionato risulta essere $29.4\si{\milli\second}$ misurato con una resistenza di $R=250 \si{\ohm}$ mentre quello minimo $11.2\si{\milli\second}$ ottenuto nel caso di resistenza $R=50 \si{\ohm}$.
+
+Abbiamo casualmente notato che, sebbene i tempi di attivazione a parità di resistenza fossero diversi, il tempo tra l'ultimo passaggio del segnale sull'asse delle $x$ e l'apertura dell'interruttore rimaneva costante (Fig. \ref{fig:graph}). Abbiamo dunque ipotizzato l'esistenza di un tempo di attivazione ``meccanico'' (ovvero dal momento in cui l'interruttore sente la differenza di corrente critica e inizia il processo meccanico di apertura del circuito fino al completamento dello stesso), fosse una costante (che chiameremo $\tau$).  Riportiamo i tempi tra ultimo passaggio del segnale sull'asse $x$ e apertura del circuito nella seguente tabella. 
 
 \begin{table}[h]
 \centering
-\caption{estiqatsi}
+\caption{Media dei tempi tra ultimo passaggio della sinusoide sull'asse dei tempi e intervento dell'interruttore per diversi valori di $R$.}
 {\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
  & $R=50 \si{\ohm}$ & $R=100 \si{\ohm}$ & $R=200 \si{\ohm}$ & $R=250 \si{\ohm}$ \\      \hline
@@ -63,7 +65,7 @@ $\Delta t$ [$\si{\milli\second}$] & $(5.4 \pm 0.1)$ & $(6.2 \pm 0.1)$ & $(7.7 \p
 
 Come vediamo, i valori variano al variare della resistenza. Ciò è coerente con il fatto che a parità di tensione, con resistenze più alte scorre meno corrente. Inoltre, l'interruttore differenziale sfrutta le variazioni di corrente, pertanto esso sarà sensibile alla derivata della corrente.
 
-Assumendo una forma della corrente\footnote{Per comodità immaginiamo di eseguire una traslazione in modo che la fase $\varphi$ sia uguale a zero.}:
+Assumendo una forma della corrente\footnote{In realtà $I(t)=\frac{V_0}{R}sin(\omega t + \varphi)$, non è tuttavia restrittivo ai fini della teoria supporre $\varphi$ uguale a zero.}:
 \begin{equation}
 I(t)=\frac{V_0}{R}sin(\omega t)
 \label{corrente}
@@ -78,13 +80,13 @@ Risulta banale calcolare la sua derivata temporale:
 La corrente indotta nell'interruttore differenziale sarà dunque proporzionale alla derivata temporale della corrente moltiplicata per una costante, che tiene conto delle geometrie dello strumento stesso. L'interruttore avrà una corrente interna di attivazione $I_{int}=cost$. Possiamo dunque scrivere la seguente relazione:
 
 \begin{equation}
-\alpha \frac{V_0 \omega}{R}cos(\omega t)=I_{int} \Rightarrow t=\frac{acos(\frac{C R}{\omega V_0})}{\omega }
+\gamma \frac{V_0 \omega}{R}cos(\omega t)=I_{int} \Rightarrow t^*=\frac{acos(\frac{C R}{\omega V_0})}{\omega }
 \label{oi}
 \end{equation} 
 
-Con $C=\frac{I_{int}}{\alpha}$.
+Con $C=\frac{I_{int}}{\gamma}$.
 
-Abbiamo dunque stimato che il tempo di reazione meccanico dello strumento non può essere inferiore alla somma di $\Delta t$ e del $t$ calcolato tramite eq. (\ref{oi}), in quanto $\Delta t$ era una costante sempre a parità di resistenza e tutti i campionamenti effettuati avevano almeno un massimo prima del passaggio della tensione sullo zero. Abbiamo dunque imposto la condizione $t+\Delta t = \beta$ ed eseguito un fit numerico per stimare C e $\beta$. Abbiamo ottenuto come risultato un valore di $\beta \approx 10 \si{\milli \second}$ e di $C \approx 12.08$ (avendo fatto un fit numerico non è ben definito l'errore su tali valori stimati). Tale valore sembra essere coerente con i dati sperimentali da noi ottenuti, in quanto tutti i tempi di intervento misurati sono superiori ai $10 \si{\milli \second}$. Tale tempo sembra dunque essere il minimo tempo di attivazione dello strumento. 
+Abbiamo dunque stimato che il tempo di reazione meccanico dello strumento non può essere inferiore alla somma di $\Delta t$ e del $t$ calcolato tramite eq. (\ref{oi}), in quanto $\Delta t$ era una costante sempre a parità di resistenza e tutti i campionamenti effettuati avevano almeno un massimo prima del passaggio della tensione sullo zero. Abbiamo dunque imposto la condizione $t^*+\Delta t = \tau$ ed eseguito un fit numerico per stimare C e $\tau$. Abbiamo ottenuto come risultato un valore di $\tau \approx 10 \si{\milli \second}$ e di $C \approx 12.08 \frac{\si{\ampere}}{\si{\second}}$ (avendo fatto un fit numerico non è ben definito l'errore su tali valori stimati). Tale valore sembra essere coerente con i dati sperimentali da noi ottenuti, in quanto tutti i tempi di intervento misurati sono superiori ai $10 \si{\milli \second}$. Ci azzardiamo a dire che $\tau$ è il tempo minimo di attivazione dello strumento. 
  
  
 Come controprova, abbiamo provato a calcolare la corrente efficace di attivazione necessaria per far scattare l'interruttore differenziale. Consideriamo dunque l'equazione (\ref{oi}) e riscriviamola nella seguente forma:
