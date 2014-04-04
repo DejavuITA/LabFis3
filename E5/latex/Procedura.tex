@@ -32,12 +32,12 @@ Per stimare il tempo di intervento abbiamo spento il generatore di tensione, imp
 \begin{figure}[h]
 	\centering
     \includegraphics[height=3in]{graph.pdf}
-    \caption{Grafico rappresentante la visualizzazione a schermo della d.d.p. tra i \emph{jack} dei due canali rilevati dall'oscilloscopio.}
+    \caption{Grafico dei segnali su i due canali dell'oscilloscopio.}
     \label{fig:graph}
 \end{figure}
 
 
-Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $\Delta t$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $10\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
+Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $8\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
 
 \begin{table}[h]
 \centering
@@ -45,8 +45,7 @@ Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $\Delta t$ c
 {\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
  & $R=50 \si{\ohm}$ & $R=100 \si{\ohm}$ & $R=200 \si{\ohm}$ & $R=250 \si{\ohm}$ \\      \hline
-$t_{att}$ [$\si{\milli\second}$] & $(3.4 \pm 0.1)$ & $(3.7 \pm 0.2)$ & $(3.5 \pm 0.2)$ & ($3.5 \pm 0.1$) \\
-\end{tabular}}
+$t_{att}$ [$\si{\milli\second}$] & $(13 \pm 2)$ & $(14 \pm 2)$ & $(18 \pm 7)$ & ($20 \pm 4$) \\\end{tabular}}
 \end{table}
 
 
@@ -58,7 +57,7 @@ Abbiamo casualmente notato che, sebbene i tempi di attivazione a parità di resi
 {\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
  & $R=50 \si{\ohm}$ & $R=100 \si{\ohm}$ & $R=200 \si{\ohm}$ & $R=250 \si{\ohm}$ \\      \hline
-$\Delta t$ [$\si{\milli\second}$] & $(3.4 \pm 0.1)$ & $(3.7 \pm 0.2)$ & $(3.5 \pm 0.2)$ & ($3.5 \pm 0.1$) \\
+$\Delta t$ [$\si{\milli\second}$] & $(5.4 \pm 0.1)$ & $(6.2 \pm 0.1)$ & $(7.7 \pm 0.1)$ & ($8.5 \pm 0.1$) \\
 \end{tabular}}
 \end{table}
 
@@ -76,11 +75,29 @@ Risulta banale calcolare la sua derivata temporale:
 \frac{dI(t)}{dt}=\frac{V_0 \omega}{R}cos(\omega t)
 \end{equation}
 
-La corrente indotta nell'interruttore differenziale sarà dunque proporzionale alla derivata temporale della corrente moltiplicata per una costante, che tiene conto delle geometrie dello strumento stesso. L'interruttore avrà una corrente di attivazione $I_a=cost$. Possiamo dunque scrivere la seguente relazione:
+La corrente indotta nell'interruttore differenziale sarà dunque proporzionale alla derivata temporale della corrente moltiplicata per una costante, che tiene conto delle geometrie dello strumento stesso. L'interruttore avrà una corrente interna di attivazione $I_{int}=cost$. Possiamo dunque scrivere la seguente relazione:
 
 \begin{equation}
-\frac{V_0 \omega}{R}cos(\omega t)=I_a \Rightarrow t=\frac{acos(\frac{I_a R}{\omega V_0})}{\omega }
+\alpha \frac{V_0 \omega}{R}cos(\omega t)=I_{int} \Rightarrow t=\frac{acos(\frac{C R}{\omega V_0})}{\omega }
 \label{oi}
 \end{equation} 
 
-Abbiamo dunque stimato che il tempo di reazione meccanico dello strumento non può essere inferiore alla somma di $\Delta t$ e del $t$ calcolato tramite eq. (\ref{oi}), in quanto $\Delta t$ era una costante sempre a parità di resistenza e tutti i campionamenti effettuati avevano almeno un massimo prima del passaggio della della tensione sullo zero. Abbiamo dunque imposto la condizione 
+Con $C=\frac{I_{int}}{\alpha}$.
+
+Abbiamo dunque stimato che il tempo di reazione meccanico dello strumento non può essere inferiore alla somma di $\Delta t$ e del $t$ calcolato tramite eq. (\ref{oi}), in quanto $\Delta t$ era una costante sempre a parità di resistenza e tutti i campionamenti effettuati avevano almeno un massimo prima del passaggio della tensione sullo zero. Abbiamo dunque imposto la condizione $t+\Delta t = \beta$ ed eseguito un fit numerico per stimare C e $\beta$. Abbiamo ottenuto come risultato un valore di $\beta \approx 10 \si{\milli \second}$ e di $C \approx 12.08$ (avendo fatto un fit numerico non è ben definito l'errore su tali valori stimati). Tale valore sembra essere coerente con i dati sperimentali da noi ottenuti, in quanto tutti i tempi di intervento misurati sono superiori ai $10 \si{\milli \second}$. Tale tempo sembra dunque essere il minimo tempo di attivazione dello strumento. 
+ 
+ 
+Come controprova, abbiamo provato a calcolare la corrente efficace di attivazione necessaria per far scattare l'interruttore differenziale. Consideriamo dunque l'equazione (\ref{oi}) e riscriviamola nella seguente forma:
+
+\begin{equation}
+\frac{V_0 \omega}{R}cos(\omega t)=C
+\label{lol}
+\end{equation}
+
+\`E banale calcolare $I_{max}=\frac{V_0}{R}$ da (\ref{lol}): $I_{max}=\frac{C}{\omega}$. Dividendo tale valore per $\sqrt{2}$, otteniamo il valore di corrente efficace di attivazione. Tale valore risulta essere:
+
+\begin{equation}
+I_{eff} \approx 27 \si{\milli\ampere}
+\end{equation}
+
+Come vediamo, tale valore risulta compatibile con quello stimato nella prima parte dell'esperienza. Ciò lascia credere che la discussione fino ad ora fatta sul tempo minimo di attivazione dello strumento sia fondata. 
