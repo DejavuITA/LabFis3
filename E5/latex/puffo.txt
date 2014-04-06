@@ -1,0 +1,43 @@
+
+
+Assumendo una forma della corrente\footnote{In realtà $I(t)=\frac{V_0}{R}sin(\omega t + \varphi)$, non è tuttavia restrittivo ai fini della teoria supporre $\varphi$ uguale a zero.}:
+\begin{equation}
+I(t)=\frac{V_0}{R}sin(\omega t)
+\label{corrente}
+\end{equation}
+
+Risulta banale calcolare la sua derivata temporale:
+
+\begin{equation}
+\frac{dI(t)}{dt}=\frac{V_0 \omega}{R}cos(\omega t)
+\end{equation}
+
+La corrente indotta nell'interruttore differenziale sarà dunque proporzionale alla derivata temporale della corrente moltiplicata per una costante, che tiene conto delle geometrie dello strumento stesso. L'interruttore avrà una corrente interna di attivazione $I_{int}=cost$. Possiamo dunque scrivere la seguente relazione:
+
+\begin{equation}
+\gamma \frac{V_0 \omega}{R}cos(\omega t)=I_{int} \quad	\Rightarrow \quad	t^*=\frac{acos(\frac{C R}{\omega V_0})}{\omega }
+\label{oi}
+\end{equation} 
+
+Con $C=\frac{I_{int}}{\gamma}$.
+
+Abbiamo dunque stimato che il tempo di reazione meccanico dello strumento non può essere inferiore alla somma di $\Delta t$ e del $t$ calcolato tramite eq. (\ref{oi}), in quanto $\Delta t$ era una costante sempre a parità di resistenza e tutti i campionamenti effettuati avevano almeno un massimo prima del passaggio della tensione sullo zero. Abbiamo dunque imposto la condizione $t^*+\Delta t = \tau$ ed eseguito un fit numerico per stimare C e $\tau$. Abbiamo ottenuto come risultato un valore di $\tau \approx 10 \si{\milli \second}$ e di $C \approx 12.08 \frac{\si{\ampere}}{\si{\second}}$ (avendo fatto un fit numerico non è ben definito l'errore su tali valori stimati). Tale valore sembra essere coerente con i dati sperimentali da noi ottenuti, in quanto tutti i tempi di intervento misurati sono superiori ai $10 \si{\milli \second}$. Ci azzardiamo a dire che $\tau$ è il tempo minimo di attivazione dello strumento. 
+ 
+ 
+Come controprova, abbiamo provato a calcolare la corrente efficace di attivazione necessaria per far scattare l'interruttore differenziale. Consideriamo dunque l'equazione (\ref{oi}) e riscriviamola nella seguente forma:
+
+\begin{equation}
+\frac{V_0 \omega}{R}cos(\omega t)=C
+\label{lol}
+\end{equation}
+
+\`E banale calcolare $I_{max}=\frac{V_0}{R}$ da (\ref{lol}): $I_{max}=\frac{C}{\omega}$. Dividendo tale valore per $\sqrt{2}$, otteniamo il valore di corrente efficace di attivazione. Tale valore risulta essere:
+
+\begin{equation}
+I_{eff} \approx 27 \si{\milli\ampere}
+\end{equation}
+
+Come vediamo, tale valore risulta compatibile con quello stimato nella prima parte dell'esperienza. Ciò lascia credere che la discussione fino ad ora fatta sul tempo minimo di attivazione dello strumento sia fondata. 
+
+
+

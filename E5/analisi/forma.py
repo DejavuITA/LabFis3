@@ -10,7 +10,6 @@ CH1 = data['y1']
 CH2 = data['y2']
 
 rcParams['font.size'] = 15
-### PASSA-BASSO
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(12, 7), dpi=65)
 # Titolo del grafico
@@ -31,22 +30,24 @@ CH2 = ax1.errorbar(x=TIM*10**(3), y=CH2,#-0.6,
 annDt = ax1.annotate('', xy=(8.75, -1),  xycoords='data',
                 xytext=(17.25, -1), textcoords='data', va='center',
                 arrowprops=dict(arrowstyle="<->",
-                           #     connectionstyle="bar",
-                           #     ec="k",
-                           #     shrinkA=5, shrinkB=5,
                                 )
                 )
-textDt = ax1.annotate(r'$\Delta$ t', xy=(13,-1.5), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center')
+textDt = ax1.annotate(r'$\Delta$ t', xy=(13,-2), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center')
 
 annTau = ax1.annotate('', xy=(7.25, +1),  xycoords='data',
                 xytext=(17.25, +1), textcoords='data', va='center',
                 arrowprops=dict(arrowstyle="<->",
-                           #     connectionstyle="bar",
-                           #     ec="k",
-                           #     shrinkA=5, shrinkB=5,
                                 )
                 )
-textTau = ax1.annotate(r'$t_{att}$', xy=(12.25,+2), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center')
+textTau = ax1.annotate(r'$\tau$', xy=(12.25,+2), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center', fontsize='22')
+
+annTatt = ax1.annotate('', xy=(0, -3),  xycoords='data',
+                xytext=(17.25, -3), textcoords='data', va='center',
+                arrowprops=dict(arrowstyle="<->",
+                                )
+                )
+textTatt = ax1.annotate(r'  $t_{att}$', xy=(17.25/2,-4), xytext=None, xycoords='data', textcoords='data', arrowprops=None, va='center', ha='center', fontsize='22')
+    
     
 ax1.set_ylabel(u'd.d.p. [V]',
     labelpad=10, fontsize=16)
