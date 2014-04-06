@@ -11,7 +11,7 @@ L'interruttore differenziale sfrutta l'induzione magnetica per rilevare perdite 
 
 Come mostrato in Fig. \ref{fig:amper}, abbiamo montato il circuito facendo passare un solo cavo nell'interruttore differenziale. Così facendo, abbiamo simulato il caso in cui la perdita di corrente è del 100\% a terra. Misurando poi, attraverso il multimetro, per quale valore di corrente l'interruttore scattava e ripetendo le misure varie volte, abbiamo stimato un valore di corrente di attivazione. 
 
-Avendo alimentato il circuito con una tensione alternata a $7.5V_{rms}$, abbiamo utilizzato una decade di resistenze per poter ottenere diversi valori di corrente nel circuito. Sono stati eseguiti 15 campionamenti, con valor medio di corrente efficace $(26.5\pm0.3)\si{\milli\ampere}$. Abbiamo osservato che il valore di corrente di attivazione si aveva per un valore di resistenza di circa $300\si{\ohm}$. 
+Avendo alimentato il circuito con una tensione alternata a $7.5V_{rms}$, abbiamo utilizzato una decade di resistenze per poter ottenere diversi valori di corrente nel circuito. Sono stati eseguiti 15 campionamenti, con valor medio di corrente efficace $I_{eff} (26.5\pm0.3)\si{\milli\ampere}$. Abbiamo osservato che il valore di corrente di attivazione si aveva per un valore di resistenza di circa $300\si{\ohm}$. 
 
 
 \section{Stima del tempo di intervento}
@@ -66,9 +66,7 @@ $\Delta t$ [$\si{\milli\second}$] & $(5.4 \pm 0.1)$ & $(6.2 \pm 0.1)$ & $(7.7 \p
 Come vediamo, i valori variano al variare della resistenza. Ciò è coerente con il fatto che a parità di tensione, con resistenze più alte scorre meno corrente. Inoltre, l'interruttore differenziale sfrutta le variazioni di corrente, pertanto esso sarà sensibile alla derivata della corrente.
 % provo a riscrivere questa parte come la vedo io % la tua l'ho copiata in puffo.txt
 
-\noindent Ricordiamo che $V_0 \, = \, V_{eff} \sqrt{2}$ e $I_0 \, = \, I_{eff} \sqrt{2}$.
-
-Assumendo una forma della corrente\footnote{In realtà $I(t)=\frac{V_0}{R}cos(\omega t + \varphi)$, non è tuttavia restrittivo ai fini della teoria supporre $\varphi$ uguale a zero poiché il valore di $\tau$ è indipendente dalla fase $\varphi$}:
+\noindent Ricordiamo che $V_0 \, = \, V_{eff} \sqrt{2}$ e $I_0 \, = \, I_{eff} \sqrt{2}$, assumiamo una forma della corrente\footnote{In realtà $I(t)=\frac{V_0}{R}cos(\omega t + \varphi)$, non è tuttavia restrittivo ai fini della teoria supporre $\varphi$ uguale a zero poiché il valore di $\tau$ è indipendente dalla fase $\varphi$} del tipo:
 \begin{equation}
 I(t)=\frac{V_0}{R}cos(\omega t)
 \label{eq:corrente}
@@ -83,20 +81,20 @@ Risulta banale calcolare la sua derivata temporale:
 
 \noindent La variazione di corrente farà quindi scattare l'interruttore quando il suo valore sarà, in modulo, maggiore o uguale ad una determinata costante ($K$). Il caso limite si ottiene con la corrente di attivazione: in tale caso l'interruttore si aprirà solo quando la derivata della corrente sarà massima, cioè per $sin(\omega t) = 1$.
 
-\begin{equation*}
+\begin{equation}
 \frac{V_0 \omega}{R}|sin(\omega t)| \, \geq \, K	\quad \longrightarrow  \quad	
 \left\vert \frac{dI(t)}{dt} \right\vert_{max} = \frac{V_0 \omega}{R} = K
 \label{eq:max}
-\end{equation*}
+\end{equation}
 
 \noindent Grazie al valore di $I_{eff}$ ottenuto nella parte precendente dell'esperienza possiamo ricavare $K$:
 
 \begin{equation}
-K = \frac{V_0 \omega}{R} = I_0 \,\omega = \sqrt{2}\,I_{eff} \,\omega  = 11.8 \pm 0.1
+K = \frac{V_0 \omega}{R} = I_0 \,\omega = \sqrt{2}\,I_{eff} \,\omega  = (11.8 \pm 0.1)\, \si{\ampere\per\second}
 \label{eq:K}
 \end{equation}
 
-\noindent Dalle diverse serie di dati, abbiamo ricavato i valori di $K$ in funzione della resistenza e poi ne abbiamo calcolato il valore di media. Grazie a $K$ possiamo ricavare il tempo $t^*$ a cui la derivata della corrente diventa uguale al valore necessario per far scattare l'interruttore. Possiamo dunque scrivere la seguente relazione:
+\noindent Dalle diverse serie di dati, abbiamo ricavato i valori di $K$ in funzione della resistenza e poi ne abbiamo calcolato il valore di media. Grazie a $K$ possiamo ricavare da (\ref{eq:max}) il tempo $t^*$ a cui la derivata della corrente diventa uguale al valore necessario per far scattare l'interruttore. Possiamo dunque scrivere la seguente relazione:
 
 \begin{equation}
 t^* \, = \, \frac{1}{\omega}arcsin\left(\frac{K R}{V_0 \omega}\right)
@@ -121,7 +119,7 @@ t^* + \tau \,= \, t_{att} \, = \, \frac{T}{4} + \Delta t
 \downarrow
 \end{equation*}
 \begin{equation}
-\tau \, = \, \frac{T}{4} + \Delta t - t^* = (10 \pm 0.2) ms
+\tau \, = \, \frac{T}{4} + \Delta t - t^* = (10.0 \pm 0.2) ms
 \label{eq:times}
 \end{equation}
 \end{minipage}
