@@ -37,7 +37,7 @@ Per stimare il tempo di intervento abbiamo spento il generatore di tensione, imp
 \end{figure}
 
 
-Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $8\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Ricordiamo che il valore di $V_0 $Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
+Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $8\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Ricordiamo che il valore di $V_0 \, = \, \SI{7.5}{\volt}_{rms}$. Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
 
 \begin{table}[h]
 \centering
@@ -94,7 +94,7 @@ K = \frac{V_0 \omega}{R} = I_0 \,\omega = \sqrt{2}\,I_{eff} \,\omega  = (11.8 \p
 \label{eq:K}
 \end{equation}
 
-\noindent Dalle diverse serie di dati, abbiamo ricavato i valori di $K$ in funzione della resistenza e poi ne abbiamo calcolato il valore di media. Grazie a $K$ possiamo ricavare da (\ref{eq:max}) il tempo $t^*$ a cui la derivata della corrente diventa uguale al valore necessario per far scattare l'interruttore. Possiamo dunque scrivere la seguente relazione:
+\noindent Dalle diverse serie di dati invece, grazie a $K$, possiamo ricavare invertendo (\ref{eq:max}) il tempo $t^*$ a cui la derivata della corrente diventa uguale al valore necessario per far scattare l'interruttore. La relazione usata è la seguente:
 
 \begin{equation}
 t^* \, = \, \frac{1}{\omega}arcsin\left(\frac{K R}{V_0 \omega}\right)
@@ -113,7 +113,7 @@ ricavata da considerazioni di carattere goniometrico (vedi Figura \ref{fig:gon})
 \noindent
 \begin{minipage}{0.38\textwidth}
 \begin{equation*}
-t^* + \tau \,= \, t_{att} \, = \, \frac{T}{4} + \Delta t
+t^* + \tau \,= \, t_{att} \, = \, \theta + \Delta t \, =\,\frac{T}{4} + \Delta t
 \end{equation*}
 \begin{equation*}
 \downarrow
@@ -122,5 +122,12 @@ t^* + \tau \,= \, t_{att} \, = \, \frac{T}{4} + \Delta t
 \tau \, = \, \frac{T}{4} + \Delta t - t^* = (10.0 \pm 0.2) ms
 \label{eq:times}
 \end{equation}
-\end{minipage}
+\end{minipage}\\
 
+Osserviamo che sia $t^*$ che $\theta$ sono del tutto dipendenti dalla scelta della fase iniziale $\varphi$. Ciò nonostante tale dipendenza non è influente sul tempo \emph{meccanico} $\tau$. Nel caso generale le equazioni risulterebbero più complesse, ma evidenzierebbero l'indipendenza di $\tau$ dalla fase iniziale.
+
+Inoltre il valore massimo di attivazione $t_{att}$ dovrebbe essere
+\begin{equation*}
+	t_{att,max} \,=\, 2 t^* + \tau = \frac{2}{\omega}arcsin\left(\frac{KR}{V_0 \omega}\right) + \tau
+\end{equation*}
+Osserviamo che esso dipende dalla resistenza scelta e dalla differenza di potenziale imposta al circuito.
