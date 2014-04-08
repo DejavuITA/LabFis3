@@ -11,7 +11,7 @@ L'interruttore differenziale sfrutta l'induzione magnetica per rilevare perdite 
 
 Come mostrato in Fig. \ref{fig:amper}, abbiamo montato il circuito facendo passare un solo cavo nell'interruttore differenziale. Così facendo, abbiamo simulato il caso in cui la perdita di corrente è del 100\% a terra. Misurando poi, attraverso il multimetro, per quale valore di corrente l'interruttore scattava e ripetendo le misure varie volte, abbiamo stimato un valore di corrente di attivazione. 
 
-Avendo alimentato il circuito con una tensione alternata a $7.5V_{rms}$, abbiamo utilizzato una decade di resistenze per poter ottenere diversi valori di corrente nel circuito. Sono stati eseguiti 15 campionamenti, con valor medio di corrente efficace $I_{eff} (26.5\pm0.3)\si{\milli\ampere}$. Abbiamo osservato che il valore di corrente di attivazione si aveva per un valore di resistenza di circa $300\si{\ohm}$. 
+Avendo alimentato il circuito con una tensione alternata a $7.5V_{rms}$, abbiamo utilizzato una decade di resistenze per poter ottenere diversi valori di corrente nel circuito. Sono stati eseguiti 15 campionamenti, con valor medio di corrente efficace $I_{eff} =  (26.5\pm0.3)\si{\milli\ampere}$. Abbiamo osservato che il valore di corrente di attivazione si aveva per un valore di resistenza di circa $300\si{\ohm}$. 
 
 
 \section{Stima del tempo di intervento}
@@ -37,7 +37,7 @@ Per stimare il tempo di intervento abbiamo spento il generatore di tensione, imp
 \end{figure}
 
 
-Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $8\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
+Utilizzando i puntatori sullo schermo, abbiamo stimato il valore di $t_{att}$ che intercorreva tra il momento di accensione del generatore (quando compare il segnale sullo schermo riferito al CH1) e il momento in cui lo stesso segnale appariva su CH2. Abbiamo notato che tale intervallo di tempo era fortemente variabile (anche $8\si{\milli\second}$ per lo stesso valore di resistenza). Inoltre, provando con diversi valori di resistenza $R$ si è notato che mediamente il tempo di intervento aumentava. Ricordiamo che il valore di $V_0 $Sono stati eseguiti 5 campionamenti per ciascuna resistenza. Riportiamo in tabella i valori medi di tempo di intervento.
 
 \begin{table}[h]
 \centering
@@ -79,7 +79,7 @@ Risulta banale calcolare la sua derivata temporale:
 \label{eq:derivata}
 \end{equation}
 
-\noindent La variazione di corrente farà quindi scattare l'interruttore quando il suo valore sarà, in modulo, maggiore o uguale ad una determinata costante ($K$). Il caso limite si ottiene con la corrente di attivazione: in tale caso l'interruttore si aprirà solo quando la derivata della corrente sarà massima, cioè per $sin(\omega t) = 1$.
+\noindent La variazione di corrente farà quindi scattare l'interruttore quando il suo valore sarà, in modulo, maggiore o uguale ad una determinata costante ($K$). Il caso limite si ottiene con la corrente di attivazione, ovvero con $R \simeq \SI{300}{\ohm}$: in tale caso l'interruttore si aprirà solo quando la derivata della corrente sarà massima, cioè per $sin(\omega t) = 1$.
 
 \begin{equation}
 \frac{V_0 \omega}{R}|sin(\omega t)| \, \geq \, K	\quad \longrightarrow  \quad	
