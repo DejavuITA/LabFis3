@@ -17,12 +17,31 @@ I_{D} \, = \, I_{S} \left( e^{\frac{q V_d}{nKT}} -1 \right)
 \label{eq:diode}
 \end{equation}
 
+Notiamo come il diodo, per una tensione superiore a quella di soglia, si comporti quasi come un conduttore ideale, ovvero faccia scorrere grandi correnti per piccole variazioni di tensione. 
+
+Abbiamo tentato un fit con una legge del tipo : 
+
+\begin{equation}
+I \, = \, A \left( e^{B \cdot V} -1 \right)
+\label{eq:diodefit}
+\end{equation}
+
+ottenendo come parametri $A= figa \pm rasata$ e $B= francesca \pm casalino$
+
 \section{Cella solare: caratteristica volt-amperometrica}
 
-Abbiamo studiato la caratteristica volt-amperomentrica di una cella solare lavorando allo stesso modo di come abbiamo fatto per il diodo.
+Abbiamo studiato la caratteristica volt-amperomentrica di una cella solare lavorando allo stesso modo di come abbiamo fatto per il diodo. 
 %\subsection{cella solare al buio}
-La prima analisi sul comportamento della cella è stata svolta tenendo la cella solare al buio nella sua scatola, mentre una seconda analisi è stata completata con la cella solare sottoposta alla radiazione di una lampada da tavolo, facendo attenzione che quest'ultima non variasse significativamente di intensità.
-Durante questa parte dell'esperienza abbiamo avuto cura che la corrente massima da cui era attraversata la cella non superasse i \SI{100}{\milli\ampere}. I dati ottenuti sono graficati in Figura \ref{fig:cella}.
+La prima analisi sul comportamento della cella è stata svolta tenendo la cella solare al buio nella sua scatola, mentre una seconda analisi è stata completata con la cella solare sottoposta alla radiazione di una lampada da tavolo, facendo attenzione che quest'ultima non variasse di intensità.
+Dall'analisi dati abbiamo notato che la cella solare si comporta sostanzialmente come un diodo, eccetto nella polarizzazione in inversa, dove per tensioni di $-50V$ si hanno valori di corrente significativamente maggiori rispetto a quelli misurati nel caso del diodo semplice. 
+
+Nella parte di analisi operata sotto la luce abbiamo notato che la cella fotovoltaica non cambia la forma della sua caratteristica V-I, ma vi è solo una traslazione: 
+
+$$f'(V)=f(V)-25.5 [mA]$$ %controllare forse
+ 
+
+%Durante questa parte dell'esperienza abbiamo avuto cura che la corrente massima da cui era attraversata la cella non superasse i \SI{100}{\milli\ampere}. 
+I dati ottenuti sono graficati in Figura \ref{fig:cella}.
 
 \begin{figure}[h]
 \center
