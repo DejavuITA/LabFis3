@@ -27,15 +27,17 @@ ax1 = f1.add_subplot(1, 1, 1)
 # sto provando a ricreare la legge #
 #   teorica ma con poco successo   #
 ############### ---- ###############
-Is = 80
+Is = 10**(-15)
 q = 1.602176565*10**(-19)
 K = 1.3806488*10**(-16)
 T = 350
 Vt = K*T/q
+
 teo = ax1.errorbar(
-	x=np.arange(-30,20,0.01),
-	y=1000*Is*( -1 + np.exp( np.arange(-30,20,0.01)/(Vt) )),
-    fmt='-', c='green', linewidth=2)
+	x=np.arange(-30,20,0.1),#diodeV1,
+	#y=(e**(diodeV1/5)-1),
+	y=100000000000000000000*Is*(np.exp( np.arange(-30,20,0.1)/(Vt) ) -1),
+	fmt='x-', c='green', linewidth=2)
 ############### ---- ###############
 #             diamine!             #
 ############### ---- ###############
@@ -51,8 +53,8 @@ ax1.set_xlabel(u'd.d.p. [V]',
 ax1.set_ylabel(u'Intensità di corrente [mA]',
     labelpad=8, fontsize=16)
 
-#ax1.set_xlim((-2.1,1.25))
-#ax1.set_ylim((-0.04,0.74))
+ax1.set_xlim((-2.1,1.25))
+ax1.set_ylim((-0.04,0.74))
 
 ax1.grid(True)
 
