@@ -23,6 +23,23 @@ ax1 = f1.add_subplot(1, 1, 1)
 
 # crea plot con le barre d'errore (o anche senza)
 
+############### ---- ###############
+# sto provando a ricreare la legge #
+#   teorica ma con poco successo   #
+############### ---- ###############
+Is = 80
+q = 1.602176565*10**(-19)
+K = 1.3806488*10**(-16)
+T = 350
+Vt = K*T/q
+teo = ax1.errorbar(
+	x=np.arange(-30,20,0.01),
+	y=1000*Is*( -1 + np.exp( np.arange(-30,20,0.01)/(Vt) )),
+    fmt='-', c='green', linewidth=2)
+############### ---- ###############
+#             diamine!             #
+############### ---- ###############
+
 diode = ax1.errorbar(x=diodeV1, y=diodeI1,
     fmt='o--', c='red', linewidth=2)
 #    markersize=7, markeredgewidth=1)
@@ -34,13 +51,13 @@ ax1.set_xlabel(u'd.d.p. [V]',
 ax1.set_ylabel(u'Intensità di corrente [mA]',
     labelpad=8, fontsize=16)
 
-ax1.set_xlim((-2.1,1.25))
-ax1.set_ylim((-0.04,0.74))
+#ax1.set_xlim((-2.1,1.25))
+#ax1.set_ylim((-0.04,0.74))
 
 ax1.grid(True)
 
 # questo produce una legenda
-ax1.legend((diode, ), ("diodo 1N4007", ), 'upper left', prop={'size': 12})
+ax1.legend((diode, ), ("diodo 1N4007", ), 'upper left', prop={'size': 16})
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.08, right=0.97,
