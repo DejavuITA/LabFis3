@@ -1,14 +1,14 @@
 \section{Diodo 1N4007: caratteristica volt-amperometrica}
 
-\begin{wrapfigure}[22]{r}[0pt]{130mm}
-	\caption{ciao}
+\begin{wrapfigure}[25]{r}[0pt]{130mm}
 	\label{fig:diodo}
 	\includegraphics[width=0.75\textwidth]{diodo.pdf}
+	\caption{I dati rappresentati non sono il set intero, che arrivava fino a $\SI{-50}{\volt}$, bensì solo i più significativi. Questa scelta è stata effettuata sia per necessità di spazio che per, soprattutto, leggibilità del grafico. Per completezza $I(\SI{-50.06}{\volt}) = \SI{-12}{\nano\ampere}$}
 \end{wrapfigure}
 
 Per studiare la caratteristica volt-amperometrica del diodo abbiamo dovuto separare l'analisi in due fasi distinte: una prima fase in cui abbiamo analizzato il comportamento del diodo polarizzato in diretta e una seconda fase in cui ne abbiamo analizzato il comportamento in inversa.
-Utilizzando la breadboard come support,o abbiamo creato un circuito composto dal genertore di tensione continua (max $\pm \SI{25}{\volt}$), il diodo e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
-Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere} abbiamo quindi popolato l'asse positivo del grafico. In seguito abbiamo girato il diodo in modo che fosse alimentato in inversa e abbiamo popolato anche l'asse negativo del grafico, ottenendo la caratteristica volt-amperometrica completa del diodo. Il risultato è esposto in Figura \ref{fig:diodo}.
+Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal genertore di tensione continua (max $\pm \SI{25}{\volt}$), il diodo e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
+Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere} abbiamo quindi popolato l'asse positivo del grafico. In seguito abbiamo girato il diodo in modo che fosse alimentato in inversa e abbiamo popolato anche l'asse negativo del grafico, ottenendo la caratteristica volt-amperometrica completa del diodo. Il risultato è esposto in Fig. \ref{fig:diodo}.
 \\
 \\
 Dal grafico osserviamo che i dati ricavati seguono la legge teorica, la cui formula è:
@@ -30,18 +30,17 @@ ottenendo come parametri $A= figa \pm rasata$ e $B= francesca \pm casalino$
 
 \section{Cella solare: caratteristica volt-amperometrica}
 
-Abbiamo studiato la caratteristica volt-amperomentrica di una cella solare lavorando allo stesso modo di come abbiamo fatto per il diodo. 
-%\subsection{cella solare al buio}
+Abbiamo studiato la caratteristica volt-amperomentrica di una cella solare lavorando allo stesso modo di come abbiamo fatto per il diodo.
 La prima analisi sul comportamento della cella è stata svolta tenendo la cella solare al buio nella sua scatola, mentre una seconda analisi è stata completata con la cella solare sottoposta alla radiazione di una lampada da tavolo, facendo attenzione che quest'ultima non variasse di intensità.
 Dall'analisi dati abbiamo notato che la cella solare si comporta sostanzialmente come un diodo, eccetto nella polarizzazione in inversa, dove per tensioni di $-50V$ si hanno valori di corrente significativamente maggiori rispetto a quelli misurati nel caso del diodo semplice. 
 
 Nella parte di analisi operata sotto la luce abbiamo notato che la cella fotovoltaica non cambia la forma della sua caratteristica V-I, ma vi è solo una traslazione: 
 
-$$f'(V)=f(V)-25.5 [mA]$$ %controllare forse
+$$f'(V)=f(V)-25.5 \, [mA]$$ %controllare forse
  
 
 %Durante questa parte dell'esperienza abbiamo avuto cura che la corrente massima da cui era attraversata la cella non superasse i \SI{100}{\milli\ampere}. 
-I dati ottenuti sono graficati in Figura \ref{fig:cella}.
+I dati ottenuti sono graficati in Fig. \ref{fig:cella}.
 
 \begin{figure}[h]
 \center
@@ -50,30 +49,61 @@ I dati ottenuti sono graficati in Figura \ref{fig:cella}.
 	\label{fig:cella}
 \end{figure}
 
+Un'altra caratteristica della cella solare è il \emph{Fill Factor}. Questo è un parametro fondamentale nella valutazione delle prestazioni delle celle solari. Esso è definito come il rapporto tra l'effettiva potenza massima ottenibile e il prodotto della tensione a circuito aperto e la corrente di corto circuito.
 
 \begin{equation}
 FF \, = \, \frac{I_{@P_{max}} \,\, V_{@P_{max}}}{I_{sc} \,\, V_{oc}}
 \label{eq:FF}
 \end{equation}
 
-%\subsection{cella solare alla luce}
+Le celle con un alto Fill Factor hanno una bassa resistenza equivalente in serie e una elevata resistenza equivalente in parallelo, quindi più è elevato il Fill Factor meno corrente prodotta dalla cella viene dissipata in perdite interne.
+
+Nel nostro caso il Fill Factor è risultato essere:
+
+$$FF \,=\, 0.674373 \pm 112381032481032$$
 
 
 \section{Ponte di Graetz}
 
-Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig.() lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di fare in modo che un'uscita del ponte sia sempre più positiva dell'altra. Poichè i diodi hanno una caduta di tensione in diretta e una tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima quella del segnale in entrata e inoltre il segnale raddrizzato sarà pari a 0 se la tensione in entrata non supera il valore di soglia.
+\begin{wrapfigure}[13]{r}[0pt]{65mm}
+	\includegraphics[width=0.35\textwidth]{schema_graetz.pdf}
+	\caption{Schema del ponte di Graetz da noi utilizzato. I quattro diodi sono uguali.}
+	\label{fig:graetz}
+\end{wrapfigure}
 
-Poichè l'oscilloscopio è collegato a massa, non è possibile visualizzare a schermo contemporaneamente sia segnale in input che segnale in uscita dal ponte. Si è dunque utilizzata l'impostazione $Permanenza$, la quale fa rimanere sullo schermo l'ombra dei segnali visualizzati. \'E stato così possibile osservare sull'oscilloscopio entrambi i segnali. Ricordiamo che la resistenza da noi utilizzata come carico aveva un valore di $R_L=9998 \pm 1$.
+Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig. \ref{fig:graetz} lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di trasformarlo in un segnale non negativo e quindi fare in modo che un'uscita del ponte sia sempre più positiva e l'altra negativa. Poichè i diodi hanno una caduta di tensione in diretta e una tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima quella del segnale in entrata e anzi vi sarà sempre una certa differenza di potenziale tra il segnale in \emph{input} e il segnale raddrizzato a causa della caduta di tensione propria dei diodi.
+Inoltre il segnale raddrizzato sarà pari a 0 se la tensione in entrata non supera il valore di soglia.
+
+Poichè l'oscilloscopio è collegato a massa, non è possibile visualizzare a schermo contemporaneamente sia segnale in input che segnale in uscita dal ponte. Si è dunque utilizzata la funzione integrata all'oscilloscopio $Permanenza$ che fa rimanere sullo schermo l'ombra dei segnali visualizzati. \`E stato così possibile osservare sull'oscilloscopio entrambi i segnali. Ricordiamo che la resistenza da noi utilizzata come carico aveva un valore di $R_L=9998 \pm 1$.
 
 Nel seguente grafico sono riportati i segnali da noi visualizzati.
 
-**grafico**
+\begin{figure}[h]
+\center
+	\includegraphics[width=0.75\textwidth]{graetz.pdf}
+	\caption{ciao}
+	\label{fig:graetz}
+\end{figure}
 
+Avendo utilizzato un segnale sinusoidale in input vediamo che per valori di $V \approx 0$ i diodi non sono in conduzione e dunque la d.d.p in output risulta nulla. \`E importante osservare come la frequenza del segnale in uscita sia raddoppiata. Infatti per ogni periodo della funzione sinusoidale fornita dal generatore abbiamo due periodi della funzione in uscita.\\
 
-Avendo utilizzato un segnale sinusoidale in input vediamo che per valori di $V \approx 0$ i diodi non sono in conduzione e dunque la d.d.p in output risulta nulla. \'E importante osservare come la frequenza del segnale in uscita sia raddoppiata. Infatti per ogni periodo della funzione sinusoidale fornita dal generatore abbiamo due periodi della funzione in uscita. Ora che abbiamo ottenuto un segnale raddrizzato, sarebbe interessante trovare un modo per ottenere un segnale di tensione DC. Ciò è possibile utilizzando un condensatore da mettere in parallelo al carico in uscita dal ponte di diodi. Lo schema è riportato in Fig.(). La capacità gioca un ruolo fondamentale in quanto caricandosi e scaricandosi manda in interdizione i diodi del ponte, causando una stabilizzazione del segnale su un valore medio che dipende dalla capacità stessa. Per valori di capacità $C\neq 0$ il valore medio di tensione in uscita dal ponte si sposta su valori più alti. Inoltre, la forma d'onda in uscita risulta tanto più simile ad una scarica/carica di un condensatore quanto più alto è il valore di capacità. Il segnale che si vede a schermo risulta dunque simile alla sovrapposizione di un segnale oscillante con uno continuo. Tale fenomeno viene comunemente chiamato $Ripple$. Si definisce il fattore di ripple come: $r_f= \frac{V_{AC}}{V_{DC}}$, dove $V_{AC}$ è la differenza picco-picco del segnale mentre $V_{DC}$ la sua media. Per calcolare $V_{DC}$ abbiamo utilizzato la funzione integrata dell'oscilloscopio che esegue una media integrale. Riportiamo in tabella i dati da noi ottenuti:
+\begin{wrapfigure}[13]{r}[0pt]{65mm}
+	\includegraphics[width=0.4\textwidth]{schema_ripple.pdf}
+	\caption{Schema del ponte di Graetz con condensatore, per stabilizzare il segnale in output. Ancora una volta i quattro diodi sono uguali.}
+	\label{fig:schema_ripple}
+\end{wrapfigure}
 
-\begin{SCtable}[20][h]
-\centering
+Una volta ottenuto il segnale raddrizzato, l'interesse si sposta sul modo di ottenere un segnale di tensione DC il più costante possibile. Per fare ciò abbiamo utilizzato un condensatore messo in parallelo al carico in uscita dal ponte di diodi, come riportato dallo schema in Fig. \ref{fig:schema_ripple}.
+
+La capacità gioca un ruolo fondamentale in quanto, caricandosi e scaricandosi, manda in interdizione i diodi del ponte, causando una stabilizzazione del segnale su un valore medio che dipende dalla capacità stessa. Per valori di capacità $C\neq 0$ il valore medio di tensione in uscita dal ponte si sposta su valori più alti man mano che anche il valore di $C$ aumenta.
+%Inoltre, la forma d'onda in uscita risulta tanto più simile ad una scarica/carica di un condensatore quanto più alto è il valore di capacità. SIAMO SICURI?
+Il segnale che si vede a schermo, riportato in Fig. \ref{fig:ripple}, risulta dunque simile alla sovrapposizione di un segnale oscillante ad uno continuo. Tale fenomeno viene comunemente chiamato $Ripple$.
+
+Si definisce il fattore di ripple come: $r_f= \frac{V_{AC}}{V_{DC}}$, dove $V_{AC}$ è la differenza picco-picco del segnale mentre $V_{DC}$ la sua media. Per calcolare $V_{DC}$ abbiamo utilizzato la funzione integrata dell'oscilloscopio che esegue una media integrale. Riportiamo in tabella i dati da noi ottenuti:
+
+%\begin{SCtable}[20][h]
+\begin{table}[H]
+\center
 \caption{Dati da noi registrati con relativi errori.}
 {\renewcommand{\arraystretch}{1.6}%
 \begin{tabular}{c|c|c|c|c}
@@ -83,12 +113,16 @@ $799 \pm 5$ &$100.2 \pm 0.1$& $5.28 \pm 0.01$ & $7.57 \pm 0.01$ & $0.70 \pm 0.02
 $1196 \pm 5$ &$100.1 \pm 0.1$& $4.42 \pm 0.01$ & $8.06 \pm 0.01$ & $0.55 \pm 0.02$\\
 $4959 \pm 3$ &$100.3 \pm 0.1$& $1.45 \pm 0.01$ & $9.25 \pm 0.01$& $0.16 \pm 0.02$\\
 \end{tabular}}
-\end{SCtable}
+\end{table}
+%\end{SCtable}
 
 Come ci aspettavamo, aumentando la capacità aumenta anche il valore $V_{DC}$. Inoltre vi è anche un sensibile smorzamento delle fluttuazioni del segnale attorno a tale valor medio. Per ottenere una tensione continua stabile è dunque preferibile utilizzare una capacità più grande possibile, così da minimizzare in fattore $r_f$.
 
-Riportiamo infine un grafico dei segnali a schermo per ottenuti per la capacità $C=stocazzo$. Come si può vedere, la forma d'onda in uscita non è più simile al valore assoluto del segnale in ingresso ma ad una serie di scariche/cariche di un condensatore.
+Riportiamo infine un grafico dei segnali a schermo ottenuti per la capacità $C=\SI{1196}{\nano\farad}$. Come si può vedere, la forma d'onda in uscita non è più simile al valore assoluto del segnale in ingresso ma ad una serie di scariche/cariche di un condensatore.
 
-
-
- 
+\begin{figure}[h]
+\center
+	\includegraphics[width=0.75\textwidth]{ripple.pdf}
+	\caption{ciao}
+	\label{fig:ripple}
+\end{figure}
