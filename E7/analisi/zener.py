@@ -7,6 +7,9 @@ import numpy as np			# importo numpy come np
 from mpl_toolkits.axes_grid1 import host_subplot
 import mpl_toolkits.axisartist as AA
 
+A =  1196.7
+B =  186.63
+
 data1 = np.genfromtxt("../dati/E6.csv", delimiter=',',skip_header=1,names=True)
 VZ = data1['potenziale']
 IZ = data1['corrente']
@@ -26,6 +29,8 @@ ax1 = host_subplot(111, axes_class=AA.Axes)
 #ax1.axhline(y=-25.5, xmin=0.865, xmax=1, c='black',linewidth=1,linestyle='dashed')
 #ax1.axvline(x=5.75, ymin=0, ymax=0.4875, c='black',linewidth=1,linestyle='dashed')
 
+slope = ax1.errorbar(x=np.arange(-7.1,-6.3,0.001), y=A+B*np.arange(-7.1,-6.3,0.001),
+    fmt='-', c='gray', linewidth=2)
 zener = ax1.errorbar(x=-VZ, y=-IZ,
     fmt='o--', c='blue', linewidth=2)
 #    markersize=7, markeredgewidth=1)
