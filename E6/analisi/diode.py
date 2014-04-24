@@ -11,6 +11,9 @@ diodeV1 = data1['VDC']
 diodeI2 = data2['IDC']
 diodeI1 = data1['IDC']
 
+M = (0.706-0.346)/(1.19-1.00)
+Q = 0.346 - M*1.00
+
 rcParams['font.size'] = 15
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(12, 7), dpi=65)
@@ -23,21 +26,33 @@ ax1 = f1.add_subplot(1, 1, 1)
 
 # crea plot con le barre d'errore (o anche senza)
 
+slope = ax1.errorbar(x=np.arange(0.5,1.5,0.01), y=Q+M*np.arange(0.5,1.5,0.01),
+    fmt='-', c='gray', linewidth=2)
+ax1.axvline(x=-Q/M, c='black', linewidth=1, linestyle='dashed')
+
 ############### ---- ###############
 # sto provando a ricreare la legge #
 #   teorica ma con poco successo   #
 ############### ---- ###############
-Is = 10**(-15)
+Is = 10**(-10)
 q = 1.602176565*10**(-19)
 K = 1.3806488*10**(-16)
-T = 350
-Vt = K*T/q
+T = 300
+#Vt = 1000*K*T/q*1000*1000*1000*1000*1000*1000*1000*1000*1000*1000
+Vt = K*1.3806488*1.602176565
+Vt = 10**(-3)
+Is = 10**(-12)
 
-teo = ax1.errorbar(
-	x=np.arange(-30,20,0.1),#diodeV1,
+#teo = ax1.errorbar(
+#	x=np.arange(-3,2,0.05),#diodeV1,
 	#y=(e**(diodeV1/5)-1),
-	y=100000000000000000000*Is*(np.exp( np.arange(-30,20,0.1)/(Vt) ) -1),
-	fmt='x-', c='green', linewidth=2)
+#	y=1000*Is*(np.exp( np.arange(-3,2,0.05)/Vt ) -1),
+#	fmt='x-', c='green', linewidth=2)
+
+
+#ax1.errorbar(	x=np.arange(-3,2,0.05),
+#		y=np.arange(-3,2,0.05)*0.5,
+#	fmt='*--', c='blue', linewidth=2)
 ############### ---- ###############
 #             diamine!             #
 ############### ---- ###############
