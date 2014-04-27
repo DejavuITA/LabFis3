@@ -61,13 +61,13 @@ ax1.set_ylabel(u'Intensità di corrente [mA]',
 ax1.text(8.3, -16,r'$I_{@P_{max}}$', horizontalalignment='left', verticalalignment='center', fontsize=20)
 ax1.text(4.8, -108,r'$V_{@P_{max}}$', horizontalalignment='center', verticalalignment='top', fontsize=20)
 
-ax1.annotate(r'$I_{sc}$', xy=(5.75, 0),  xycoords='data',
+ax1.annotate(r'$V_{oc}$', xy=(5.75, 0),  xycoords='data',
                 xytext=(5.75-10, 50), textcoords='data',
 		va='center', fontsize=20,
                 arrowprops=dict(arrowstyle="->",
                                 )
                 )
-ax1.annotate(r'$V_{oc}$', xy=(0, -25.5),  xycoords='data',
+ax1.annotate(r'$I_{sc}$', xy=(0, -25.5),  xycoords='data',
                 xytext=(-10, -25.5+50), textcoords='data',
 		va='center', fontsize=20,
                 arrowprops=dict(arrowstyle="->",

@@ -55,7 +55,8 @@ ax1 = host_subplot(111, axes_class=AA.Axes)
 
 # crea plot con le barre d'errore (o anche senza)
 
-ax1.axhline(y=8.06, c='black', linewidth=1)
+#ax1.axhline(y=8.06, c='black', linewidth=1)
+ax1.axhline(y=7.90, c='black', linewidth=1)
 ax1.axhline(y=9.72424631, c='black', linewidth=1, linestyle='dashed')
 ax1.axhline(y=5.3, c='black', linewidth=1, linestyle='dashed')
 
@@ -64,46 +65,46 @@ ax1.annotate('', xy=(-5, 9.7),  xycoords='data',
                 arrowprops=dict(arrowstyle="<->",
                                 )
                 )
-ax1.text(-5+0.3,7.5, r'$V_{AC}$', fontsize=16,va='center', ha='left')
+ax1.text(-5+0.25,7, r'$V_{AC}$', fontsize=16,va='center', ha='left')
 ax1.text(18.3,8.1, r'$V_{DC}$', fontsize=16,va='bottom', ha='left')
 
 #dati1 = ax1.errorbar(x=t1, y=V1, fmt='-', c='#00FF00', linewidth=2)
 
-	##dati3 = ax1.errorbar(x=t3, y=V3, fmt='-', c='#00AA00', linewidth=2)
-dati4 = ax1.errorbar(x=t4*1000, y=V4, fmt='-', c='#777777', linewidth=2)
+dati3 = ax1.errorbar(x=t3*1000, y=V3, fmt='-', c='#777777', linewidth=2)
+dati4 = ax1.errorbar(x=t4*1000, y=V4, fmt='--', c='#00AA00', linewidth=2)
 #dati5 = ax1.errorbar(x=t5, y=V5, fmt='-', c='#8888FF', linewidth=2)
 #dati6 = ax1.errorbar(x=t6, y=V6, fmt='-', c='#FF00BB', linewidth=2)
 dati7 = ax1.errorbar(x=t7*1000, y=9.72424631+0.95*(V7-9.72424631), fmt='-', c='#FF0000', linewidth=2)
 
-	##dati11 = ax1.errorbar(x=t11, y=V11, fmt='-', c='#00FFFF', linewidth=2)
+	##dati11 = ax1.errorbar(x=t11*1000, y=V11, fmt='-', c='#00FFFF', linewidth=2)
 	##dati12 = ax1.errorbar(x=t12, y=V12, fmt='-', c='#0000AA', linewidth=2)
 	##dati13 = ax1.errorbar(x=t13, y=V13, fmt='-', c='#00AAAA', linewidth=2)
 
-ax1.set_xlabel(u'Tempo [ms]',
-    labelpad=8, fontsize=16)
-ax1.set_ylabel(u'd.d.p. [V]',
-    labelpad=0, fontsize=16)
+ax1.set_xlabel(u'Tempo [ms]', labelpad=8, fontsize=16)
+#ax1.set_ylabel(u'd.d.p. [V]', labelpad=-8, fontsize=16)
+ax1.text(-21.3,0, u'd.d.p. [V]', fontsize=15, va='center', ha='center', rotation='vertical')
 
 ax1.set_xlim((-20,20))
-ax1.set_ylim((-0.7,10.5))
+#ax1.set_ylim((-0.7,10.5))
+ax1.set_ylim((-12,12))
 
 #ax1.set_xticks((-50,-40,-30,-20,-10,0,4.8))
 #ax1.set_yticks((0,2,4,6,8,8.06,10))
 
 # ax2 is responsible for "top" axis and "right" axis
 ax2 = ax1.twin()
-ax2.set_yticks((8.06,))
-#ax2.set_xticklabels(("5.7",))
+ax2.set_yticks((7.9,))
+ax2.set_yticklabels(("8.06",))
 #ax2.set_xticklabels(["$0$", r"$\frac{1}{2}\pi$",r"$\pi$", r"$\frac{3}{2}\pi$", r"$2\pi$"])
 ax2.axis["top"].major_ticklabels.set_visible(False)
 
 ax1.grid(True)
 
 # questo produce una legenda
-ax1.legend((dati4, dati7), ("Segnale in input", "Segnale in output"), 'lower right', prop={'size': 16})
+ax1.legend((dati3, dati4, dati7), ("Segnale in input", "Segnale raddrizzato","Segnale in output"), 'lower left', prop={'size': 16})
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.07, right=0.94,
+f1.subplots_adjust(left=0.06, right=0.94,
     top=0.92, bottom=0.10, hspace=0.08, wspace=0)
 
 # mostra grafico
