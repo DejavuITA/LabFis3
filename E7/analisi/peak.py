@@ -109,3 +109,4 @@ f1.subplots_adjust(left=0.05, right=0.95,
 
 # mostra grafico
 plt.show()
+

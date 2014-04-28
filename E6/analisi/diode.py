@@ -43,12 +43,14 @@ Vt = K*1.3806488*1.602176565
 Vt = 10**(-3)
 Is = 10**(-12)
 
-#teo = ax1.errorbar(
-#	x=np.arange(-3,2,0.05),#diodeV1,
-	#y=(e**(diodeV1/5)-1),
-#	y=1000*Is*(np.exp( np.arange(-3,2,0.05)/Vt ) -1),
-#	fmt='x-', c='green', linewidth=2)
+A=4.649E-08
+B=0.05543
+C=0.3755
 
+teo = ax1.errorbar(
+	x=B*np.log((np.arange(-0,0.8,0.001)/A+1))+C*np.arange(-0,0.8,0.001),
+	y=np.arange(-0,0.8,0.001),
+	fmt='-', c='green', linewidth=2)
 
 #ax1.errorbar(	x=np.arange(-3,2,0.05),
 #		y=np.arange(-3,2,0.05)*0.5,
@@ -57,10 +59,10 @@ Is = 10**(-12)
 #             diamine!             #
 ############### ---- ###############
 
-diode = ax1.errorbar(x=diodeV1, y=diodeI1,
-    fmt='o--', c='red', linewidth=2)
+ax1.errorbar(x=diodeV1, y=diodeI1,
+    fmt='o', c='red', linewidth=2)
 #    markersize=7, markeredgewidth=1)
-ax1.errorbar(x=diodeV2, y=diodeI2,
+diode = ax1.errorbar(x=diodeV2, y=diodeI2,
     fmt='o--', c='red', linewidth=2)
 
 ax1.set_xlabel(u'd.d.p. [V]',
@@ -74,7 +76,7 @@ ax1.set_ylim((-0.04,0.74))
 ax1.grid(True)
 
 # questo produce una legenda
-ax1.legend((diode, ), ("diodo 1N4007", ), 'upper left', prop={'size': 16})
+ax1.legend((diode, teo), ("diodo 1N4007", "fit teorico"), 'upper left', prop={'size': 16})
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.08, right=0.97,
