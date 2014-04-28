@@ -29,6 +29,7 @@ ax1 = f1.add_subplot(1, 1, 1)
 slope = ax1.errorbar(x=np.arange(0.5,1.5,0.01), y=Q+M*np.arange(0.5,1.5,0.01),
     fmt='-', c='gray', linewidth=2)
 ax1.axvline(x=-Q/M, c='black', linewidth=1, linestyle='dashed')
+ax1.text(0.86, -0.01, r'$V_d$', horizontalalignment='left', verticalalignment='center', fontsize=20)
 
 ############### ---- ###############
 # sto provando a ricreare la legge #
@@ -72,11 +73,12 @@ ax1.set_ylabel(u'Intensità di corrente [mA]',
 
 ax1.set_xlim((-2.1,1.25))
 ax1.set_ylim((-0.04,0.74))
+ax1.set_xticks((-2,-1.5,-1,-0.5,0,0.5,0.82,1))
 
 ax1.grid(True)
 
 # questo produce una legenda
-ax1.legend((diode, teo), ("diodo 1N4007", "fit teorico"), 'upper left', prop={'size': 16})
+ax1.legend((diode, teo), ("diodo 1N4007: punti sperimentali", "fit teorico con correzione\ndi R interna all'amperometro"), 'upper left', prop={'size': 16})
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.08, right=0.97,

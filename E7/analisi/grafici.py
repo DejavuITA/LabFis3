@@ -111,7 +111,7 @@ ax2.legend(
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.05, right=0.95,
-    top=0.92, bottom=0.10, hspace=0.08, wspace=0)
+    top=0.92, bottom=0.10, hspace=0.08, wspace=0.06)
 
 # mostra grafico
 plt.show()

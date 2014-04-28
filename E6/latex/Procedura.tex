@@ -3,15 +3,17 @@
 \begin{wrapfigure}[25]{r}[0pt]{130mm}
 	\label{fig:diodo}
 	\includegraphics[width=0.75\textwidth]{diodo.pdf}
-	\caption{I dati rappresentati non sono il set intero, che arrivava fino a $\SI{-50}{\volt}$, bensì solo i più significativi. Questa scelta è stata effettuata sia per necessità di spazio che per, soprattutto, leggibilità del grafico. Per completezza $I(\SI{-50.06}{\volt}) = \SI{-12}{\nano\ampere}$}
+	\caption{I dati rappresentati non sono il set intero, che arriva fino a $\SI{-50}{\volt}$, bensì solo i più significativi. Questa scelta è stata effettuata sia per necessità di spazio che per, soprattutto, leggibilità del grafico. Per completezza $I(\SI{-50.06}{\volt}) = \SI{-12}{\nano\ampere}$. Inoltre, $V_d = (0.82 \pm 0.02)\,\si{\volt}$.}
 	\label{fig:diodo}
 \end{wrapfigure}
 
 Per studiare la caratteristica volt-amperometrica del diodo abbiamo dovuto separare l'analisi in due fasi distinte: una prima fase in cui abbiamo analizzato il comportamento del diodo polarizzato in diretta e una seconda fase in cui ne abbiamo analizzato il comportamento in inversa.
 Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal genertore di tensione continua (max $\pm \SI{25}{\volt}$), il diodo e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
 Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere}\footnote{Abbiamo impostato il fondo scala dell'amperometro ad 1 ampere. Sulle specifiche dello strumento risulta che la resistenza interna dello strumento è pari a $R=0.1 \Omega$} abbiamo quindi popolato l'asse positivo del grafico. In seguito abbiamo girato il diodo in modo che fosse alimentato in inversa e abbiamo popolato anche l'asse negativo del grafico, ottenendo la caratteristica volt-amperometrica completa del diodo. Il risultato è esposto in Fig. \ref{fig:diodo}. 
-\\
-\\
+
+\phantom{x}
+
+Osserviamo innanzitutto che il valore di caduta di tensione diretta da noi ricavato è di $(0.82 \pm 0.02)\,\si{\volt}$.\\
 Riportiamo ora la legge teorica della caratteristica V-I di un diodo al silicio:
 \begin{equation}
 I_{D} \, = \, I_{S} \left( e^{\frac{q V_d}{nKT}} -1 \right)
@@ -38,7 +40,7 @@ V=I_D \cdot R + B \cdot ln (\frac{I_D+\alpha}{\alpha})
 \label{eq:diodefit2}
 \end{equation}
 
-Come vediamo, per poter fittare i nostri dati dobbiamo o invertire la caratteristica V-I o la funzione appena trovata. Poichè è complicato operare quest'ultima possibilità, abbiamo deciso di eseguire un fit tenendo la funzione implicita appena trovata. I valori dei parametri stimati sono $\alpha=(4\pm 5)\times 10^{-8} \si{\ampere}$, $B=(0.055\pm 0.005)V $ e $R=(0.37\pm 0.05)\si{\ohm}$.
+Come vediamo, per poter fittare i nostri dati dobbiamo o invertire la caratteristica V-I o la funzione appena trovata. Poichè è complicato operare quest'ultima possibilità, abbiamo deciso di eseguire un fit tenendo la funzione implicita appena trovata. I valori dei parametri stimati sono $\alpha=(4\pm 5)\times 10^{-8} \,\si{\ampere}$, $B=(0.055\pm 0.005)\,V $ e $R=(0.37\pm 0.05)\,\si{\ohm}$.
 
 Come vediamo dal grafico sopra riportato, i dati sembrano fittare la legge implicita ipotizzata. Notiamo anche che sul valore $\alpha$ abbiamo una grande incertezza percentuale (oltre il 100\%). Non è quindi preciso calcolare la corrente di saturazione $I_S$ eseguendo una procedura come quella da noi effettuata. Notiamo anche che il valore di $R$ calcolato risulta diverso dalla resistenza interna dell'amperometro riportata dal costruttore. Ciò probabilmente è dovuto al fatto che ci sono delle altre resistenze parassite di cui non si è tenuto conto. 
  
@@ -52,14 +54,13 @@ Nella parte di analisi operata sotto la luce abbiamo notato che la cella fotovol
 
 $$f'(V)=f(V)-25.5 \, [mA]$$ %controllare forse
  
-
 %Durante questa parte dell'esperienza abbiamo avuto cura che la corrente massima da cui era attraversata la cella non superasse i \SI{100}{\milli\ampere}. 
 I dati ottenuti sono graficati in Fig. \ref{fig:cella}.
 
 \begin{figure}[h]
 \center
 	\includegraphics[width=0.75\textwidth]{cella.pdf}
-	\caption{Caratteristica volt-amperometrica della cella solare al buio (punti blu) e alla luce (punti rossi). Sono evidenziati i valori di corrente e tensione definiti a potenza massima ($I_{@P_{max}}$ e $V_{@P_{max}}$), il valore di tensione a corrente nulla ($V_{oc}$) e il valore i corrente per tensione nulla ($I_{sc}$)}
+	\caption{Caratteristica volt-amperometrica della cella solare al buio (punti blu) e alla luce (punti rossi). Sono evidenziati i valori di corrente e tensione definiti a potenza massima ($I_{@P_{max}}$ e $V_{@P_{max}}$), il valore di tensione a corrente nulla ($V_{oc}$) e il valore di corrente per tensione nulla ($I_{sc}$)}
 	\label{fig:cella}
 \end{figure}
 
@@ -75,18 +76,15 @@ Le celle con un alto Fill Factor hanno una bassa resistenza equivalente in serie
 Nel nostro caso il Fill Factor è risultato essere:
 
 $$FF \,=\, 0.67 \pm 0.05$$
-
-
 \section{Ponte di Graetz}
 
 \begin{wrapfigure}[11]{r}[0pt]{65mm}
-	\includegraphics[width=0.35\textwidth]{schema_graetz.pdf}
 	\caption{Schema del ponte di Graetz da noi utilizzato. I quattro diodi sono uguali.}
+	\includegraphics[width=0.35\textwidth]{schema_graetz.pdf}
 	\label{fig:graetz}
 \end{wrapfigure}
 
-Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig. \ref{fig:graetz} lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di trasformarlo in un segnale non negativo e quindi fare in modo che un'uscita del ponte sia sempre più positiva e l'altra negativa. Poichè i diodi hanno una caduta di tensione in diretta e una tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima quella del segnale in entrata e anzi vi sarà sempre una certa differenza di potenziale tra il segnale in \emph{input} e il segnale raddrizzato a causa della caduta di tensione propria dei diodi.
-Inoltre il segnale raddrizzato sarà pari a 0 se la tensione in entrata non supera il valore di soglia.
+Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig. \ref{fig:graetz} lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di trasformarlo in un segnale non negativo e quindi fare in modo che un'uscita del ponte sia sempre positiva e l'altra negativa. Poichè i diodi hanno una caduta di tensione diretta, o tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima la tensione del segnale in entrata. Infatti vi sarà sempre una certa differenza di potenziale tra il segnale in \emph{input} e il segnale raddrizzato a causa della caduta di tensione propria dei diodi tranne quando la tensione i entrata sarà inferiore al valore di soglia. In tale caso il segnale raddrizzato avrà tensione nulla.
 
 Poichè l'oscilloscopio è collegato a massa, non è possibile visualizzare a schermo contemporaneamente sia segnale in input che segnale in uscita dal ponte. Si è dunque utilizzata la funzione integrata all'oscilloscopio $Permanenza$ che fa rimanere sullo schermo l'ombra dei segnali visualizzati. \`E stato così possibile osservare sull'oscilloscopio entrambi i segnali. Ricordiamo che la resistenza da noi utilizzata come carico aveva un valore di $R_L=9998 \pm 1$.
 
@@ -99,13 +97,15 @@ Nel seguente grafico sono riportati i segnali da noi visualizzati.
 	\label{fig:graetz}
 \end{figure}
 
-Avendo utilizzato un segnale sinusoidale in input vediamo che per valori di $V \approx 0$ i diodi non sono in conduzione e dunque la d.d.p in output risulta nulla. \`E importante osservare come la frequenza del segnale in uscita sia raddoppiata. Infatti per ogni periodo della funzione sinusoidale fornita dal generatore abbiamo due periodi della funzione in uscita.\\
-
-\begin{wrapfigure}[13]{r}[0pt]{65mm}
+\begin{wrapfigure}[11]{r}[0pt]{65mm}
 	\includegraphics[width=0.4\textwidth]{schema_ripple.pdf}
 	\caption{Schema del ponte di Graetz con condensatore, per stabilizzare il segnale in output. Ancora una volta i quattro diodi sono uguali.}
 	\label{fig:schema_ripple}
 \end{wrapfigure}
+
+Avendo utilizzato un segnale sinusoidale in input vediamo che per valori di $V \approx 0$ i diodi non sono in conduzione e dunque la d.d.p in output risulta nulla. \`E importante osservare come la frequenza del segnale in uscita sia raddoppiata. Infatti per ogni periodo della funzione sinusoidale fornita dal generatore abbiamo due periodi della funzione in uscita.
+
+\phantom{x}
 
 Una volta ottenuto il segnale raddrizzato, l'interesse si sposta sul modo di ottenere un segnale di tensione DC il più costante possibile. Per fare ciò abbiamo utilizzato un condensatore messo in parallelo al carico in uscita dal ponte di diodi, come riportato dallo schema in Fig. \ref{fig:schema_ripple}.
 
