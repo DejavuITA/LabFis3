@@ -1,6 +1,5 @@
 clear Local user variables;
 
-source("../../algoritmi/alg1.m");
 source("../../algoritmi/utils.m");
 
 Volt = -csvread("../dati/E6.csv")(3:(end), 1);
