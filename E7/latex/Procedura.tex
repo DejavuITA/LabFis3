@@ -22,8 +22,12 @@ E' stata fissata una resistenza $R_2=(1000.4 \pm 0.2) \si{\ohm}$.
 
 Poichè a parità di segnale in ingresso $V_{in}$ il segnale in uscita dipende sia da $R_1$ che da $C$, abbiamo deciso di effettuare due campionamenti, bloccando una delle due variabili e facendo variare l'altra. Riportiamo nei due seguenti grafici i dati sperimentali da noi ottenuti.
 
-
-$$*grafici*$$
+\begin{figure}[h]
+\center
+	\includegraphics[width=\textwidth]{dati.pdf}
+	\caption{.}
+	\label{fig:dati}
+\end{figure}
 
 
 Come vediamo, i valori di tensione $V_{out}^{MAX}$ in entrambi i grafici tendono a valori bassi sia quando valori di resistenza e capacità sono piccoli sia quando sono grandi. Da Eq. (\ref{derivatore}) ci si aspetterebbe che all'aumentare di $R_1$ e $C$ aumenti anche $V_{out}$. Dobbiamo tuttavia ricordare l'approssimazione fatta per ricavare Eq. (\ref{derivatore}). Infatti avevamo assunto che sia capacità che resistenza fossero molto piccole. Evidentemente essa non è più valida per valori troppo grandi di queste due variabili. Ricordiamo anche che sebbene teoricamente l'onda quadra abbia derivata infinita nei punti di discontinuità, non è possibile in laboratorio generare un segnale discontinuo con questa caratteristica. Il valore $\frac{dV_{in}(t)}{dt}=\gamma$  sarà dunque ben definito e potrà essere assunto in prima approssimazione mediamente costante. Per valori piccoli di $C$ ed $R_1$ avremo dunque una legge del tipo $V_{out}^{MAX}= RC \gamma$. \`E dunque evidente che per valori di $R_1\rightarrow 0$ o $C\rightarrow 0$ il valore di tensione in uscita tenderà a zero.
@@ -37,6 +41,7 @@ Per valori di resistenza e capacità grandi non possiamo fare l'approssimazione 
 	\caption{.}
 	\label{fig:peaks}
 \end{figure}
+
 
 \section{Diodo Zener}
 Poichè il diodo zener è pensato per funzionare con polarizzazione inversa, abbiamo campionato solo la caratteristica V-I per valori di tensione negativi. Ricordiamo che a differenza di un diodo come quello utilizzato nell'esperienza precedente, il valore di corrente in funzione della tensione in un diodo zener, una volta raggiunto il range operativo, è lineare. Ovvero esiste una ``resistenza'' \footnote{Non è possibile definirla resistenza in quanto essa è ben definita solo per un insieme ristretto di valori di tensione diverso da tutta l'asse reale}, $R_d$, t.c. $V=R_d I$.
@@ -65,10 +70,14 @@ R_d=\frac{\Delta V}{\Delta I}
 \label{scemopagliaccio}
 \end{equation}
 
-Eseguita la media pesata dei vari $R_d$, otteniamo come risultato
-$$R_d= 186.63 \pm 0.02$$
+Eseguito un fit lineare otteniamo come risultato:
+$$R_d= (5.36 \pm 0.06)\,\Omega$$
 
-Nella seconda parte dello studio del diodo zener, abbiamo analizzato il suo funzionamento come stabilizzatore di tensione. Anzitutto è stato montato il circuito riportato in Fig. \ref{fig:schema_zener} con $R = (1000.0 \pm 0.1) \, \si{\ohm}$.  Dallo studio della caratteristica V-I del diodo abbiamo stimato che esso può essere utilizzato come stabilizzatore di tensione da $7000 V$ fino a quando la potenza massima dissipata lo permette. 
+
+Il costruttore garantisce una resistenza dinamica $R_d<3.5 \, \Omega$. Ricordiamo che l'amperometro ha una sua resistenza interna e nel nostro caso avendo impostato il fondoscala a $100mA$, $R_{int}=2\, \Omega$. E' dunque immediato calcolare la $R_d$ corretta eseguendo semplicemente la sottrazione delle due. La resistenza dinamica del diodo zener risulta $R_d=3.36 \pm 0.06$.
+
+
+Nella seconda parte dello studio del diodo zener, abbiamo analizzato il suo funzionamento come stabilizzatore di tensione. Anzitutto è stato montato il circuito riportato in Fig. \ref{fig:schema_zener} con $R = (1000.0 \pm 0.1) \, \si{\ohm}$.  Dallo studio della caratteristica V-I del diodo abbiamo stimato che esso può essere utilizzato come stabilizzatore di tensione da $-6.5 V$\footnote{Il costruttore dichiara che la tensione di breakdown è $V_b=6.8 \pm 0.4 V$.} fino a quando la potenza massima dissipata lo permette. 
 
 Riportiamo in Fig. \ref{fig:stabilizer} i dati da noi ottenuti.
 %\end{minipage}
@@ -83,13 +92,14 @@ Riportiamo in Fig. \ref{fig:stabilizer} i dati da noi ottenuti.
 \`E stato dunque calcolato il rapporto di stabilizzazione teorico dalla formula: 
 
 \begin{equation}
-{R_S}_{teo}=\frac{R_d}{R+R_d}
+{r_s}_{teo}=\frac{R_d}{R+R_d}
 \label{RS_teo}
 \end{equation}
 
-$${R_S}_{teo}= 0.144 \pm *$$
+$${r_s}_{teo}= (5.33 \pm 8764521) \times 10^{-3}$$
 
-e confrontato con la media pesata di quelli sperimentali $\frac{\Delta V_{out}}{\Delta V_{in}}$.
+e confrontato con la pendenza della retta dei dati sperimentali $\frac{\Delta V_{out}}{\Delta V_{in}}$.
 
-$${R_S}_{exp}= 0.006 \pm *$$
+$${r_s}_{exp}= 0.006 \pm *$$
  
+Come vediamo i valori ottenuti sono compatibili tra loro. 
