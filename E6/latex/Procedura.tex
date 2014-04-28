@@ -4,30 +4,44 @@
 	\label{fig:diodo}
 	\includegraphics[width=0.75\textwidth]{diodo.pdf}
 	\caption{I dati rappresentati non sono il set intero, che arrivava fino a $\SI{-50}{\volt}$, bensì solo i più significativi. Questa scelta è stata effettuata sia per necessità di spazio che per, soprattutto, leggibilità del grafico. Per completezza $I(\SI{-50.06}{\volt}) = \SI{-12}{\nano\ampere}$}
+	\label{fig:diodo}
 \end{wrapfigure}
 
 Per studiare la caratteristica volt-amperometrica del diodo abbiamo dovuto separare l'analisi in due fasi distinte: una prima fase in cui abbiamo analizzato il comportamento del diodo polarizzato in diretta e una seconda fase in cui ne abbiamo analizzato il comportamento in inversa.
 Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal genertore di tensione continua (max $\pm \SI{25}{\volt}$), il diodo e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
-Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere} abbiamo quindi popolato l'asse positivo del grafico. In seguito abbiamo girato il diodo in modo che fosse alimentato in inversa e abbiamo popolato anche l'asse negativo del grafico, ottenendo la caratteristica volt-amperometrica completa del diodo. Il risultato è esposto in Fig. \ref{fig:diodo}.
+Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere}\footnote{Abbiamo impostato il fondo scala dell'amperometro ad 1 ampere. Sulle specifiche dello strumento risulta che la resistenza interna dello strumento è pari a $R=0.1 \Omega$} abbiamo quindi popolato l'asse positivo del grafico. In seguito abbiamo girato il diodo in modo che fosse alimentato in inversa e abbiamo popolato anche l'asse negativo del grafico, ottenendo la caratteristica volt-amperometrica completa del diodo. Il risultato è esposto in Fig. \ref{fig:diodo}. 
 \\
 \\
-Dal grafico osserviamo che i dati ricavati non seguano la legge teorica, la cui formula è:
+Riportiamo ora la legge teorica della caratteristica V-I di un diodo al silicio:
 \begin{equation}
 I_{D} \, = \, I_{S} \left( e^{\frac{q V_d}{nKT}} -1 \right)
 \label{eq:diode}
 \end{equation}
-
+Dove $I_S$ è la corrente di saturazione, $q$ la carica dell'elettrone, $K$ la costante di Boltzmann, $T$ la temperatura assoluta e $n$ il fattore di idealità. 
 Notiamo come il diodo, per una tensione superiore a quella di soglia, si comporti quasi come un conduttore ideale, ovvero faccia scorrere grandi correnti per piccole variazioni di tensione. 
 
 Abbiamo tentato un fit con una legge del tipo : 
 
 \begin{equation}
-I \, = \, A \left( e^{B \cdot V} -1 \right)
+I_{D} \, = \, \alpha \left( e^{\frac{V_{D}}{B}} -1 \right)
 \label{eq:diodefit}
 \end{equation}
 
-ottenendo come parametri $A= figa \pm rasata$ e $B= francesca \pm casalino$
+Nonostante i nostri tentativi, non siamo riusciti a trovare dei valori per i parametri $\alpha$ e $B$ tali per cui la legge fittasse correttamente i dati. Abbiamo dunque pensato che ciò fosse causato dalla resistenza interna dell'amperometro. Abbiamo dunque impostato la seguente equazione:
 
+$$V=I_D \cdot R + V_D$$
+
+Con $V$ la tensione fornita dal generatore e $R$ la resistenza delle componenti circuitali escluso il diodo. Da Eq.(\ref{eq:diodefit}) troviamo immediatamente la seguente equazione:
+
+\begin{equation}
+V=I_D \cdot R + B \cdot ln (\frac{I_D+\alpha}{\alpha})
+\label{eq:diodefit2}
+\end{equation}
+
+Come vediamo, per poter fittare i nostri dati dobbiamo o invertire la caratteristica V-I o la funzione appena trovata. Poichè è complicato operare quest'ultima possibilità, abbiamo deciso di eseguire un fit tenendo la funzione implicita appena trovata. I valori dei parametri stimati sono $\alpha=(4\pm 5)\times 10^{-8} \si{\ampere}$, $B=(0.055\pm 0.005)V $ e $R=(0.37\pm 0.05)\si{\ohm}$.
+
+Come vediamo dal grafico sopra riportato, i dati sembrano fittare la legge implicita ipotizzata. Notiamo anche che sul valore $\alpha$ abbiamo una grande incertezza percentuale (oltre il 100\%). Non è quindi preciso calcolare la corrente di saturazione $I_S$ eseguendo una procedura come quella da noi effettuata. Notiamo anche che il valore di $R$ calcolato risulta diverso dalla resistenza interna dell'amperometro riportata dal costruttore. Ciò probabilmente è dovuto al fatto che ci sono delle altre resistenze parassite di cui non si è tenuto conto. 
+ 
 \section{Cella solare: caratteristica volt-amperometrica}
 
 Abbiamo studiato la caratteristica volt-amperomentrica di una cella solare lavorando allo stesso modo di come abbiamo fatto per il diodo.
