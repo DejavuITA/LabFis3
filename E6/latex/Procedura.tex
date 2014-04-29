@@ -40,9 +40,9 @@ V=I_D \cdot R + B \cdot ln (\frac{I_D+\alpha}{\alpha})
 \label{eq:diodefit2}
 \end{equation}
 
-Come vediamo, per poter fittare i nostri dati dobbiamo o invertire la caratteristica V-I o la funzione appena trovata. Poichè è complicato operare quest'ultima possibilità, abbiamo deciso di eseguire un fit tenendo la funzione implicita appena trovata. I valori dei parametri stimati sono $\alpha=(4\pm 5)\times 10^{-8} \,\si{\ampere}$, $B=(0.055\pm 0.005)\,V $ e $R=(0.37\pm 0.05)\,\si{\ohm}$.
+Come vediamo, per poter fittare i nostri dati dobbiamo o invertire i dati o la funzione appena trovata. Poichè è complicato operare quest'ultima possibilità, abbiamo deciso di eseguire un fit tenendo la funzione implicita appena trovata. I valori dei parametri stimati sono $\alpha=(4\pm 5)\times 10^{-8} \,\si{\ampere}$, $B=(0.055\pm 0.005)\,V $ e $R=(0.37\pm 0.05)\,\si{\ohm}$.
 
-Come vediamo dal grafico sopra riportato, i dati sembrano fittare la legge implicita ipotizzata. Notiamo anche che sul valore $\alpha$ abbiamo una grande incertezza percentuale (oltre il 100\%). Non è quindi preciso calcolare la corrente di saturazione $I_S$ eseguendo una procedura come quella da noi effettuata. Notiamo anche che il valore di $R$ calcolato risulta diverso dalla resistenza interna dell'amperometro riportata dal costruttore. Ciò probabilmente è dovuto al fatto che ci sono delle altre resistenze parassite di cui non si è tenuto conto. 
+Come vediamo dal grafico sopra riportato, i dati sembrano fittare la legge implicita ipotizzata. Notiamo anche che sul valore $\alpha$ abbiamo una grande incertezza percentuale (oltre il 100\%). Non è quindi preciso calcolare la corrente di saturazione $I_S$ eseguendo una procedura come quella da noi effettuata. Notiamo anche che il valore di $R$ calcolato risulta diverso dalla resistenza interna dell'amperometro riportata dal costruttore. Ciò probabilmente è dovuto al fatto che ci sono delle altre resistenze parassite di cui non si è tenuto conto. Poichè il fit si è rivelato risolutivo, riteniamo che la caratteristica del diodo riportata in Eq.(\ref{eq:diode}) sia corretta.
  
 \section{Cella solare: caratteristica volt-amperometrica}
 
@@ -84,7 +84,7 @@ $$FF \,=\, 0.67 \pm 0.05$$
 	\label{fig:graetz}
 \end{wrapfigure}
 
-Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig. \ref{fig:graetz} lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di trasformarlo in un segnale non negativo e quindi fare in modo che un'uscita del ponte sia sempre positiva e l'altra negativa. Poichè i diodi hanno una caduta di tensione diretta, o tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima la tensione del segnale in entrata. Infatti vi sarà sempre una certa differenza di potenziale tra il segnale in \emph{input} e il segnale raddrizzato a causa della caduta di tensione propria dei diodi tranne quando la tensione i entrata sarà inferiore al valore di soglia. In tale caso il segnale raddrizzato avrà tensione nulla.
+Un ponte costituito da diodi può essere utilizzato come elemento raddrizzatore di un segnale. Riportiamo in Fig. \ref{fig:graetz} lo schema del ponte di Graetz da noi utilizzato. Tale ponte permette di raddrizzare un segnale in entrata, ovvero di trasformarlo in un segnale non negativo e quindi fare in modo che un'uscita del ponte sia sempre positiva e l'altra negativa. Poichè i diodi hanno una caduta di tensione diretta, o tensione di soglia, il segnale raddrizzato non potrà superare in tensione massima la tensione del segnale in entrata. Infatti vi sarà sempre una certa differenza di potenziale tra il segnale in \emph{input} e il segnale raddrizzato a causa della caduta di tensione propria dei diodi tranne quando la tensione in entrata sarà inferiore al valore di soglia. In tale caso il segnale raddrizzato avrà tensione nulla.
 
 Poichè l'oscilloscopio è collegato a massa, non è possibile visualizzare a schermo contemporaneamente sia segnale in input che segnale in uscita dal ponte. Si è dunque utilizzata la funzione integrata all'oscilloscopio $Permanenza$ che fa rimanere sullo schermo l'ombra dei segnali visualizzati. \`E stato così possibile osservare sull'oscilloscopio entrambi i segnali. Ricordiamo che la resistenza da noi utilizzata come carico aveva un valore di $R_L=9998 \pm 1$.
 
@@ -137,6 +137,6 @@ Riportiamo infine un grafico dei segnali a schermo ottenuti per la capacità $C=
 \begin{figure}[h]
 \center
 	\includegraphics[width=0.75\textwidth]{ripple.pdf}
-	\caption{In grigio possiamo apprezzare il segnale in ingresso al circuito, in verde in segnale in uscita dal ponte di Graetz senza il condensatore mentre in rosso vediamo quello ai capi del carico quando si aggiunge il condensatore.}
+	\caption{In grigio possiamo apprezzare il segnale in ingresso al circuito, in verde il segnale in uscita dal ponte di Graetz senza il condensatore mentre in rosso vediamo quello ai capi del carico quando si aggiunge il condensatore.}
 	\label{fig:ripple}
 \end{figure}
