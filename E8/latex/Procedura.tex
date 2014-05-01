@@ -12,67 +12,45 @@
 %\end{figure}
 
 \section{Transistor come interruttore}
+
+\begin{wrapfigure}[16]{l}[0pt]{36mm}
+	\caption{Transistor come interruttore.}
+	\includegraphics[width=36mm]{cc1.pdf}
+	\label{fig:cc1}
+\end{wrapfigure}
+
 \subsection{interruttore semplice}
+Utilizzando la breadboard come sostegno abbiamo realizzato il circuito riportato in Fig. \ref{fig:cc1}; sono stati utilizzati inoltre un transistor BC107B, un LED verde, una resistenza da $\SI{1}{\kilo\ohm}$ e una decade di resistenze. La decade di resistenza ($R_B$, in figura) è stata inizialmente settata a \SI{100}{\kilo\ohm}.
+Una volta alimentato il circuito assemblato, abbiamo notato il LED accendersi. In tale situazione il generatore di corrente continua segnalava di fornire alimentazione con una corrente di \SI{13}{\milli\ampere}. Aprendo il circuito, invece, il LED era spento.
+
+$$perche? - spiegare$$
+
+Per studiare il range in cui il transistor può lavorare come interruttore e dove invece entra in saturazione, abbiamo collegato in serie alla decade di resistenze un amperometro, in modo tale da sapere la corrente $I_B$ che circolava in quel ramo del circuito. Avendo a disposizione quindi sia la corrente totale $I_{tot}$ (dato fornito dal generatore), che la corrente $I_B$ abbiamo potuto ricavare la corrente di collettore $I_C$, la stessa da cui era attraversato il LED.
+\begin{equation*}
+	I_{tot} = I_B + I_C \quad \rightarrow \quad I_C = I_{tot} - I_B
+\end{equation*}
+
+Variando il valore di resistenza $R_B$ della decade abbiamo ottenuto un set di dati che correlava $I_B$ a $I_C$. Il problema di questo metodo è che la risoluzione del dato di corrente fornito dal generatore non è così alta come quello ricavato dall'amperometro. Nonostante questa problematica, gli strumenti a nostra disposizione sono stati sufficienti per ricavare approssimativamente un range di lavoro per il transistor.
+
+\begin{wrapfigure}[18]{r}[0pt]{120mm}
+%\begin{SCpicture}
+	\includegraphics[width=120mm]{saturazione.pdf}
+	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base.}
+	\label{fig:saturazione}
+%\end{SCpicture}
+\end{wrapfigure}
+
+Dai dati graficati in Fig. \ref{fig:saturazione} abbiamo dedotto che il range di lavoro del transistor è lineare per $I_B \leq \SI{40}{\micro\ampere}$, mentre per $I_B \geq \SI{100}{\micro\ampere}$ il transistor è sicuramente in saturazione. Nel range in cui il transistor non è in saturazione è possibile usare la decade di resistenze come ''potenziometro`` per comandare l'intensità della luce emessa dal LED.
+
 \subsection{interruttore veloce}
-Il circuito riportato in Fig. \ref{fig:schema_peak_detector} rappresenta lo schema del rivelatore di fronti d'onda utilizzato il laboratorio. Come vediamo, se si considera solo la parte a monte del diodo, esso risulta un semplice filtro passa alto. Particolarità di tale filtro è il suo utilizzo come derivatore. Infatti, se la capacità $C$ e la resistenza $R_1$ sono piccole vale:
+Partendo dal circuito montato nella sezione precedente, lo abbiamo modificato per ottenere il circuito mostrato in Fig. \ref{fig:cc2}. La resistenza $R_B$ è stata settata a \SI{10}{\kilo\ohm} e il circuito è stato alimentato con un'onda quadra di frequenza nel range $10-100\,\si{\hertz}$.
 
-$$ I=\frac{V_{out}'(t)}{R_1}=C\frac{d}{dt}(V_{in}(t)-V_{out}'(t)) \approx C \frac{dV_{in}(t)}{dt} $$
+\begin{wrapfigure}[19]{r}[0pt]{36mm}
+	\caption{Transistor come interruttore veloce.}
+	\includegraphics[width=36mm]{cc2.pdf}
+	\label{fig:cc2}
+\end{wrapfigure}
 
-\begin{equation} 
-\Rightarrow V_{out}(t) \approx R_1C \frac{dV_{in}(t)}{dt} 
-\label{derivatore}
-\end{equation}
+È stata poi condotta un'analisi puramente qualitativa sul funzionamento dell'interruttore. Abbiamo osservato che impostando la frequenza dell'onda quadra ad un valore di pochi \si{\hertz} si notava il lampeggio del LED. Aumentando gradualmente la frequenza si faceva sempre più difficoltà a percepire lo sfarfallio della luce emessa, fino ad una frequenza di circa \SI{55}{\hertz}, da noi dichiarata come frequenza limite, cioè la frequenza a cui non si nota più lo sfarfallio, ma si osserva una luce accesa.
 
-L'inserimento del diodo a valle di tale derivatore permette il passaggio dei soli segnali positivi/negativi (in base al verso del diodo stesso).
-
-Per osservare il funzionamento come rivelatore di fronti d'onda abbiamo alimentato il circuito con una forma d'onda quadra di frequenza $100 \si{\hertz}$ e tensione $V_{PP}=10 \si{\volt}$. L'onda quadra ha la particolarità di essere una funzione a tratti. Utilizzando capacità e resistenze molto piccole, il circuito rileverà i punti in cui la derivata tende ad infinito mentre nei tratti in cui la derivata è uguale a zero non lascerà passare nessun segnale (vedi Eq. \ref{derivatore}).
-
-È stata fissata una resistenza $R_2=(1000.4 \pm 0.2) \si{\ohm}$. 
-
-Poichè a parità di segnale in ingresso $V_{in}$ il segnale in uscita dipende sia da $R_1$ che da $C$, abbiamo deciso di effettuare due campionamenti, bloccando una delle due variabili e facendo variare l'altra. Riportiamo nei due seguenti grafici i dati sperimentali da noi ottenuti.
-
-
-
-
-Come vediamo, i valori di tensione $V_{out}^{MAX}$ in entrambi i grafici tendono a valori bassi sia quando valori di resistenza e capacità sono piccoli sia quando sono grandi. Da Eq. (\ref{derivatore}) ci si aspetterebbe che all'aumentare di $R_1$ e $C$ aumenti anche $V_{out}$. Dobbiamo tuttavia ricordare l'approssimazione fatta per ricavare Eq. (\ref{derivatore}). Infatti avevamo assunto che sia capacità che resistenza fossero molto piccole. Evidentemente essa non è più valida per valori troppo grandi di queste due variabili. Ricordiamo anche che sebbene teoricamente l'onda quadra abbia derivata infinita nei punti di discontinuità, non è possibile in laboratorio generare un segnale discontinuo con questa caratteristica. Il valore $\frac{dV_{in}(t)}{dt}=\gamma$  sarà dunque ben definito e potrà essere assunto in prima approssimazione mediamente costante. Per valori piccoli di $C$ ed $R_1$ avremo dunque una legge del tipo $V_{out}^{MAX}= RC \gamma$. \`E dunque evidente che per valori di $R_1\rightarrow 0$ o $C\rightarrow 0$ il valore di tensione in uscita tenderà a zero.
-%CONTRADDIZIONE%
-
-Per valori di resistenza e capacità grandi non possiamo fare l'approssimazione di derivatore e dunque non possiamo più ricondurci all'equazione sopra calcolata. Per valori di capacità molto grandi osserveremo una tensione in uscita $V_{out}(t)=I(t) R_1$. Ma $I(t)$ sarà uguale alla corrente di carica/scarica che scorre in un circuito RC. Quando C diventa grande, il condensatore non riuscirà a caricarsi completamente e dunque avremo un valore di tensione $V_{out}$ che decresce aumentando C. Analogamente, quando R diventa molto grande, la corrente che può scorrere nel circuito diventa piccola e dunque il condensatore non riuscirà a caricarsi completamente. Avremo anche in questo caso che la tensione $V_{out}$ decresce aumentando R. Riportiamo per completezza due grafici dei dati visualizzati sull'oscilloscopio. Il primo con $C$ ed $R_1$ piccoli mentre il secondo con $C$ ed $R_1$ abbastanza grandi per apprezzare l'andamento della tensione indotto dalla presenza del condensatore.
-
-\section{Diodo Zener}
-
-Poichè il diodo zener è pensato per funzionare con polarizzazione inversa, abbiamo campionato solo la caratteristica V-I per valori di tensione negativi. Ricordiamo che a differenza di un diodo come quello utilizzato nell'esperienza precedente, il valore di corrente in funzione della tensione in un diodo zener, una volta raggiunto il range operativo, è lineare. Ovvero esiste una ``resistenza \footnote{Non è possibile definirla resistenza in quanto essa è ben definita solo per un insieme ristretto di valori di tensione diverso da tutto l'asse reale}'', $R_d$, tale che $V=R_d I$.
-
-Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal generatore di tensione continua (DC $\pm \SI{25}{\volt}$), il diodo zener e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
-Facendo attenzione che la corrente non superasse il valore di \SI{700}{\milli\ampere}, abbiamo campionato l'asse negativo del grafico. Il risultato è esposto in Fig. \ref{fig:VI_zener}.
-
-Dai dati ottenuti è stato possibile calcolare la resistenza dinamica del diodo, ovvero:
-
-\begin{equation}
-R_d=\frac{\Delta V}{\Delta I}
-\label{scemopagliaccio}
-\end{equation}
-
-Eseguito un fit lineare\footnote{È immediato verificare che $R_d=\frac{1}{m}$ dove $m$ è la pendenza della retta che interpola i dati oltre la tensione di breakdown.} otteniamo come risultato:
-$$R_d= (5.36 \pm 0.06)\,\Omega$$
-
-Il costruttore garantisce una resistenza dinamica $R_d<3.5 \, \Omega$. Ricordiamo che l'amperometro ha una sua resistenza interna e nel nostro caso, avendo impostato il fondoscala a $100mA$, $R_{int}=2\, \Omega$. È dunque immediato calcolare la $R_d$ corretta eseguendo semplicemente la sottrazione delle due. La resistenza dinamica del diodo zener risulta $R_d=3.36 \pm 0.06$.
-
-Nella seconda parte dello studio del diodo zener, abbiamo analizzato il suo funzionamento come stabilizzatore di tensione. Anzitutto è stato montato il circuito riportato in Fig. \ref{fig:schema_zener} con $R = (1000.0 \pm 0.1) \, \si{\ohm}$.  Dallo studio della caratteristica V-I del diodo abbiamo stimato che esso può essere utilizzato come stabilizzatore di tensione da $\SI{-6.5}{\volt}$\footnote{Il costruttore dichiara che la tensione di breakdown è $V_b=6.8 \pm 0.4 V$.} fino a quando la potenza massima dissipata lo permette. 
-
-È stato dunque calcolato il rapporto di stabilizzazione teorico dalla formula: 
-
-\begin{equation}
-r_{s,teo}\,=\,\frac{R_d}{R+R_d}\,=\, (5.33 \pm 0.06) \times 10^{-3}
-\label{RS_teo}
-\end{equation}
-
-Riportiamo ora in Fig. \ref{fig:stabilizer} i dati sperimentali da noi ottenuti.
-
-Troviamo ora la pendenza della retta che fitta i dati sperimentali $\frac{\Delta V_{out}}{\Delta V_{in}}$.
-
-$$r_{s,exp}= (6.6 \pm 0.6) \times 10^{-3} $$
-
-Come si può osservare, i valori teorico e sperimentale del rapporto di stabilizzazione sono compatibli entro un fattore di copertura maggiore o uguale a 2. Riteniamo pertanto che i valori siano coerenti.
-
-Osserviamo infine che il valore del rapporto di stabilizzazione ricavato dalla legge teorica ha una cifra significativa in più del valore ricavato sperimentalmente.
+Utilizzando però lo stratagemma di avvicinare al circuito fissare un oggetto poco distante in modo da includere il LED nel proprio campo di visione periferico, siamo riusciti a notare nuovamente lo sfarfallio della luce emessa. La frequenza limite in queste condizioni si è alzata a circa \SI{65}{\hertz}

@@ -1,0 +1,50 @@
+from math import *			# da math importo tutto # non devo utilizzare il namespace (es: np per numpy)
+
+from matplotlib import *		# da matplotlib importo tutto # non devo utilizzare il namespace (es: np per numpy)
+import matplotlib.pyplot as plt
+import numpy as np			# importo numpy come np
+
+from mpl_toolkits.axes_grid1 import host_subplot
+import mpl_toolkits.axisartist as AA
+
+data1 = np.genfromtxt("../dati/circ1.csv", delimiter=',',skip_header=1,names=True)
+ib = data1['ib']
+ic = data1['ic']
+
+rcParams['font.size'] = 15
+# Creo un grafico la dimensione è in pollici
+f1 = plt.figure(figsize=(8, 4.5), dpi=65) #ora è in mm
+# Titolo del grafico
+f1.suptitle("Transistor BC107B\nCorrente di base in funzione di corrente di collettore",
+    y=0.97, fontsize=17)
+
+# GRAFICO 1
+ax1 = host_subplot(111, axes_class=AA.Axes)
+
+sat = ax1.errorbar(x=ib, y=ic-ib,
+    fmt='o--', c='grey', linewidth=2)
+
+ax1.set_xlabel(r'$I_B$ [mA]',
+    labelpad=8, fontsize=16)
+ax1.set_ylabel(r'$I_C$ [mA]',
+    labelpad=-8, fontsize=16)
+
+ax1.set_xlim((-0.05,2.05))
+ax1.set_ylim((-0.6,14.0))
+
+#ax1.set_xticks((-50,-40,-30,-20,-10,0,4.8,5.75))
+#ax1.set_xticklabels(('-50','-40','-30','-20','-10','0','4.8',''))
+
+#ax2 = ax1.twin()
+
+ax1.grid(True)
+
+# questo produce una legenda
+ax1.legend((sat, ), ("corrente di collettore", ), 'lower right', prop={'size': 16})
+
+# questo imposta i bordi del grafico
+f1.subplots_adjust(left=0.09, right=0.97,
+    top=0.85, bottom=0.15, hspace=0.08, wspace=0)
+
+# mostra grafico
+plt.show()
