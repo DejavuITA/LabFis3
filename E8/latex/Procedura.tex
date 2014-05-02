@@ -32,12 +32,18 @@ Per studiare il range in cui il transistor può lavorare come interruttore e dov
 
 Variando il valore di resistenza $R_B$ della decade abbiamo ottenuto un set di dati che correlava $I_B$ a $I_C$. Il problema di questo metodo è che la risoluzione del dato di corrente fornito dal generatore non è così alta come quello ricavato dall'amperometro. Nonostante questa problematica, gli strumenti a nostra disposizione sono stati sufficienti per ricavare approssimativamente un range di lavoro per il transistor.
 
+%%%	- questo grafico è la versione con tutti i dati - %%%
+%\begin{wrapfigure}[18]{r}[0pt]{120mm}
+%	\includegraphics[width=120mm]{saturazione.pdf}
+%	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base.}
+%	\label{fig:saturazione}
+%\end{wrapfigure}
+
+%%%	- questo grafico è la versione con i dati compresi tra 0 e 1.05- %%%
 \begin{wrapfigure}[18]{r}[0pt]{120mm}
-%\begin{SCpicture}
-	\includegraphics[width=120mm]{saturazione.pdf}
-	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base.}
+	\includegraphics[width=120mm]{saturazione_2.pdf}
+	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base. I dati per $I_B \geq 1.05$ non sono mostrati perché poco significativi.}
 	\label{fig:saturazione}
-%\end{SCpicture}
 \end{wrapfigure}
 
 Dai dati graficati in Fig. \ref{fig:saturazione} abbiamo dedotto che il range di lavoro del transistor è lineare per $I_B \leq \SI{40}{\micro\ampere}$, mentre per $I_B \geq \SI{100}{\micro\ampere}$ il transistor è sicuramente in saturazione. Nel range in cui il transistor non è in saturazione è possibile usare la decade di resistenze come ''potenziometro`` per comandare l'intensità della luce emessa dal LED.
