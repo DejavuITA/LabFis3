@@ -33,12 +33,18 @@ Poichè a parità di segnale in ingresso $V_{in}$ il segnale in uscita dipende s
 Come vediamo, i valori di tensione $V_{out}^{MAX}$ in entrambi i grafici tendono a valori bassi sia quando valori di resistenza e capacità sono piccoli sia quando sono grandi. Da Eq. (\ref{derivatore}) ci si aspetterebbe che all'aumentare di $R_1$ e $C$ aumenti anche $V_{out}$. Dobbiamo tuttavia ricordare l'approssimazione fatta per ricavare Eq. (\ref{derivatore}). Infatti avevamo assunto che sia capacità che resistenza fossero molto piccole. Evidentemente essa non è più valida per valori troppo grandi di queste due variabili. Ricordiamo anche che sebbene teoricamente l'onda quadra abbia derivata infinita nei punti di discontinuità, non è possibile in laboratorio generare un segnale discontinuo con questa caratteristica. Il valore $\frac{dV_{in}(t)}{dt}=\gamma$  sarà dunque ben definito e potrà essere assunto in prima approssimazione mediamente costante. Per valori piccoli di $C$ ed $R_1$ avremo dunque una legge del tipo $V_{out}^{MAX}= RC \gamma$. \`E dunque evidente che per valori di $R_1\rightarrow 0$ o $C\rightarrow 0$ il valore di tensione in uscita tenderà a zero.
 %CONTRADDIZIONE%
 
-Per valori di resistenza e capacità grandi non possiamo fare l'approssimazione di derivatore e dunque non possiamo più ricondurci all'equazione sopra calcolata. Per valori di capacità molto grandi osserveremo una tensione in uscita $V_{out}(t)=I(t) R_1$. Ma $I(t)$ sarà uguale alla corrente di carica/scarica che scorre in un circuito RC. Quando C diventa grande, il condensatore non riuscirà a caricarsi completamente e dunque avremo un valore di tensione $V_{out}$ che decresce aumentando C. Analogamente, quando R diventa molto grande, la corrente che può scorrere nel circuito diventa piccola e dunque il condensatore non riuscirà a caricarsi completamente. Avremo anche in questo caso che la tensione $V_{out}$ decresce aumentando R. Riportiamo per completezza due grafici dei dati visualizzati sull'oscilloscopio. Il primo con $C$ ed $R_1$ piccoli mentre il secondo con $C$ ed $R_1$ abbastanza grandi per apprezzare l'andamento della tensione indotto dalla presenza del condensatore.
+Per valori di resistenza e capacità grandi non possiamo fare l'approssimazione di derivatore e dunque non possiamo più ricondurci all'equazione sopra calcolata.
+Per valori di capacità molto grandi osserveremo una tensione in uscita $V_{out}(t)=I(t) R_1$. Ma $I(t)$ sarà uguale alla corrente di carica/scarica che scorre in un circuito RC.
+Quando C diventa grande, il condensatore non riuscirà a caricarsi completamente e dunque avremo un valore di tensione $V_{out}$ che decresce aumentando C.
+Analogamente, quando R diventa molto grande, la corrente che può scorrere nel circuito diventa piccola e dunque il condensatore non riuscirà a caricarsi completamente.
+Avremo anche in questo caso che la tensione $V_{out}$ decresce aumentando R.
+Riportiamo per completezza due grafici dei dati visualizzati sull'oscilloscopio.
+Il primo con $C$ ed $R_1$ piccoli mentre il secondo con $C$ ed $R_1$ abbastanza grandi per apprezzare l'andamento della tensione indotto dalla presenza del condensatore.
 
-\begin{wrapfigure}[19]{r}[0pt]{120mm}
+\begin{wrapfigure}[18]{r}[0pt]{120mm}
 \centering
-	\caption{Caratteristica volt-amperometrica del diodo zener BZX85C6V8. I valori di corrente relativi a tensioni comprese tra quelle graficate e l'origine degli assi sono stati esclusi perché poco rilevanti.}
-	\includegraphics[width=0.55\textwidth]{VI_zener.pdf}
+	\caption{Caratteristica volt-amperometrica del diodo zener BZX85C6V8. I dati relativi a tensioni maggiori di quelli graficati sono stati esclusi perché poco rilevanti.}
+	\includegraphics[width=0.57\textwidth]{VI_zener.pdf}
 	\label{fig:VI_zener}
 \end{wrapfigure}
 
@@ -51,10 +57,14 @@ Per valori di resistenza e capacità grandi non possiamo fare l'approssimazione 
 
 \section{Diodo Zener}
 
-Poichè il diodo zener è pensato per funzionare con polarizzazione inversa, abbiamo campionato solo la caratteristica V-I per valori di tensione negativi. Ricordiamo che a differenza di un diodo come quello utilizzato nell'esperienza precedente, il valore di corrente in funzione della tensione in un diodo zener, una volta raggiunto il range operativo, è lineare. Ovvero esiste una ``resistenza \footnote{Non è possibile chiamarla resistenza in quanto essa è ben definita solo per un insieme ristretto di valori di tensione diverso da tutto l'asse reale.}'', $R_d$, tale che $V=R_d I$.
+Poichè il diodo zener è pensato per funzionare con polarizzazione inversa, abbiamo campionato solo la caratteristica V-I per valori di tensione negativi.
+Ricordiamo che a differenza di un diodo come quello utilizzato nell'esperienza precedente, il valore di corrente in funzione della tensione in un diodo zener, una volta raggiunto il range operativo, è lineare.
+Ovvero esiste una ``resistenza \footnote{Non è possibile chiamarla resistenza in quanto essa è ben definita solo per un insieme ristretto di valori di tensione diverso da tutto l'asse reale.}'', $R_d$, tale che $V=R_d I$.
 
-Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal generatore di tensione continua (DC $\pm \SI{25}{\volt}$), il diodo zener e il multimetro digitale in modalità amperometro. Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
-Facendo attenzione che la potenza dissipata dal diodo non superasse quella massima riportata nella scheda tecnica (***********************************), abbiamo campionato l'asse negativo del grafico. Il risultato è esposto in Fig. \ref{fig:VI_zener}.
+Utilizzando la breadboard come supporto, abbiamo creato un circuito composto dal generatore di tensione continua (DC $\pm \SI{25}{\volt}$), il diodo zener e il multimetro digitale in modalità amperometro.
+\newpage
+Aumentando progressivamente la tensione, abbiamo letto sull'amperometro i valori della corrente che attraversava il circuito.
+Facendo attenzione che la potenza dissipata dal diodo non superasse quella massima riportata nella scheda tecnica (\SI{1.3}{\watt}) abbiamo campionato l'asse negativo del grafico. Il risultato è esposto in Fig. \ref{fig:VI_zener}.
 
 Dai dati ottenuti è stato possibile calcolare la resistenza dinamica del diodo, ovvero:
 
@@ -88,11 +98,11 @@ Riportiamo ora in Fig. \ref{fig:stabilizer} i dati sperimentali da noi ottenuti.
 \begin{figure}[h]
 \center
 	\includegraphics[width=0.66\textwidth]{stabilizer.pdf}
-	\caption{Grafico dei dati sperimentali ottenuti per il circuito stabilizzatore di corrente. Come vediamo, uan volta raggiunto il valore di tensione di breakdown, il diodo tende a stabilizzare la tensione del segnale in output al circuito.}
+	\caption{Grafico dei dati sperimentali ottenuti per il circuito stabilizzatore di corrente. Come vediamo, una volta raggiunto il valore di tensione di breakdown, il diodo tende a stabilizzare la tensione del segnale in output al circuito.}
 	\label{fig:stabilizer}
 \end{figure}
 
-Troviamo ora la pendenza della retta che fitta i dati sperimentali $\frac{\Delta V_{out}}{\Delta V_{in}}$. Tale valore sarà uguale al rapporto di stabilizzazione:
+\noindent Troviamo ora la pendenza della retta che fitta i dati sperimentali $\frac{\Delta V_{out}}{\Delta V_{in}}$. Tale valore dovrà essere compatibile con $r_{s,teo}$
 
 $$r_{s,exp}= (6.6 \pm 0.6) \times 10^{-3} $$
 
