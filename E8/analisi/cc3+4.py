@@ -42,9 +42,9 @@ out1 = ax1.errorbar(x=t_1*10**6, y=V2_1, fmt='--', c='red', linewidth=2)
 #in2 = ax1.errorbar(x=t_2, y=-V1_2, fmt='-', c='green', linewidth=2)
 #out2 = ax1.errorbar(x=t_2, y=-V2_2, fmt='-', c='yellow', linewidth=2)
 
-ax1.text(0, -6.8, r'$I_B$ [$\mu s$]', rotation='horizontal',
+ax1.text(0, -6.8, r'tempo [$\mu s$]', rotation='horizontal',
 	ha='center', va='center', fontsize=15)
-ax1.text(-60, 0, r'$I_C$ [V]', rotation='vertical',
+ax1.text(-60, 0, r'd.d.p. [$V$]', rotation='vertical',
 	ha='center', va='center', fontsize=15)
 
 ax1.set_xlim((-55,55))
@@ -64,9 +64,9 @@ ax2 = host_subplot(122, axes_class=AA.Axes)
 in4 = ax2.errorbar(x=t_4*10**6, y=V1_4, fmt='-', c='black', linewidth=2)
 out4 = ax2.errorbar(x=t_4*10**6, y=V2_4, fmt='--', c='green', linewidth=2)
 
-ax2.text(0, -6.8, r'$I_B$ [$\mu s$]', rotation='horizontal',
+ax2.text(0, -6.8, r'tempo [$\mu s$]', rotation='horizontal',
 	ha='center', va='center', fontsize=15)
-ax2.text(61, 0, r'$I_C$ [V]', rotation='vertical',
+ax2.text(61, 0, r'd.d.p. [V]', rotation='vertical',
 	ha='center', va='center', fontsize=15)
 
 ax2.set_xlim((-55,55))

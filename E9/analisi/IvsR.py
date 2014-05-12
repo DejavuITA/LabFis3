@@ -30,10 +30,11 @@ ax1 = host_subplot(111, axes_class=AA.Axes)
 
 #slope = ax1.errorbar(x=np.arange(-7.1,-6.3,0.001), y=A+B*np.arange(-7.1,-6.3,0.001),
 #    fmt='-', c='gray', linewidth=2)
-V= 9.6
-linear = ax1.errorbar(	x=200+np.arange(10000,51000,1),
-			y=1000*V/(200+np.arange(10000,51000,1)),
-			fmt='-', c='#00AA00', linewidth=2)
+Vcc= 9.93
+Ra= 1000+200
+linear = ax1.errorbar(	x=np.arange(9000,52000,1),
+			y=1000*Vcc/(Ra+np.arange(9000,52000,1)),
+			fmt='--', c='#44dd11', linewidth=2)
 data = ax1.errorbar(	x=R, y=I/1000, fmt='-', c='#A0A0A0', linewidth=2)
 data = ax1.errorbar(	x=R, y=I/1000, fmt='.', c='#000000', linewidth=2)
 #    markersize=7, markeredgewidth=1)
