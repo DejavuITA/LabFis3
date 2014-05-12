@@ -8,20 +8,19 @@ Per assemblare i seguenti circuiti, non avendo più bisogno della decade di resi
 	\label{fig:cc3}
 \end{wrapfigure}
 
-\subsection{emitter follower}
+\subsection{emitter follower semplice}
 Il nuovo circuito, mostrato in Fig. \ref{fig:cc3}, è stato alimentato tramite il generatore di forme d'onda con un'onda sinusoidale ad una tensione picco-picco $V_{pp} = \SI{10}{\volt}$.
-Il valori delle reistenze erano $R_E = \SI{4655.0}{\ohm}$ e $R_B = \SI{2002.4}{\ohm}$.
+Il valori delle reistenze usate sono $R_E = (4655.0 \pm 0.2)\si{\ohm}$ e $R_B = (2002.4 \pm 0.2)\si{\ohm}$.
 Per osservare il segnale in uscita è stato collegato l'oscilloscopio all'emettitore del transistor.
 
 Una volta collegato il circuito, abbiamo osservato che variando la frequenza tra \SI{1}{\kilo\hertz} e \SI{20}{\kilo\hertz} l'immagine mostrata a schermo dall'oscilloscopio, se escludiamo la scala temporale di riferimento, non variava.
 Il segnale in output era infatti sempre in fase con il segnale in input, come si può osserare dall'immagine in Fig. \ref{fig:cc3+cc4}, che rappresenta la situazione per $f = \SI{20}{\kilo\hertz}$.
 Inoltre il segnale in output (tratteggiato) è in modulo sempre minore del segnale in input.
+Tale differenza è dovuta al fatto che il transistor utilizzato è formato da giunzioni p-n e, come visto nell'esperienza sul diodo, tale giunzione ha una caduta in diretta di circa $0.6\si{\volt}$. Come vediamo anche graficamente, la differenza tra picco del segnale in input e quello in output è di circa $0.6\si{\volt}$, per l'esattezza di $suca\si{\volt}$.
 
-$$spiegazione \quad della \quad differenza \quad tra \quad il \quad modulo \quad dei \quad due \quad segnali$$
 Infine, in corrispondenza di ogni semionda negativa, in segnale in output era nullo.
-Tale fenomeno è chiamato ``\emph{clamping}''.
+Tale fenomeno è chiamato ``\emph{clamping}''. Motivazione di tale taglio è la polarizzazione della base rispetto all'emettitore. Infatti il transistor funziona finché la tensione di base è superiore a quella di emettitore. Avendo l'emettitore collegato a terra ($V=0$) e la base ad una $V=0+v(t)$, è immediato vedere che non appena la tensione di base è minore di 0 il transistor sarà interdetto e dunque la tensione rilevata dall'oscilloscopio sarà 0.
 
-$$MOTIVAZIONE \qquad taglio \,\, semionda \,\, negativa \quad (clamping)$$
 \begin{figure}[h]
 \centering
 	\includegraphics[width=0.85\textwidth]{cc3+cc4.pdf}
@@ -36,29 +35,86 @@ $$MOTIVAZIONE \qquad taglio \,\, semionda \,\, negativa \quad (clamping)$$
 \end{wrapfigure}
 
 \subsection{emitter follower polarizzato}
-Per polarizzare il transistor, come mostrato dal circuito in Fig. \ref{fig:cc4}, è bastato collegare un capo della resistenza $R_E$ al polo negativo del generatore di corrente continua anziché a massa.
+Per polarizzare il transistor, come mostrato dal circuito in Fig. \ref{fig:cc4}, è bastato collegare un capo della resistenza $R_E$ al polo negativo del generatore di corrente continua anziché a terra.
 I componenti circuitali sono pertanto rimasti i medesimi del circuito emitter follower ``semplice''.
 Questa modifica al circuito è stata fatta per evitare, almeno parzialmente, il fenomeno di ``clamping''.
 
 Anche in questo caso abbiamo variato la frequenza dell'onda quadra nello stesso range preso in considerazione precedentemente: il risultato è mostrato in Fig. \ref{fig:cc3+cc4}.
 Ancora una volta il segnale in output è in fase con il segnale in input.
-Evitando il fenomeno di ``clamping'', abbiamo ottenuto in output un segnale sinusoidale con la stessa $V_{pp}$ e frequenza di quello in input, però abbassato di circa $\SI{0.6}{\volt}$.
+Evitando il fenomeno di ``clamping'', abbiamo ottenuto in output un segnale sinusoidale con la stessa $V_{pp}$ e stessa frequenza di quello in input, però ad una tensione minore di circa $\SI{0.6}{\volt}$. Tale fenomeno, come già detto, è dovuto alle giunzioni p-n del transistor.
 
-\begin{wrapfigure}[6]{r}[0pt]{36mm}
+\begin{wrapfigure}[17]{r}[0pt]{36mm}
 	\caption{cc5}
 	\includegraphics[height=45mm]{cc5.pdf}
 	\label{fig:cc5}
 \end{wrapfigure}
 
 \subsection{emitter follower con partitore}
-Anche in questo caso, poiché avevamo necessità di aggiungere diversi componenti al circuito, abbiamo staccato tutti i componenti dalla breadboard e assemblato il circuito da zero.
 
-\begin{figure}[h]
-\centering
-	\includegraphics[width=0.7\textwidth]{am.pdf}
-	\caption{}
-	\label{fig:am}
-\end{figure}
+%
+%\begin{figure}[H]
+%\centering
+%	\includegraphics[width=0.7\textwidth]{am.pdf}
+%	\caption{}
+%	\label{fig:am}
+%\end{figure}
+%
+
+Prima di montare il circuito riportato in Fig.(\ref{fig:cc5}), abbiamo dimensionato le resistenze $R_1$ e $R_2$ del partitore in modo da avere una tensione $V_E=\frac{V_{CC}}{2}$. Dobbiamo ricordare che tra base ed emettitore abbiamo una caduta di potenziale di $0.6V$. E' dunque immediato imporre la condizione $V_B=V_E + 0.6V \rightarrow V_B=\frac{V_{CC}}{2} + 0.6V $.
+
+Risulta immediato impostare dunque l'equazione che permette di calcolare i valori delle resistenze nel partitore:
+
+\begin{equation}
+\frac{R_2}{R_1+R_2} V_{CC}=\frac{V_{CC}}{2} + 0.6V
+\label{partitore}
+\end{equation}
+
+Evidentemente i valori delle resistenze non sono univocamente determinati da Eq.(\ref{partitore}). Sarà dunque necessario utilizzare anche un'altra equazione. Una caratteristica dell'emitter follower è quella di avere un impedenza in entrata molto grande e una in uscita piccola. Tale caratteristica si realizza quando è soddisfatta la seguente equazione:
+
+\begin{equation}
+\frac{R_2}{R_1+R_2} <<\beta R_E
+\label{partitore2}
+\end{equation}
+
+con $\beta$ il guadagno in corrente del transistor ed $R_E=(4.702\pm0.3)\si{\kilo\ohm}$. Assumendo un guadagno $\approx 100$ e per molto minore $\frac{1}{10}$, otteniamo il seguente sistema:
+
+\begin{equation}
+\begin{cases}
+\frac{R_2}{R_1+R_2} V_{CC}=\frac{V_{CC}}{2} + 0.6V\\
+\frac{R_2}{R_1+R_2} =\frac{1}{10} 100 \cdot R_E
+\end{cases}
+\end{equation}
+
+
+Risolvendolo algebricamente otteniamo i valori $R_1=100$ e $R_2=122$. I valori effettivamente utilizzati sono stati $R_1=(99.6\pm0.1)\si{\kilo\ohm}$ e $R_2=(122.1\pm0.2) \si{\kilo\ohm})$.
+
+Avendo utilizzato un partitore, è necessario isolare il generatore di forme d'onda dal partitore stesso. Per fare ciò abbiamo dunque inserito un capacitore $C_1$ come mostrato in Fig.(\ref{fig:cc5}).
+\`E inoltre necessario inserire un capacitore in uscita per tagliare la componente continua di tensione dovuta alla corrente continua che scorre nell'emettitore sovrapposta al segnale variabile nel tempo. 
+Avendo utilizzato un capacitore $C_1=(0.990\pm0.004)\si{\micro\farad}$, è necessario trovare un valore adeguato di $C_2$ in modo che la banda passante di frequenze non sia ulteriormente limitata. Per fare ciò è stato dunque trovata la frequenza di taglio dovuta al condensatore $C_1$ ricordando che essa dipende dalla costante di tempo del circuito RC:
+
+\begin{equation}
+f_t=\frac{1}{2\pi \tau} 
+\label{taglio}
+\end{equation}
+
+con $\tau=C_1 \cdot R_1//R_2$.
+
+Inserendo i valori numerici otteniamo $f_t=2.9 \si{\hertz}$.
+
+
+Invertendo Eq.(\ref{taglio}) è dunque possibile imporre la condizione di avere una frequenza di taglio uguale o minore alla $f_t$ appena trovata: 
+
+\begin{equation}
+C_2>\frac{1}{2\pi f_t R^*}
+\end{equation}
+
+Con $R^*=R_E//\frac{R_2R_1}{(R_1+R_2)(\beta +1)}$ in quanto il condensatore è sia caricato dalla resistenza $R_E$ che dall'impedenza in uscita del transistor (per comodità di calcolo è stata usata $\beta=100$). Il valore che si ottiene inserendo i dati numerici è di $C_2>320\si{\micro\farad}$\footnote{Il valore di $C_2$ ottenuto con questo calcolo non è compatibile con quello utilizzato effettivamente. Infatti ci aspettavamo una frequenza di taglio di molto maggiore ai \SI{3}{\hertz} avendo utilizzato una $C_2$ circa 50 volte inferiore a quella stimata. I dati sperimentali tuttavia non confermano tale aspettativa.}. Il valore effettivamente utilizzato è $C_2=(6.728 \pm 0.005)\si{\micro\farad}$. 
+
+
+Come già anticipato nella sezione precedente, il fenomeno di ``clamping'' avviene anche nel caso dei circuti emitter follower polarizzato ed emitter follower con partitore.
+Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione il transistor in tutta o in parte  della semionda negativa. Ricordiamo che si può avere un effetto di claping anche sulla semionda positiva, nel caso in cui la tensione di base superi quella di collettore. 
+In Fig. \ref{fig:clamp} è rappresentato il fenomeno di clamping parziale nel caso del circuito emitter follower con partitore per i valori di frequenza \SI{122341324}{\hertz} e tensione $V_{pp} = \SI{122341324}{\volt}$. Possiamo notare come la presenza dei capacitori abbia conseguenze sulla fase del segnale in uscita.
+
 
 \begin{figure}[h]
 \centering
@@ -66,7 +122,3 @@ Anche in questo caso, poiché avevamo necessità di aggiungere diversi component
 	\caption{}
 	\label{fig:clamp}
 \end{figure}
-
-Come già anticipato nella sezione precedente, il fenomeno di ``clamping'' avviene anche nel caso dei circuti emitter follower polarizzato ed emitter follower con partitore.
-Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione (\ref{}) il transistor in tutta o in parte  della semionda negativa.
-In Fig. \ref{fig:clamp} è rappresentato il fenomeno nel caso del circuito emitter follower con partitore per i valori di frequenza \SI{122341324}{\hertz} e tensione $V_{pp} = \SI{122341324}{\volt}$
