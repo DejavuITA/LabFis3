@@ -18,7 +18,7 @@ rcParams['font.size'] = 15
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(12, 7), dpi=65)
 # Titolo del grafico
-f1.suptitle(r'emitter follower con partitore: fenomeno del $clamping$', y=0.97, fontsize=17)
+f1.suptitle(r'emitter follower con partitore: fenomeno del $clipping$', y=0.97, fontsize=17)
 
 # GRAFICO 1
 ax1 = host_subplot(111, axes_class=AA.Axes)

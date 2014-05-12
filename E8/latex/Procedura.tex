@@ -15,7 +15,17 @@ Per studiare il range in cui il transistor può lavorare come interruttore e dov
 	I_{tot} = I_B + I_C \quad \rightarrow \quad I_C = I_{tot} - I_B
 \end{equation*}
 
-Variando il valore di resistenza $R_B$ della decade abbiamo ottenuto un set di dati che correlava $I_B$ a $I_C$. Il problema di questo metodo è la risoluzione del dato di corrente fornito dal generatore. Esso infatti non ha un numero di cifre significative uguale a quello dell'amperometro. Nonostante questa problematica, gli strumenti a nostra disposizione sono stati sufficienti per ricavare approssimativamente un range di lavoro per il transistor.
+
+\begin{wrapfigure}[22]{r}[0pt]{125mm}
+	\includegraphics[width=125mm]{saturazione_2.pdf}
+	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base. I dati per $I_B \geq 1.05$ non sono mostrati perché poco significativi.}
+	\label{fig:saturazione}
+\end{wrapfigure}
+
+Variando il valore di resistenza $R_B$ della decade abbiamo ottenuto un set di dati che correlava $I_B$ a $I_C$.
+Il problema di questo metodo è la risoluzione del dato di corrente fornito dal generatore.
+Esso infatti non ha un numero di cifre significative uguale a quello dell'amperometro.
+Nonostante questa problematica, gli strumenti a nostra disposizione sono stati sufficienti per ricavare approssimativamente un range di lavoro per il transistor.
 
 %%%	- questo grafico è la versione con tutti i dati - %%%
 %\begin{wrapfigure}[18]{r}[0pt]{120mm}
@@ -25,25 +35,18 @@ Variando il valore di resistenza $R_B$ della decade abbiamo ottenuto un set di d
 %\end{wrapfigure}
 
 %%%	- questo grafico è la versione con i dati compresi tra 0 e 1.05- %%%
-\begin{wrapfigure}[17]{r}[0pt]{118mm}
-	\includegraphics[width=120mm]{saturazione_2.pdf}
-	\caption{I grafico mostra la corrente da cui è percorso il diodo in funzione della corrente di base. I dati per $I_B \geq 1.05$ non sono mostrati perché poco significativi.}
-	\label{fig:saturazione}
-\end{wrapfigure}
 
 Dai dati graficati in Fig. \ref{fig:saturazione} abbiamo dedotto che il range di lavoro del transistor è lineare per $I_B \leq \SI{40}{\micro\ampere}$, mentre per $I_B \geq \SI{100}{\micro\ampere}$ il transistor è sicuramente in saturazione. Nel range in cui il transistor non è in saturazione è possibile usare la decade di resistenze come ''potenziometro`` per comandare l'intensità della luce emessa dal LED.
-
-\subsection{interruttore veloce}
-Per questa parte dell'esperienza abbiamo montato il circuito mostrato in Fig. \ref{fig:cc2}.
-
-La decade è stata settata a \SI{10}{\kilo\ohm} ($R_B = (9993 \pm 2)\si{\ohm}$), mentre la resistenza $R_C$ è rimasta la stessa del circuito precedente.
-Il circuito è stato infine alimentato con un'onda quadra ad una frequenza compresa nel range $10-100\,\si{\hertz}$. %il valore di R_B l'ho inventato!%
-
-\begin{wrapfigure}[12]{r}[0pt]{35mm}
-	\caption{Transistor come interruttore veloce.}
+\newpage
+\begin{wrapfigure}[13]{r}[0pt]{35mm}
 	\includegraphics[width=35mm]{cc2.pdf}
+	\caption{Transistor come interruttore veloce.}
 	\label{fig:cc2}
 \end{wrapfigure}
+\subsection{interruttore veloce}
+Per questa parte dell'esperienza abbiamo montato il circuito mostrato in Fig. \ref{fig:cc2}.
+La decade è stata settata a \SI{10}{\kilo\ohm} ($R_B = (9993 \pm 2)\si{\ohm}$), mentre la resistenza $R_C$ è rimasta la stessa del circuito precedente.
+Il circuito è stato infine alimentato con un'onda quadra ad una frequenza compresa nel range $10-100\,\si{\hertz}$. %il valore di R_B l'ho inventato!%
 
 È stata poi condotta un'analisi puramente qualitativa sul funzionamento dell'interruttore. Abbiamo osservato che impostando la frequenza dell'onda quadra ad un valore di pochi \si{\hertz} si notava il lampeggio del LED. Aumentando gradualmente la frequenza si faceva sempre più difficoltà a percepire lo sfarfallio della luce emessa, fino ad una frequenza di circa \SI{55}{\hertz}, da noi dichiarata come frequenza limite, cioè la frequenza a cui non si nota più lo sfarfallio, ma si osserva una luce accesa.
 
