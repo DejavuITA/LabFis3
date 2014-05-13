@@ -97,9 +97,9 @@ f_t=\frac{1}{2\pi \tau}
 \label{taglio}
 \end{equation}
 
-con $\tau=C_1 \cdot R_1//R_2$.
+con $\tau=C_1 \cdot (\beta R_E//R_1//R_2+R_s)$. Ricordiamo che $R_s$ è l'impedenza in uscita del generatore di forme d'onda e $\beta R_E$ l'impedenza in ingresso dell'emitter follower.
 
-Inserendo i valori numerici otteniamo $f_t=2.9 \si{\hertz}$.
+Inserendo i valori numerici otteniamo $f_t=3.3 \si{\hertz}$.
 
 
 Invertendo Eq.(\ref{taglio}) è dunque possibile imporre la condizione di avere una frequenza di taglio uguale o minore alla $f_t$ appena trovata: 
@@ -108,7 +108,7 @@ Invertendo Eq.(\ref{taglio}) è dunque possibile imporre la condizione di avere 
 C_2>\frac{1}{2\pi f_t R^*}
 \end{equation}
 
-Con $R^*=R_E//\frac{R_2R_1}{(R_1+R_2)(\beta +1)}$ in quanto il condensatore è sia caricato dalla resistenza $R_E$ che dall'impedenza in uscita del transistor (per comodità di calcolo è stata usata $\beta=100$). Il valore che si ottiene inserendo i dati numerici è di $C_2>320\si{\micro\farad}$\footnote{Il valore di $C_2$ ottenuto con questo calcolo non è compatibile con quello utilizzato effettivamente. Infatti ci aspettavamo una frequenza di taglio di molto maggiore ai \SI{3}{\hertz} avendo utilizzato una $C_2$ circa 50 volte inferiore a quella stimata.}.
+Con $R^*=R_E//\frac{R_2R_1}{(R_1+R_2)(\beta +1)}$ in quanto il condensatore è sia caricato dalla resistenza $R_E$ che dall'impedenza in uscita dell'emitter follower (per comodità di calcolo è stata usata $\beta=100$). Il valore che si ottiene inserendo i dati numerici è di $C_2>320\si{\micro\farad}$\footnote{Il valore di $C_2$ ottenuto con questo calcolo non è compatibile con quello utilizzato effettivamente. Infatti ci aspettavamo una frequenza di taglio di molto maggiore ai \SI{3}{\hertz} avendo utilizzato una $C_2$ circa 50 volte inferiore a quella stimata.}.
 
 Tale valore è enorme rispetto alle capacità solitamente utilizzate. Abbiamo dunque deciso di utilizzare una capacità di $C_2=(6.728 \pm 0.005)\si{\micro\farad}$ e di controllare sperimentalmente se la frequenza di taglio era effettivamente attorno ai 150\si{\hertz}.
 
@@ -121,13 +121,13 @@ Come vediamo, la capacità $C_2$ utilizzata non influenza assolutamente la frequ
 
 
 Come già anticipato nella sezione precedente, il fenomeno di ``clipping'' avviene anche nel caso dei circuti emitter follower polarizzato ed emitter follower con partitore.
-Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione il transistor in tutta o in parte  della semionda negativa. Ricordiamo che si può avere un effetto di claping anche sulla semionda positiva, nel caso in cui la tensione di base superi quella di collettore. 
+Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione il transistor in tutta o in parte  della semionda negativa. Ricordiamo che si può avere un effetto di ``clipping'' anche sulla semionda positiva, nel caso in cui la tensione di base superi quella di collettore. 
 In Fig. \ref{fig:clip} è rappresentato il fenomeno di clipping parziale nel caso del circuito emitter follower con partitore per i valori di frequenza \SI{10}{\hertz} e tensione $V_{pp} = \SI{14}{\volt}$. Possiamo notare come la presenza dei capacitori abbia conseguenze sulla fase del segnale in uscita.
 
 
 \begin{figure}[h]
 \centering
 	\includegraphics[width=0.7\textwidth]{clip.pdf}
-	\caption{}
+	\caption{Nel grafico notiamo come il clipping riguardi solo la semiasse negativa. Ciò è dovuto al fatto che la polarizzazione della base tramite il partitore non era perfettamente simmetrica.}
 	\label{fig:clip}
 \end{figure}
