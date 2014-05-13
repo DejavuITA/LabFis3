@@ -20,7 +20,7 @@ f1.suptitle("Transistor BC107B\nCorrente di base in funzione di corrente di coll
 
 # GRAFICO 1
 ax1 = host_subplot(111, axes_class=AA.Axes)
-m= 12/0.039
+m= 327#12/0.039
 slope = ax1.errorbar(x=np.arange(-0.1,0.1,0.01), y=m*np.arange(-0.1,0.1,0.01),
 		fmt='-', c='black', linewidth=2)
 sat = ax1.errorbar(x=ib, y=ic-ib,

@@ -83,6 +83,24 @@ ax2.grid(True)
 ax2.legend((in4, out4), ("input sig.", "output sig."),
 	'upper right', prop={'size': 16})
 
+ax1.annotate('', xy=(-20, 5.1),  xycoords='data',
+                xytext=(-20, 4.3), textcoords='data', va='center',
+                arrowprops=dict(arrowstyle="<->",
+                                )
+                )
+ax1.axhline(5,color='black',linewidth=1,linestyle='dashed')
+ax1.axhline(4.4,color='black',linewidth=1,linestyle='dashed')
+ax1.text(-20,4.7,r' $\Delta v = 0.6 V$',fontsize=16,ha='left',va='center')
+
+ax2.annotate('', xy=(-20, 5.1),  xycoords='data',
+                xytext=(-20, 4.3), textcoords='data', va='center',
+                arrowprops=dict(arrowstyle="<->",
+                                )
+                )
+ax2.axhline(5,color='black',linewidth=1,linestyle='dashed')
+ax2.axhline(4.4,color='black',linewidth=1,linestyle='dashed')
+ax2.text(-20,4.7,r' $\Delta v = 0.6 V$',fontsize=16,ha='left',va='center')
+
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.04, right=0.96,
     top=0.92, bottom=0.09, hspace=0.08, wspace=0.04)
