@@ -40,4 +40,6 @@ Come si vede graficamente, per valore di $R_L<\SI{10}{\kilo\ohm}$, il valore di 
 Per valori di $R_L>\SI{10}{\kilo\ohm}$ la corrente decresce.
 Ciò è dovuto al fatto che, se la differenza di tensione collettore-emettitore è inferiore a \SI{0.2}{\volt}, il transistor entra in saturazione e a quel punto la corrente di  collettore non è più determinata dalla corrente di base ma dal carico $R_L$.
 Risulta immediato verificare che  per un valore di carico superiore a $\SI{10}{\kilo\ohm}$ i dati obbediscono alla legge di Ohm (come si nota in Fig. \ref{fig:sorg}, linea verde).
-Per ottenere una legge che fitta i dati è stato necessario correggere il circuito con la resistenza interna all'amperometro.
+Per ottenere una legge che fitta i dati è stato necessario correggere il circuito con la resistenza interna all'amperometro ($R_A = \SI{200}{\ohm}$).
+La legge è risultata essere:
+$$		I_L (R_L) =\frac{V_{cc}}{R_L+R_E+R_A}	$$
