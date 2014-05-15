@@ -6,7 +6,7 @@
 
 \section{Sorgente di corrente costante}
 Prima di montare il circuito riportato in Fig. \ref{fig:cc1}, abbiamo dimensionato le resistenze $R_1$ e $R_2$ del partitore in modo da avere una sorgente di corrente costante $I_L \lesssim \SI{1}{\milli\ampere}$.
-Avendo scelto come $R_E=(997.3 \pm 0.2)\,\si{\ohm}$ e utilizzando la relazione $I_L+I_B=I_E \Rightarrow I_L \approx I_E$ \footnote{Nei transistor la corrente di base è circa 100 volte inferiore rispetto a quella di collettore ed emettitore.} possiamo facilmente calcolare la tensione di base necessaria per fornire una $I_L \lesssim \SI{1}{\milli\ampere}$: $V_B=I_L \cdot R_E + 0.6V$.
+Avendo scelto come $R_E=(997.3 \pm 0.2)\,\si{\ohm}$ e utilizzando la relazione $I_L+I_B=I_E \Rightarrow I_L \approx I_E$ \footnote{Nei transistor la corrente di base è almeno 100 volte inferiore rispetto a quella di collettore ed emettitore.} possiamo facilmente calcolare la tensione di base necessaria per fornire una $I_L \lesssim \SI{1}{\milli\ampere}$: $V_B=I_L \cdot R_E + 0.6V$.
 Il secondo termine deriva dal fatto che tra base ed emettitore, essendo una giunzione p-n, vi è una caduta di tensione pari a $\SI{0.6}{\volt}$.
 
 Risulta immediato impostare dunque l'equazione che permette di calcolare i valori delle resistenze nel partitore:
@@ -36,10 +36,10 @@ Il grafico di $I_L$ in funzione del carico è riportato in Fig. \ref{fig:sorg}.
 
 Ricordiamo anzitutto che avendo avuto una $I_L<\SI{1}{\milli\ampere}$ per qualsiasi carico, abbiamo utilizzato il multimetro in modalità amperometro con un fondo-scala di $\SI{1}{\milli\ampere}$ senza mai cambiarlo (così facendo abbiamo evitato di dover correggere i dati per le diverse resistenze interne dello strumento stesso).
 
-Come si vede graficamente, per valore di $R_L<\SI{10}{\kilo\ohm}$, il valore di corrente di collettore è pressoché costante.
+Come si vede graficamente, per valori di $R_L<\SI{10}{\kilo\ohm}$, la corrente di collettore è pressoché costante.
 Per valori di $R_L>\SI{10}{\kilo\ohm}$ la corrente decresce.
 Ciò è dovuto al fatto che, se la differenza di tensione collettore-emettitore è inferiore a \SI{0.2}{\volt}, il transistor entra in saturazione e a quel punto la corrente di  collettore non è più determinata dalla corrente di base ma dal carico $R_L$.
 Risulta immediato verificare che  per un valore di carico superiore a $\SI{10}{\kilo\ohm}$ i dati obbediscono alla legge di Ohm (come si nota in Fig. \ref{fig:sorg}, linea verde).
-Per ottenere una legge che fitta i dati è stato necessario correggere il circuito con la resistenza interna all'amperometro ($R_A = \SI{200}{\ohm}$).
+Per ottenere una legge che fitti i dati è stato necessario correggere il circuito con la resistenza interna all'amperometro ($R_A = \SI{200}{\ohm}$).
 La legge è risultata essere:
 $$		I_L (R_L) =\frac{V_{cc}}{R_L+R_E+R_A}	$$
