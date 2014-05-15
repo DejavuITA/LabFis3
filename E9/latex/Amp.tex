@@ -32,7 +32,7 @@ Nel seguente grafico sono riportati i dati dell'oscilloscopio.
 
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{amp.pdf}
+	\includegraphics[scale=0.425]{amp.pdf}
 	\caption{Amplificatore ad emettitore comune. Nel grafico a sinistra è riportato il comportamento dell'amplificatore nella zona ottimale, mentre nella zona a destra è riportato l'andamento del segnale in uscite nelle condizioni di ``\emph{clipping}''. Come vediamo tale fenomeno si realizza per tensioni oltre $\approx 10V$ (tensione $V_{CC}$) e inferiori a $\approx 0.6V$ (tensione minima $V_{BE}$). }
 	\label{fig:amp}
 \end{figure}
@@ -54,10 +54,10 @@ Per ovviare al problema dell'$offset$ del segnale in uscita potremmo inserire un
 \section{Caratteristica di uscita}
 
 In questa ultima parte dell'esperienza abbiamo cercato di analizzare la caratteristica di uscita del transistor.
-Per fare ciò abbiamo montato il circuito in Fig. \ref{fig:cc3}. Come valori delle resistenze sono stati usati $R_b=(100.05\pm0.02)\si{\kilo\ohm}$ e $R_e=(9.96\pm 0.03)\si{\ohm}$.
+Per fare ciò abbiamo montato il circuito in Fig. \ref{fig:cc3}. Come valori delle resistenze sono stati usati $R_b=(100.05\pm0.02)\,\si{\kilo\ohm}$ e $R_e=(9.96\pm 0.03)\,\si{\ohm}$.
 
 Alimentandolo con un'onda sinusoidale di frequenza $\SI{1}{\kilo\hertz}$, con tensione picco-picco $V_{pp} = \SI{10}{\volt}$ e offset di $+\SI{5}{\volt} \, DC$ e impostando l'oscilloscopio in configurazione XY, possiamo ottenere la caratteristica di uscita per diverse correnti di base (impostate cambiando la $V_B$).
-I dati forniti dall'oscilloscopio sono la tensione di emettitore e quella di collettore. È dunque immediato calcolare $V_{CE}=V_{CH2}-V_{CH1}$ e la corrente di collettore (che è praticamente identica a quella di emettitore) $I_C=\frac{V_{CH2}}{R_e}$. Riportiamo i dati elaborati nel seguente grafico. 
+I dati forniti dall'oscilloscopio sono la tensione di emettitore e quella di collettore. È dunque immediato calcolare $V_{CE}=V_{CH2}-V_{CH1}$ e la corrente di collettore (che è praticamente identica a quella di emettitore) $I_C=\frac{V_{CH2}}{R_e}$. Riportiamo i dati elaborati nel grafico in Fig. \ref{fig:xy}.
 
 \begin{figure}[h]
 \centering
@@ -66,7 +66,9 @@ I dati forniti dall'oscilloscopio sono la tensione di emettitore e quella di col
 	\label{fig:xy}
 \end{figure}
 
-Come vediamo, possiamo notare diverse zone sul grafico. Quando la tensione $V_{CE}$ è bassa la corrente di collettore non è determinata dalla corrente di base. Si definisce tale range di valori di tensione regione di saturazione del transistor. 
+Nel grafico si possono notare diverse zone.
+Quando la tensione $V_{CE}$ è bassa, la corrente di collettore non è determinata dalla corrente di base.
+Tale range di valori di tensione si definisce regione di saturazione del transistor. 
 
 Per valori di corrente di base troppo piccoli ($\approx 1 \si{\micro\ampere}$) non abbiamo nessuna corrente di collettore. In tale caso si dice che il transistor è interdetto.
 
