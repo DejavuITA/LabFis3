@@ -10,16 +10,20 @@ Per assemblare i seguenti circuiti, non avendo più bisogno della decade di resi
 
 \subsection{emitter follower semplice}
 Il nuovo circuito, mostrato in Fig. \ref{fig:cc3}, è stato alimentato tramite il generatore di forme d'onda con un'onda sinusoidale ad una tensione picco-picco $V_{pp} = \SI{10}{\volt}$.
-Il valori delle reistenze usate sono $R_E = (4655.0 \pm 0.2)\,\si{\ohm}$ e $R_B = (2002.4 \pm 0.2)\,\si{\ohm}$.
+Il valori delle resistenze usate sono $R_E = (4655.0 \pm 0.2)\,\si{\ohm}$ e $R_B = (2002.4 \pm 0.2)\,\si{\ohm}$.
 Per osservare il segnale in uscita è stato collegato l'oscilloscopio all'emettitore del transistor.
 
 Una volta collegato il circuito, abbiamo osservato che variando la frequenza tra \SI{1}{\kilo\hertz} e \SI{20}{\kilo\hertz} l'immagine mostrata a schermo dall'oscilloscopio, se escludiamo la scala temporale di riferimento, non variava.
 Il segnale in output era infatti sempre in fase con il segnale in input, come si può osservare dall'immagine in Fig. \ref{fig:cc3+cc4}, che rappresenta la situazione per $f = \SI{20}{\kilo\hertz}$.
 Inoltre il segnale in output (tratteggiato) è in modulo sempre minore del segnale in input.
-Tale differenza è dovuta al fatto che il transistor utilizzato è formato da giunzioni p-n e, come visto nell'esperienza sul diodo, tale giunzione ha una caduta in diretta di circa $0.6\si{\volt}$. Come vediamo anche graficamente, la differenza tra segnale in input e output è di circa $0.6\si{\volt}$, per l'esattezza di $(0.607\pm0.001)\si{\volt}$.
+Tale differenza è dovuta al fatto che il transistor utilizzato è formato da giunzioni p-n e, come visto nell'esperienza sul diodo, tale giunzione ha una caduta in diretta di $0.6\si{\volt}$.
+Come osserviamo dai dati, riportati in Fig. \ref{fig:cc3+cc4}, la differenza di tensione tra i due segnali è di $(0.607\pm0.001)\si{\volt}$.
 
 Infine, in corrispondenza di ogni semionda negativa, in segnale in output era nullo.
-Tale fenomeno è chiamato ``\emph{clipping}''. Motivazione di tale taglio è la polarizzazione della base rispetto all'emettitore. Infatti il transistor funziona finché la tensione di base è superiore di \SI{0.6}{\volt} a quella di emettitore. Avendo l'emettitore collegato a terra ($V=0$) e la base ad una $V=0+v(t)$, è immediato vedere che non appena la tensione di base è minore di \SI{0.6}{\volt} il transistor sarà interdetto e dunque la tensione rilevata dall'oscilloscopio sarà \SI{0}{\volt}.
+Tale fenomeno è chiamato ``\emph{clipping}''.
+Motivazione di tale taglio è la polarizzazione della base rispetto all'emettitore.
+Infatti il transistor funziona finché la tensione di base è superiore di \SI{0.6}{\volt} a quella di emettitore.
+Avendo l'emettitore collegato a terra ($V=0$) e la base ad una $V=0+v(t)$, è immediato vedere che non appena la tensione di base è minore di \SI{0.6}{\volt} il transistor sarà interdetto e dunque la tensione rilevata dall'oscilloscopio sarà \SI{0}{\volt}.
 
 \begin{figure}[H]
 \centering
@@ -39,8 +43,10 @@ Per polarizzare il transistor, come mostrato dal circuito in Fig. \ref{fig:cc4},
 I componenti circuitali sono pertanto rimasti i medesimi del circuito emitter follower ``semplice''.
 Questa modifica al circuito è stata fatta per evitare, almeno parzialmente, il fenomeno di ``clipping''.
 
-Anche in questo caso abbiamo variato la frequenza dell'onda quadra nello stesso range preso in considerazione precedentemente: il risultato è mostrato in Fig. \ref{fig:cc3+cc4}.
-Ancora una volta il segnale in output è in fase con il segnale in input.
+Anche in questo caso abbiamo variato la frequenza del segnale nello stesso range preso in considerazione precedentemente.
+Ancora una volta il segnale in output è in fase con il segnale in input per ogni frequenza.
+In Fig. \ref{fig:cc3+cc4} sono mostrati i segnali risultanti per una frequenza di \SI{20}{\kilo\hertz}.
+
 Evitando il fenomeno di ``clipping'', abbiamo ottenuto in output un segnale sinusoidale con la stessa $V_{pp}$ e stessa frequenza di quello in input, però ad una tensione minore di circa $\SI{0.6}{\volt}$. Tale fenomeno, come già detto, è dovuto alle giunzioni p-n del transistor.
 
 \begin{wrapfigure}[17]{r}[0pt]{45mm}
@@ -51,14 +57,8 @@ Evitando il fenomeno di ``clipping'', abbiamo ottenuto in output un segnale sinu
 
 \subsection{emitter follower con partitore}
 
-%\begin{figure}[H]
-%\centering
-%	\includegraphics[width=0.7\textwidth]{am.pdf}
-%	\caption{}
-%	\label{fig:am}
-%\end{figure}
-
-Prima di montare il circuito riportato in Fig. \ref{fig:cc5}, abbiamo dimensionato le resistenze $R_1$ e $R_2$ del partitore in modo da avere una tensione $V_E=\frac{V_{CC}}{2}$. Dobbiamo ricordare che tra base ed emettitore abbiamo una caduta di potenziale di $0.6V$. E' dunque immediato imporre la condizione $V_B=V_E + 0.6V \rightarrow V_B=\frac{V_{CC}}{2} + 0.6V $.
+Prima di montare il circuito riportato in Fig. \ref{fig:cc5}, abbiamo dimensionato le resistenze $R_1$ e $R_2$ del partitore in modo da avere una tensione $V_E=\frac{V_{CC}}{2}$.
+Dobbiamo ricordare che tra base ed emettitore abbiamo una caduta di potenziale di $0.6V$ e possiamo pertanto imporre la condizione $V_B=V_E + 0.6V \rightarrow V_B=\frac{V_{CC}}{2} + 0.6V $.
 
 Risulta immediato impostare dunque l'equazione che permette di calcolare i valori delle resistenze nel partitore:
 
@@ -67,7 +67,10 @@ Risulta immediato impostare dunque l'equazione che permette di calcolare i valor
 \label{partitore}
 \end{equation}
 
-Evidentemente i valori delle resistenze non sono univocamente determinati da Eq.(\ref{partitore}). Sarà dunque necessario utilizzare anche un'altra equazione. Una caratteristica dell'emitter follower è quella di avere un impedenza in entrata molto grande e una in uscita piccola. Tale caratteristica si realizza quando è soddisfatta la seguente equazione:
+Evidentemente i valori delle resistenze non sono univocamente determinati da Eq.(\ref{partitore}).
+Sarà dunque necessario utilizzare anche un'altra equazione.
+Una caratteristica dell'emitter follower è quella di avere un impedenza in ingresso molto grande e in uscita molto piccola.
+Tale caratteristica si realizza quando è soddisfatta la seguente equazione:
 
 \begin{equation}
 \frac{R_2}{R_1+R_2} <<\beta R_E
@@ -94,7 +97,7 @@ f_t=\frac{1}{2\pi \tau}
 \label{taglio}
 \end{equation}
 
-con $\tau=C_1 \cdot (\beta R_E//R_1//R_2+R_s)$. Ricordiamo che $R_s$ è l'impedenza in uscita del generatore di forme d'onda e $\beta R_E$ l'impedenza in ingresso dell'emitter follower.
+con $\tau=C_1 \cdot (\beta R_E//R_1//R_2+Z_s)$. Ricordiamo che $Z_s$ è l'impedenza in uscita del generatore di forme d'onda e $\beta R_E$ l'impedenza in ingresso dell'emitter follower.
 
 Inserendo i valori numerici otteniamo $f_t=\SI{3.3}{\hertz}$.
 
@@ -102,11 +105,14 @@ Invertendo Eq.(\ref{taglio}) è dunque possibile imporre la condizione di avere 
 
 \begin{equation}
 C_2>\frac{1}{2\pi f_t R^*}
+\label{eq:noncel'ha}
 \end{equation}
 
-Con $R^*=R_E//\frac{R_2R_1}{(R_1+R_2)(\beta +1)}$ in quanto il condensatore è sia caricato dalla resistenza $R_E$ che dall'impedenza in uscita dell'emitter follower (per comodità di calcolo è stata usata $\beta=100$). Il valore che si ottiene inserendo i dati numerici è di $C_2>\SI{320}{\micro\farad}$\footnote{Il valore di $C_2$ ottenuto con questo calcolo non è compatibile con quello utilizzato effettivamente. Infatti ci aspettavamo una frequenza di taglio di molto maggiore ai \SI{3}{\hertz} avendo utilizzato una $C_2$ circa 50 volte inferiore a quella stimata.}.
+Con $R^*=R_E//\frac{R_2R_1}{(R_1+R_2)(\beta +1)}$ in quanto il condensatore è sia caricato dalla resistenza $R_E$ che dall'impedenza in uscita dell'emitter follower. Il valore che si ottiene inserendo i dati numerici è di $C_2>\SI{320}{\micro\farad}$
+%\footnote{Il valore di $C_2$ ottenuto con questo calcolo non è compatibile con quello utilizzato effettivamente.Infatti ci aspettavamo una frequenza di taglio di molto maggiore ai \SI{3}{\hertz} avendo utilizzato una $C_2$ circa 50 volte inferiore a quella stimata.}
+.
 
-Tale valore è enorme rispetto alle capacità solitamente utilizzate. Abbiamo dunque deciso di utilizzare una capacità di $C_2=(6.728 \pm 0.005)\si{\micro\farad}$ e di controllare sperimentalmente se la frequenza di taglio era effettivamente attorno ai 150\si{\hertz}.
+Tale valore è enorme rispetto alle capacità solitamente utilizzate. Abbiamo dunque deciso di utilizzare una capacità di $C_2=(6.728 \pm 0.005)\si{\micro\farad}$ e di controllare sperimentalmente se la frequenza di taglio era effettivamente attorno ai 150\si{\hertz} poiché la capacità utilizzata era 50 volte pià piccola di quella calcolata tramite Eq. \ref{eq:noncel'ha}.
 
 I dati sperimentali confermano che la capacità utilizzata non limita la frequenza di taglio del circuito. Abbiamo dunque ipotizzato che la presenza dell'oscilloscopio influenzasse la carica del condensatore. Infatti, l'oscilloscopio ha un'impedenza in ingresso $Z_{in}=1\si{\mega\ohm}$. Per stimare correttamente $C_2$ dobbiamo considerare dunque: 
 
@@ -117,7 +123,8 @@ Come vediamo, la capacità $C_2$ utilizzata non influenza assolutamente la frequ
 
 
 Come già anticipato nella sezione precedente, il fenomeno di ``clipping'' avviene anche nel caso dei circuti emitter follower polarizzato ed emitter follower con partitore.
-Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione il transistor in tutta o in parte  della semionda negativa. Ricordiamo che si può avere un effetto di ``clipping'' anche sulla semionda positiva, nel caso in cui la tensione di base superi quella di collettore. 
+Ciò succede quando il segnale in ingresso ha un'ampiezza tale da mandare in interdizione il transistor.
+Ricordiamo infatti che si può avere un effetto di ``clipping'' anche sulla semionda positiva, nel caso in cui la tensione di base superi quella di collettore. 
 In Fig. \ref{fig:clip} è rappresentato il fenomeno di clipping parziale nel caso del circuito emitter follower con partitore per i valori di frequenza \SI{10}{\hertz} e tensione $V_{pp} = \SI{14}{\volt}$. Possiamo notare come la presenza dei capacitori abbia conseguenze sulla fase del segnale in uscita.
 
 
@@ -126,4 +133,16 @@ In Fig. \ref{fig:clip} è rappresentato il fenomeno di clipping parziale nel cas
 	\includegraphics[width=0.7\textwidth]{clip.pdf}
 	\caption{Nel grafico notiamo come il clipping riguardi solo la semiasse negativa. Ciò è dovuto al fatto che la polarizzazione della base tramite il partitore non era perfettamente simmetrica.}
 	\label{fig:clip}
+\end{figure}
+
+Riportiamo ora in Fig. \ref{fig:am} un grafico che correla tensione in uscita a tensione in entrata per due diverse frequenze del segnale in input.
+Si può osservare che per frequenze maggiori di \SI{3}{\hertz} (nel nostro caso \SI{10}{\hertz}) la tensione in uscita è uguale a quella in entrata.
+Per frequenze minori di \SI{3}{\hertz}, invece, notiamo come il segnale in uscita sia smorzato.
+Ciò è dovuto alla presenza di capacitori che limitano la banda passante agendo da filtri passa alto.
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=0.7\textwidth]{am.pdf}
+	\caption{}
+	\label{fig:am}
 \end{figure}

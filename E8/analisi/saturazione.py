@@ -15,7 +15,7 @@ rcParams['font.size'] = 15
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(10, 45/8), dpi=65)
 # Titolo del grafico
-f1.suptitle("Transistor BC107B\nCorrente di base in funzione di corrente di collettore",
+f1.suptitle("Transistor BC107B\nCorrente di collettore in funzione di corrente di base",
     y=0.97, fontsize=17)
 
 # GRAFICO 1

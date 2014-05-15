@@ -86,12 +86,15 @@ ma10 = ax1.errorbar(	x=(V09_1[184:504]-V09_2[184:504]), y=V09_2[184:504]*100,
 			fmt='-', c='#808080', linewidth=2)
 ma1 = ax1.errorbar(	x=(V10_1[212:532]-V10_2[212:532]), y=V10_2[212:532]*100,
 			fmt='-', c='#909090', linewidth=2)
-#    markersize=7, markeredgewidth=1)
+
+#iper = ax1.errorbar(	x=np.arange(0,11,0.001),
+#			y=300/np.arange(0,11,0.001),
+#			fmt='--', c='green', linewidth=2)
 
 ax1.text(5, -3.5, r'$V_{CE}$ [V]', ha='center', va='center', fontsize=16)
 ax1.set_ylabel(r'$I_C$ [mA]', labelpad=-4, fontsize=16)
 
-ax1.text(10.1, 1.2,'1.0 µA', ha='right', va='center', fontsize=16)
+ax1.text(10.1, 1.2,r'$I_B$ = 1.0 µA', ha='right', va='center', fontsize=16)
 ax1.text(9.6, 4.3,'10.4 µA', ha='center', va='center', fontsize=16)
 ax1.text(9.4, 8.5,'22.9 µA', ha='center', va='center', fontsize=16)
 ax1.text(9.2, 11.8,'32.6 µA', ha='center', va='center', fontsize=16)
@@ -102,28 +105,8 @@ ax1.text(8.4, 25.8,'71.5 µA', ha='center', va='center', fontsize=16)
 ax1.text(8.2, 29,'81.2 µA', ha='center', va='center', fontsize=16)
 ax1.text(8.0, 32,'90.9 µA', ha='center', va='center', fontsize=16)
 
-
-#ax1.annotate(r'$I_{sc}$', xy=(5.75, 0),  xycoords='data',
-#                xytext=(5.75-10, 50), textcoords='data',
-#		va='center', fontsize=20,
-#                arrowprops=dict(arrowstyle="->",
-#                                )
-#                )
-
 ax1.set_xlim((-0.25,10.25))
 ax1.set_ylim((-2,34))
-
-#ax1.set_xticks((-50,-40,-30,-20,-10,0,4.8,5.75))
-#ax1.set_xticklabels(('-50','-40','-30','-20','-10','0','4.8',''))
-#ax1.set_yticks((-100,-50,-25.5,-20.6,0,50,100))
-#ax1.set_yticklabels(('-100','-50','','-20.6','0','50','100'))
-
-# ax2 is responsible for "top" axis and "right" axis
-#ax2 = ax1.twin()
-#ax2.set_yticks((-100,-50,-25.5,-20.6,0,50,100))
-#ax2.set_yticklabels(("","","-25.5",))
-#ax2.set_xticks((-50,-40,-30,-20,-10,0,4.8,5.75))
-#ax2.set_xticklabels(('','','','','','','','5.75'))
 
 ax1.grid(True)
 
