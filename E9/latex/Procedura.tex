@@ -7,12 +7,12 @@
 \section{Sorgente di corrente costante}
 Prima di montare il circuito riportato in Fig. \ref{fig:cc1}, abbiamo dimensionato le resistenze $R_1$ e $R_2$ del partitore in modo da avere una sorgente di corrente costante $I_L=\SI{1}{\milli\ampere}$.
 Avendo scelto come $R_E=(997.3 \pm 0.2)\,\si{\ohm}$ e utilizzando la relazione $I_L+I_B=I_E \Rightarrow I_L \approx I_E$ \footnote{Nei transistor la corrente di base è circa 100 volte inferiore rispetto a quella di collettore ed emettitore.} possiamo facilmente calcolare la tensione di base necessaria per fornire una $I_L=1\si{\milli\ampere}$: $V_B=I_L \cdot R_E + 0.6V$.
-Il secondo termine deriva dal fatto che tra base ed emettitore, essendo una giunzione p-n, vi è una caduta di tensione pari a $0.6V$.
+Il secondo termine deriva dal fatto che tra base ed emettitore, essendo una giunzione p-n, vi è una caduta di tensione pari a $\SI{0.6}{\volt}$.
 
 Risulta immediato impostare dunque l'equazione che permette di calcolare i valori delle resistenze nel partitore:
 
 \begin{equation}
-\frac{R_2}{R_1+R_2} V_{CC}=I_L \cdot R_E + 0.6V
+\frac{R_2}{R_1+R_2} V_{CC}=I_L \cdot R_E + \SI{0.6}{\volt}
 \label{partitore}
 \end{equation}
 
@@ -38,7 +38,7 @@ Ricordiamo anzitutto che avendo avuto una $I_L<\SI{1}{\milli\ampere}$ per qualsi
 
 Come si vede graficamente, per valore di $R_L<\SI{10}{\kilo\ohm}$, il valore di corrente di collettore è pressoché costante.
 Per valori di $R_L>\SI{10}{\kilo\ohm}$ la corrente decresce.
-Ciò è dovuto al fatto che, se la differenza di tensione collettore-emettitore è inferiore a $0.2V$, il transistor entra in saturazione e a quel punto la corrente di  collettore non è più determinata dalla corrente di base ma dal carico $R_L$.
+Ciò è dovuto al fatto che, se la differenza di tensione collettore-emettitore è inferiore a \SI{0.2}{\volt}, il transistor entra in saturazione e a quel punto la corrente di  collettore non è più determinata dalla corrente di base ma dal carico $R_L$.
 Risulta immediato verificare che  per un valore di carico superiore a $\SI{10}{\kilo\ohm}$ i dati obbediscono alla legge di Ohm.
 
 %**dati del fit e spiegare se è possibile stimare Vce dai dati**   
@@ -53,7 +53,7 @@ Risulta immediato verificare che  per un valore di carico superiore a $\SI{10}{\
 
 Riportiamo in Fig. \ref{fig:cc2} lo schema del circuito utilizzato per questa seconda parte dell'esperienza.
 Anche in questo caso abbiamo dovuto dimensionare le resistenze del partitore e inoltre anche la capacità $C_1$.
-Avendo scelto come $R_E=(498.4\pm0.1)\,\si{\ohm}$ e volendo una corrente di quiescenza di $\approx \SI{1}{\milli\ampere}$ abbiamo stimato $V_B=1.1V$.
+Avendo scelto come $R_E=(498.4\pm0.1)\,\si{\ohm}$ e volendo una corrente di quiescenza di $\approx \SI{1}{\milli\ampere}$ abbiamo stimato $V_B=\SI{1.1}{\volt}$.
 Possiamo ora, attraverso Eq. (\ref{partitore}), calcolare i valori di $R_1$ e $R_2$.
 Avendo anche in questo caso scelto $R_1=(100.03\pm0.2)\,\si{\kilo\ohm}$ abbiamo utilizzato una $R_2=(12.16\pm0.01)\,\si{\kilo\ohm}$.
 Come segnale in ingresso è stata usata una forma d'onda sinusoidale a frequenza di $\SI{1}{\kilo\hertz}$.
@@ -97,10 +97,11 @@ $$G_{exp}=e^{i 0.9972 \pi} suca$$
 \section{Caratteristica di uscita}
 
 In questa ultima parte dell'esperienza abbiamo cercato di analizzare la caratteristica di uscita del transistor.
-Per fare ciò abbiamo montato il circuito in Fig. ().
-Alimentandolo con un'onda sinusoidale di frequenza $\SI{1}{\kilo\hertz}$, con tensione picco-picco di $10V$ e offset di $+5V \, DC$ e impostando l'oscilloscopio in configurazione XY, possiamo ottenere la caratteristica di uscita per diverse correnti di base (impostate cambiando la $V_B$).
+Per fare ciò abbiamo montato il circuito in Fig. \ref{fig:cc3}.
 
-\begin{figure}[H]
+Alimentandolo con un'onda sinusoidale di frequenza $\SI{1}{\kilo\hertz}$, con tensione picco-picco $V_{pp} = \SI{10}{\volt}$ e offset di $+\SI{5}{\volt} \, DC$ e impostando l'oscilloscopio in configurazione XY, possiamo ottenere la caratteristica di uscita per diverse correnti di base (impostate cambiando la $V_B$).
+
+\begin{figure}[h]
 \centering
 	\caption{Caratteristica di uscita del transistor}
 	\includegraphics[scale=0.45]{xy.pdf}
