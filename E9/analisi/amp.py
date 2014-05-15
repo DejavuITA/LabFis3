@@ -58,6 +58,8 @@ t_10 = data10['x']
 V1_10 = data10['1']
 V2_10 = data10['2']
 
+#print(np.amax(V1_03), np.amax(-V1_03), np.amax(V2_03), np.amax(-V2_03),)
+
 rcParams['font.size'] = 15
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(15, 7), dpi=65)
@@ -68,14 +70,14 @@ f1.suptitle("Amplificatore ad emettitore comune", y=0.97, fontsize=17)
 ax3 = host_subplot(121, axes_class=AA.Axes)
 
 in3 = ax3.errorbar(x=t_03*10**3, y=V1_03, fmt='-', c='blue', linewidth=2)
-out3 = ax3.errorbar(x=t_03*10**3, y=4.96+V2_03, fmt='-', c='red', linewidth=2)
-ax3.axhline(4.96, c='black', linewidth=1, linestyle='dashed')
+out3 = ax3.errorbar(x=t_03*10**3, y=5.95+V2_03, fmt='-', c='red', linewidth=2)
+ax3.axhline(5.95, c='black', linewidth=1, linestyle='dashed')
 
 ax3.text(0, -1.64, r'tempo [$ms$]', rotation='horizontal',
 	ha='center', va='center', fontsize=15)
 ax3.text(-1.20	, 4.5, r'd.d.p. [$V$]', rotation='vertical',
 	ha='center', va='center', fontsize=15)
-ax3.text(1,4.9, r'$offset$= 4.96$V$', ha='right', va='top', fontsize=15)
+ax3.text(1,5.9, r'$offset$= 5.95$V$', ha='right', va='top', fontsize=15)
 
 ax3.set_xlim((-1.1,1.1))
 ax3.set_ylim((-1,10))
@@ -89,14 +91,15 @@ ax3.legend((in3, out3), ("input sig.", "output sig."),
 ax4 = host_subplot(122, axes_class=AA.Axes)
 
 in4 = ax4.errorbar(x=t_05*10**3, y=V1_05, fmt='-', c='black', linewidth=2)
-out4 = ax4.errorbar(x=t_05*10**3, y=5.96+V2_05, fmt='-', c='green', linewidth=2)
-ax4.axhline(4.96, c='black', linewidth=1, linestyle='dashed')
+out4 = ax4.errorbar(x=t_05*10**3, y=5.95+V2_05, fmt='-', c='green', linewidth=2)
+ax4.axhline(5.95, c='black', linewidth=1, linestyle='dashed')
+#ax4.axhline(0.6, c='grey', linewidth=1, linestyle='dashed')
 
 ax4.text(0, -1.64, r'tempo [$ms$]', rotation='horizontal',
 	ha='center', va='center', fontsize=15)
 ax4.text(1.22, 4.5, r'd.d.p. [$V$]', rotation='vertical',
 	ha='center', va='center', fontsize=15)
-ax4.text(1,4.9, r'$offset$= 4.96$V$', ha='right', va='top', fontsize=15)
+ax4.text(1,5.9, r'$offset$= 5.95$V$', ha='right', va='top', fontsize=15)
 
 ax4.set_xlim((-1.1,1.1))
 ax4.set_ylim((-1,10))
