@@ -1,0 +1,47 @@
+\section{Amplificatore alle differenze}
+Un amplificatore alle differenze è un circuito che amplifica la differenza di due segnali in ingresso. 
+Il circuito da noi realizzato è rappresentato in Fig.().
+Come al solito abbiamo dimensionato le resistenze in modo da ottenere i valori di corrente di quiescenza richiesta ($I_q=\SI{0.5}{\milli\ampere}$), un guadagno differenziale di $\approx 30$ e un guadagno a modo comune inferiore a 1.
+
+Possiamo dunque imporre la seguente condizione:
+
+\begin{equation}
+V_B-V_E=2I_q R_1 + I_q R_E + 0.6
+\label{eq:1}
+\end{equation}
+
+Tale equazione tiene conto della geometria del circuito. Come vediamo essa non permette tuttavia una calcolo diretto di $R_E$ ed $R_1$. Per fare ciò è necessario imporre la condizione di $G_{diff} \approx 30$:
+
+\begin{equation}
+G_{diff}=\frac{R_C}{2(R_E+r_e)}
+\label{eq:2}
+\end{equation}
+
+Con $r_e$ resistenza intrinseca dell'emettitore. Come sappiamo dallo studio del modello $Early$, essa può essere stimata dall'equazione sperimentale $r_e = [\frac{25}{I_q}] \Omega$. Imponendo una corrente di quiescenza di \SI{0.5}{\milli\ampere} otteniamo immediatamente $r_e=50 \Omega$. 
+
+Infine, avendo utilizzato una $R_C=(9.972\pm0.002)\si{\kilo\ohm}$, è possibile attraverso eq.(\ref{eq:1}) e eq.(\ref{eq:2}) stimare i valori adeguati di $R_1$ ed $R_E$. 
+
+Come consigliato in laboratorio, sono state utilizzate una $R_E=(120\pm6) \Omega$\footnote{In questo caso abbiamo scelto di tenere il valore nominale fornito dal costruttore così da avere delle semplificazioni nel calcolo degli errori sui guadagni} e una $R_1= (9.933 \pm 0.002)\si{\kilo\ohm}$.
+
+Con questi valori di resistenza la corrente di quiescenza $I_q$ è di \SI{0.7}{\milli\ampere} (sperimentalmente abbiamo misurato una corrente di $(0.719 \pm 0.003) \si{\milli\ampere}$.
+
+Per rendere l'analisi dei segnali più semplice, abbiamo collegato il $V_{in}2$ a terra.
+Così facendo abbiamo ottenuto solo un'amplificazione del segnale in ingresso a $V_{in}1$. 
+
+Riportiamo ora un grafico dei dati sperimentali acquisiti. 
+
+$$****grafico****$$
+
+
+Il guadagno è stato stimato dai valori picco-picco del segnale in ingresso e di quello in input:
+
+$$G_{diff}=\frac{V_{out}}{V_{in}}$$
+
+Sperimentalmente abbiamo ottenuto il valore $G_{diff}=30.09 \pm 0.01$
+
+
+Utilizzando eq.(\ref{eq:2}) è possibile calcolare il valore di resistenza intrinseca dell'emettitore: $r_e=\frac{R_c-2R_E G_{diff}}{2G_{diff}}$.
+Sfruttando la composizione degli errori, abbiamo ottenuto il valore $r_e=$
+
+
+\section{Amplificatore alle differenze con sorgente di corrente}
