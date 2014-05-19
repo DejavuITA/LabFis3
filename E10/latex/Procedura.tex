@@ -21,8 +21,7 @@ Con $r_e$ resistenza intrinseca dell'emettitore. Come sappiamo dallo studio del 
 
 Infine, avendo utilizzato una $R_C=(9.972\pm0.002)\si{\kilo\ohm}$, è possibile attraverso eq.(\ref{eq:1}) e eq.(\ref{eq:2}) stimare i valori adeguati di $R_1$ ed $R_E$. 
 
-Come consigliato in laboratorio, sono state utilizzate una $R_E=(120\pm6) \Omega$\footnote{In questo caso abbiamo scelto di tenere il valore nominale fornito dal costruttore così da avere delle semplificazioni nel calcolo degli errori sui guadagni} e una $R_1= (9.933 \pm 0.002)\si{\kilo\ohm}$.
-
+Come consigliato in laboratorio, sono state utilizzate una $R_E=(118.9\pm0.5) \Omega$\footnote{In questo caso abbiamo scelto di eseguire un valor medio dei due valori misurati con il multimetro e di stimare un errore massimo definito come la semi-differenza dei due valori. Così facendo anche invertendo le resistenze nel circuito il valore reale sarà sempre compatibile con quello assunto nei calcoli.} e una $R_1= (9.933 \pm 0.002)\si{\kilo\ohm}$.
 Con questi valori di resistenza la corrente di quiescenza $I_q$ è di \SI{0.7}{\milli\ampere} (sperimentalmente abbiamo misurato una corrente di $(0.719 \pm 0.003) \si{\milli\ampere}$.
 
 Per rendere l'analisi dei segnali più semplice, abbiamo collegato il $V_{in}2$ a terra.
@@ -37,11 +36,32 @@ Il guadagno è stato stimato dai valori picco-picco del segnale in ingresso e di
 
 $$G_{diff}=\frac{V_{out}}{V_{in}}$$
 
-Sperimentalmente abbiamo ottenuto il valore $G_{diff}=30.09 \pm 0.01$
+Sperimentalmente abbiamo ottenuto il valore $G_{diff}=30.1 \pm 0.1$
 
 
 Utilizzando eq.(\ref{eq:2}) è possibile calcolare il valore di resistenza intrinseca dell'emettitore: $r_e=\frac{R_c-2R_E G_{diff}}{2G_{diff}}$.
-Sfruttando la composizione degli errori, abbiamo ottenuto il valore $r_e=$
+Sfruttando la composizione degli errori, abbiamo ottenuto il valore $r_e=(46.7\pm0.8)\Omega$.
 
+Abbiamo dunque calcolato il guadagno in modo comune definito come :
+
+\begin{equation}
+G_{CM}=-\frac{R_C}{2R_1+R_E+	r_e}
+\label{eq:3}
+\end{equation}
+
+Ricordiamo che il segno meno indica uno sfasamento tra i segnali di $\pi$.
+Sperimentalmente tale guadagno può essere calcolato ponendo $V_{in}1=V_{in}2$ e facendo il rapporto (nel nostro caso picco-picco) tra segnale in ingresso e in uscita:
+
+$$G_{CM}=\frac{V_{out}}{V_{in}}$$
+
+Il valore sperimentale risulta essere $G_{CM}=-0.483\pm0.003$. Anche in questo caso abbiamo provato a calcolare il valore di $r_e$ partendo da eq.(\ref{eq:3}) ma senza successo. Infatti non risulta possibile stimare in modo preciso il valore di resistenza intrinseca dell'emettitore partendo da tale equazione in quanto esso dipende è proporzionale all'inverso di $G_{CM}$ il quale è un valore inferiore a 1. Piccole variazioni nel guadagno in modo comune causano enormi cambiamenti nel valore di $r_e$. 
+
+Infine abbiamo calcolato il fattore di reiezione a modo comune (CMRR):
+
+\begin{equation}
+CMRR=\frac{G_{diff}}{G_{CM}}=62.3\pm0.5
+\end{equation}
+
+Più tale fattore risulta alto e più l'amplificatore alle differenze è efficace. Se ad esempio abbiamo un rumore identico su entrambi i canali di ingresso, un CMRR alto garantisce una riduzione di tale rumore sul segnale in output.
 
 \section{Amplificatore alle differenze con sorgente di corrente}
