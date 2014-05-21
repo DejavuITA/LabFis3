@@ -1,7 +1,7 @@
 \section{Amplificatore alle differenze}
-\begin{wrapfigure}[20]{r}[0pt]{55mm}
+\begin{wrapfigure}[15]{l}[0pt]{35mm}
 	\caption{Schema dell'amplificatore alle differenze}
-	\includegraphics[width=55mm]{cc1.pdf}
+	\includegraphics[width=35mm]{cc1.pdf}
 	\label{fig:cc1}
 \end{wrapfigure}
 
@@ -27,7 +27,7 @@ G_{diff}=\frac{R_C}{2(R_E+r_e)} = 30
 \label{eq:2}
 \end{equation}
 
-La resistenza intrinseca di emettitore $r_e$, come abbiamo appreso dallo studio del modello di \textit{Ebers-Moll}, può essere stimata dall'equazione sperimentale $r_e = \left[ \frac{25}{I_q} \right] \Omega$.
+La resistenza intrinseca di emettitore $r_e$, come abbiamo appreso dallo studio del modello di $Ebers-Moll$, può essere stimata dall'equazione sperimentale $r_e = \left[ \frac{25}{I_q} \right] \Omega$.
 Imponendo pertanto una corrente di quiescenza di $I_q = \SI{0.5}{\milli\ampere}$ otteniamo immediatamente $r_e = 50\, \Omega$.
 
 Infine, decidendo arbitrariamente il valore della resistenza $R_C=(9.972\pm0.002),\si{\kilo\ohm}$, è possibile attraverso eq. (\ref{eq:1}) e eq. (\ref{eq:2}) stimare i valori adeguati di $R_1$ ed $R_E$. 
@@ -39,14 +39,14 @@ $$R_E \, = \, \SI{116.667}{\ohm} \qquad \qquad \qquad R_1 \, = \, \SI{14.342}{\k
 
 \begin{equation}
 	\left| G_{CM} \right| \, = \, \left|  - \frac{R_C}{2 R_1 + R_E + r_e} \right| \, \leq \, 1
-	\label{eq:3}
+	\label{eq:4}
 \end{equation}
 
 da cui si ottiene:
 
 $$	R_1 \, \geq \, \frac{1}{2} \left( R_C - R_E - r_e \right) \, = \, \SI{4.917}{\kilo\ohm}	$$
 
-\noindent Il valore di $R_1$ viene pertanto verificato da eq. (\ref{eq:3})
+\noindent Il valore di $R_1$ viene pertanto verificato da eq. (\ref{eq:4})
 
 Come consigliato in laboratorio, sono state utilizzate una $R_E=(118.9\pm0.5) \,\Omega$\footnote{In questo caso abbiamo scelto di eseguire un valor medio dei due valori misurati con il multimetro e di stimare un errore massimo definito come la semi-differenza dei due valori. Così facendo anche invertendo le resistenze nel circuito il valore reale sarà sempre compatibile con quello assunto nei calcoli.} e una $R_1= (9.933 \pm 0.002)\,\si{\kilo\ohm}$.
 Con questi valori di resistenza la corrente di quiescenza $I_q$ è di \SI{0.7}{\milli\ampere} (sperimentalmente abbiamo misurato una corrente di $(0.719 \pm 0.003) \si{\milli\ampere}$.
@@ -65,44 +65,41 @@ Così facendo l'effetto dell'amplificatore alle differenze è stato quello di ot
 
 Il valore sperimentale per il guadagno differenziale è stato stimato dai valori picco-picco del segnale in ingresso e di quello in input:
 
-	$$G_{diff,exp}=\frac{V_{out,pp}}{V_{in,pp}} \, = \, 30.1 \pm 0.1$$
+$$G_{diff,exp}=\frac{V_{out,pp}}{V_{in,pp}} \, = \, 30.1 \pm 0.1$$
 
 Invertendo eq. (\ref{eq:2}) e sfruttando la composozione degli errori è possibile calcolare il valore di resistenza intrinseca dell'emettitore:
 
-$$ r_e \, = \, \frac{R_c}{2G_{diff}}-R_E \, = \, (46.7\pm0.8) \, \si{\ohm}$$
+$$ r_e \, = \, \frac{R_c-2R_E G_{diff}}{2G_{diff}} \, = \, (46.7\pm0.8) \, \si{\ohm}$$
 
-\noindent Per l'analisi del guadagno in modo comune, abbiamo collegato sia $V_{in1}$ che $V_{in2}$ al generatore di forme d'onda, in modo tale che entrambi i contatti fossero sempre allo stesso potenziale.
-Ne abbiamo dunque calcolato il valore sperimentale confrontando i valori di tensione picco-picco e abbiamo ottenuto il modulo del guadagno in modo comune:
-
-$$	G_{CM,exp} \,=\, -\frac{V_{out,pp}}{V_{in1,pp}} \, = \, -\frac{V_{out,pp}}{V_{in2,pp}} \, = \, -0.483 \pm 0.003$$
-
-\noindent Ricordiamo che il guadagno in modo comune è definito negativo ed il segno meno indica solamente uno sfasamento tra i segnali di $\pi$.
-
-Anche in questo caso abbiamo provato a calcolare il valore di $r_e$ partendo da eq. (\ref{eq:3}).
+\noindent Per l'analisi del guadagno in modo comune, abbiamo collegato sia $V_{in1}$ che $V_{in2}$ al generatore di forme d'onda, in modo tale che entrambi i contatti fossero sempre allo stessto potenziale
+Abbiamo dunque calcolato il guadagno in modo comune definito come :
 
 \begin{equation}
-	r_e \, = \, -\frac{R_C+G_{CM}R_E+2G_{CM}R_1}{G_{CM}}
+G_{CM}=-\frac{R_C}{2R_1+R_E+	r_e}
+\label{eq:3}
 \end{equation}
 
-\noindent In questo caso, tuttavia, piccole variazione di $G_{CM}$ producono una grande variazione per cui non risulta possibile stimare in modo preciso il valore di resistenza intrinseca dell'emettitore $r_e$ partendo da tale equazione.
+Ricordiamo che il segno meno indica uno sfasamento tra i segnali di $\pi$.
+Sperimentalmente tale guadagno può essere calcolato ponendo $V_{in1}=V_{in2}$ e facendo il rapporto (nel nostro caso picco-picco) tra segnale in ingresso e in uscita:
 
-Infine abbiamo calcolato il fattore di reiezione a modo comune (Common Mode Rejection Rate):
+$$G_{CM}=\frac{V_{out}}{V_{in}}$$
+
+Il valore sperimentale risulta essere $G_{CM} = -0.483 \pm 0.003$. Anche in questo caso abbiamo provato a calcolare il valore di $r_e$ partendo da eq.(\ref{eq:3}) ma senza successo.
+Infatti non risulta possibile stimare in modo preciso il valore di resistenza intrinseca dell'emettitore partendo da tale equazione in quanto esso è proporzionale all'inverso di $G_{CM}$ il quale è un valore inferiore a 1.
+Piccole variazioni nel guadagno in modo comune causano enormi cambiamenti nel valore di $r_e$. 
+
+Infine abbiamo calcolato il fattore di reiezione a modo comune (Common Mode Reaction Ratio):
 
 \begin{equation}
 CMRR=\frac{G_{diff}}{G_{CM}}=62.3\pm0.5
 \end{equation}
 
-Più tale fattore risulta alto e più l'amplificatore alle differenze è efficace.
-Se ad esempio abbiamo un rumore identico su entrambi i canali di ingresso, un CMRR alto garantisce una riduzione di tale rumore sul segnale in output.
-
-\newpage
+Più tale fattore risulta alto e più l'amplificatore alle differenze è efficace. Se ad esempio abbiamo un rumore identico su entrambi i canali di ingresso, un CMRR alto garantisce una riduzione di tale rumore sul segnale in output.
 
 \section{Amplificatore alle differenze con sorgente di corrente}
-
-
-\begin{wrapfigure}[19]{r}[0pt]{55mm}
+\begin{wrapfigure}[16]{l}[0pt]{35mm}
 	\caption{.}
-	\includegraphics[width=55mm]{cc2.pdf}
+	\includegraphics[width=35mm]{cc2.pdf}
 	\label{fig:cc2}
 \end{wrapfigure}
 
@@ -110,28 +107,16 @@ Se ad esempio abbiamo un rumore identico su entrambi i canali di ingresso, un CM
 Per migliorare il valore di $G_{CM}$ e di conseguenza quello di $CMRR$, si posiziona una sorgente di corrente costante a valle del circuito, come mostrato in Fig. \ref{fig:cc2}.
 
 In questa seconda parte dell'esperienza abbiamo analizzato il comportamento del circuito modificato con la sorgente di corrente costante.
-
-Abbiamo deciso di dimensionare le resistenze imponendo una corrente di collettore di \SI{1.5}{\milli\ampere} (così da avere una corrente di quiescenza di circa \SI{0.75}{\milli\ampere} attraverso ciascun transistor dell'amplificatore alle differenze) e una $R_1=1.5\si{\kilo\ohm}$ ( $R_1=(1.507 \pm 0.002)\si{\kilo\ohm}$). Possiamo dunque usare le relazioni $I_E=I_C+E_B \rightarrow I_E \approx I_C$, $I_E=\frac{V_E}{R_1}$ e $V_B=V_E+0.6$ per calcolare il valore di tensione di base necessario per ottenere una corrente di collettore di \SI{1.5}{\milli\ampere}. Successivamente, risulta immediato dimensionare le resistenze del partitore: 
-\begin{equation}
-V_B=(\frac{R_2}{R_2+R_3}-1) \cdot 15
-\label{eq:casagay}
-\end{equation}
-
-
-Anche in questo caso non possono essere determinate univocamente $R_2$ ed $R_3$ da eq. (\ref{eq:casagay}). \'E dunque nostro compito scegliere dei valori adeguati in modo da lasciar scorrere abbastanza corrente attraverso la base ma allo stesso tempo non dissipare troppa potenza attraverso le resistenze. Scegliendo un valore di $R_2=\SI{10}{\kilo\ohm}$ ($R_2=(9.933\pm0.002)\,\si{\kilo\ohm}$) otteniamo $R_3 \approx \SI{42.6}{\kilo\ohm}$. Nell'esperienza abbiamo utilizzato il valore suggerito dagli esercitatori di $\SI{33}{\kilo\ohm}$ ($(32.733 \pm 0.003)\,\si{\kilo\ohm}$). %#casalinoloprendeinculo 8=====D (*)
-
-Utilizzando i segienti 
-
-%Al circuito sono state aggiunte due resistenze di valore $R_2 = (1507.5 \pm 0.5)\,\si{\ohm}$ e $R_3 = (32.723 \pm 0.003)\,\si{\kilo\ohm}$ e un ulteriore transistor BC107B.
+Al circuito sono state aggiunte due resistenze di valore $R_2 = (1507.5 \pm 0.5)\,\si{\ohm}$ e $R_3 = (32.723 \pm 0.003)\,\si{\kilo\ohm}$ e un ulteriore transistor BC107B.
 
 Come fatto per il circuito precedente, abbiamo ricavato i valori del guadagno differenziale, del guadagno in modo comune e del fattore di reiezione a modo comune.
 
 \begin{equation}
-	G_{diff} = \frac{V_{out,pp}}{V_{in1,pp}} \, = \, 32.5 \,\pm\, 0.1
+	G_{diff} = \frac{V_{out}}{V_{in}} _{V_{in1} \neq V_{in2}} = 32.05 \pm ??
 \end{equation}
 \begin{equation}
-	G_{CM} = -\frac{V_{out,pp}}{V_{in1,pp}} \, = \, -\frac{V_{out,pp}}{V_{in2,pp}} = -(7 \pm 1) \times 10^{-4}
+	G_{CM} = \frac{V_{out}}{V_{in}} _{V_{in1} = V_{in2}} = ?? \pm ??
 \end{equation}
 \begin{equation}
-	CMRR = \frac{G_{diff}}{G_{CM}} = (50 \pm 7) \times 10^3
-\end{equation}	
+	CMRR = \frac{G_{CM}}{G_{diff}} = ?? \pm ??
+\end{equation}
