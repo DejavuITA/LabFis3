@@ -29,6 +29,14 @@ ax1.set_xscale('log')
 #teo1 = ax1.errorbar(x=[i**2 for i in range(8, 1000)],
 #y=[20*log10(np.absolute())],    fmt='-.', c='red')
 
+
+
+slope = ax1.errorbar(x=[i for i in np.logspace(2,7,num=1000)], y=[(-3.85)/(log10(500000)-log10(200000))*log10(i)+(-15.4+6.01/(log10(500000)-log10(200000))*log10(200000))
+			for i in np.logspace(2,7,num=1000)],
+			fmt='--', c='blue')
+ax1.text(140000, 6.8, u' approx slope:\n$-10\,dB/decade$', size=13, va='center')
+#slope = ax1.errorbar(x=np.logspace(4,7,num=1000), y = B*np.logspace(4,7,num=1000)+0, fmt='o-', c='black')
+
 signal = ax1.errorbar(x=freq*1000, y=10*np.log10(Vout*1000/Vin), fmt='.', c='black')
 
 ax1.axhline(y=10*log10(30), linewidth=1, color='grey', linestyle='dashed')
@@ -47,7 +55,6 @@ ax1.grid(True)
 ax1.set_ylim((0, 16))
 #ax1.get_yaxis().set_ticklabels(("-60", "-40", "-20", "0"))
 #ax1.legend((signal, teo1), ("Dati sperimentali", "andamento teorico"), 'upper center', prop={'size': 12})
-plt.setp(ax1.get_xticklabels(), visible=False)
     
 ######
 # GRAFICO 2 - grafico R-Scarti
@@ -65,6 +72,7 @@ ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=0, fontsize=14)
 ax2.set_ylim((-2,92))
 ax2.set_xlim((900,5000000))
 #ax2.get_yaxis().set_ticklabels(("0.05", "0.1", "0.5", "1"))
+plt.setp(ax2.get_xticklabels(), visible=False)
 
 ax2.grid(True)
 ax2.legend((signal), ("Dati sperimentali", ),
@@ -74,6 +82,6 @@ ax2.legend((signal), ("Dati sperimentali", ),
 
 # questo imposta i bordi del grafico
 f1.subplots_adjust(left=0.08, right=0.97,
-    top=0.94, bottom=0.07, hspace=0.04, wspace=0.04)
+    top=0.94, bottom=0.05, hspace=0.09, wspace=0.04)
 # mostra grafico
 plt.show()
