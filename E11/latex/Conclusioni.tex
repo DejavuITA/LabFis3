@@ -1,0 +1,16 @@
+\section{Conclusioni}
+
+In questa esperienza siamo riusciti ad assemblare un amplificatore alle differenze con un guadagno differenziale $G_{diff} \,=\, 30$ e un guadagno in modo comune $\left| G_{CM} \right| \,\leq\, 1$.
+Grazie alle formule che legano i diversi guadagni abbiamo inoltre calcolato il fattore di reiezione a modo comune $CMRR$ e il valore della resistenza intrinseca di emettitore $r_e$.
+Aggiungendo una sorgente di corrente continua a valle del circuito ne abbiamo migliorato le caratteristiche: in particolare abbiamo diminuito di tre ordini di grandezza il guadagno in modo comune $G_{CM}$ e di conseguenza aumentato di tre ordini di grandezza il fattore di reiezione a modo comune $CMRR$. Qundi al fine di ridurre rumore di fondo (che potrebbe interessare entrambi i segnali in ingresso) risulta conveniente utilizzare un amplificatore alle differenze con sorgente di corrente.
+%
+%Sta gente di merda che non sa come funzionano gli ascensori... dio cane... ingegneri del cazzo e poi ti chiedi percjè crollano le case.
+%ahahah LOL
+
+Per concludere abbiamo deciso di provare a osservare come variava il segnale in  output in funzione della frequenza di quello in input nel circuito in Fig. \ref{fig:cc1}. Il risultato ottenuto è riportato in Fig. \ref{fig:bode}.
+
+Come vediamo dal diagramma di Bode, il comportamento è lo stesso di quello di un filtro passa basso. Pensiamo che tale effetto sia dovuto alla presenza dei transistor che hanno una loro capacità intrinseca. E' infatti improbabile che la capacità parassita dei fili (molto piccola) possa limitare in modo così significativo la frequenza.  
+
+Il nostro amplificatore alle differenze può essere utilizzato efficacemente solo per segnali con frequenza inferiore a $10^5\si{\hertz}$.
+
+
