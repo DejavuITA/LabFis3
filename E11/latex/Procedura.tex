@@ -37,6 +37,12 @@ Come vediamo il circuito si comporta da sommatore. I valori di resistenza utiliz
 
 \section{Integratore}
 
-In questa parte dell'esperienza utilizzeremo un cazzo di op-amp per costruire un circuito integratore. Lo schema è riportato in Fig.(\ref{}). Analizziamolo assumendo che $R_f=\infty$. Assumendo ciò, è semplice ricavare $I=C\frac{d(V_A-V_{out})}{dt}$ da cui $V_{in}=-RC\frac{V_{out}}{dt}$
+In questa parte dell'esperienza utilizzeremo un cazzo di op-amp per costruire un circuito integratore. Lo schema è riportato in Fig.(\ref{}). Analizziamolo assumendo che $R_f=\infty$. È semplice ricavare $I=C\frac{d(V_A-V_{out})}{dt}$ da cui $V_{in}=-RC\frac{V_{out}}{dt}$. Non siamo matematici ma la seguente relazione è triviale:
+
+$$V_{out}=-\frac{1}{RC} \int V_{in}dt +costante$$
+
+I valori di resistenze utilizzate sono $R=(99.2 \pm 0.1)\si{\kilo\ohm}$ e $R_f=(2.247 \pm 0.001)\si{\mega\ohm}$. 
+
+Poiche il condensatore, come sappiamo, taglia i segnali continui, dobbiamo preoccuparci di calcolare la frequenza di taglio. 
 
 \section{Derivatore}
