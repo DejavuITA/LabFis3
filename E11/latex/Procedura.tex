@@ -1,4 +1,26 @@
 \section{Amplificatore invertente e non-invertente}
+
+\begin{figure}[h!]
+\centering
+		\begin{minipage}[c]{.4\textwidth}
+			\centering
+
+			\includegraphics[width=.65\textwidth]{ccinv.pdf}
+			\label{fig:ccinv}
+			\caption{Amplificatore invertente}
+
+		\end{minipage}%
+		\hspace{10mm}%
+		\begin{minipage}[c]{.4\textwidth}
+			\centering
+
+			\includegraphics[width=.65\textwidth]{ccninv.pdf}
+			\label{fig:ccninv}
+			\caption{Amplificatore non invertente}
+			
+		\end{minipage}
+\end{figure}
+
 Il primo circuito da noi analizzato consiste in un amplificatore invertente accoppiato DC. Lo schema è riportato in Fig.(\ref{}). Come vediamo, il nostro amplificatore operazionale è collegato con un circuito di \textbf{feedback} \textbf{negativo} (ovvero viene portato un po' del segnale in output all'ingresso invertente). Così facendo possiamo avere un controllo sul segnale in uscita che altrimenti sarebbe, per come è costruito l'op-amp, $\pm V$ (avendo un guadagno di $10^6$). Analizziamo dunque il circuito utilizzato. Se consideriamo il nostro amplificatore operazionale ideale, abbiamo che $\Delta V_{12}=0$ (prima condizione di idealità). Il punto $A$ sarà un ground virtuale. Possiamo dunque imporre $I_1=\frac{V_{in}-V_A}{R_1}=\frac{V_{in}}{R_1}$.  Inoltre $I_2=\frac{V_A-V_{out}}{R_2}=\frac{-V_{out}}{R_2}$.
 Sfruttando la seconda condizione di idealità, $\Delta I_{12}=0$, otteniamo $V_{out}=-\frac{R_2}{R_1} V_{in}$. Il guadagno del nostro circuito amplificatore sarà dunque:
 
