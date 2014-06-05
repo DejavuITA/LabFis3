@@ -7,14 +7,14 @@
 \end{wrapfigure}
 
 In quest'ultima parte dell'esperienza analizzeremo il circuito derivatore, il cui schema è riportato in Fig. \ref{fig:ccder}.
-Anche in questo caso è banale ricavare l'equazione che lega $V_{out}$ a $V_{in}$: $C\frac{dV_{in}}{dt}=-\frac{V_{out}}{R}\Rightarrow V_{out}=-RC\frac{dV_{in}}{dt}$.
+Anche in questo caso è banale ricavare l'equazione che lega $V_{out}$ a $V_{in}$: $C\frac{dV_{in}}{dt}=-\frac{V_{out}}{R_2}\Rightarrow V_{out}=-R_2C\frac{dV_{in}}{dt}$.
 
-I valori di resistenze e capacità utilizzati sono $R=(9.95 \pm 0.01)$ \si{\kilo\ohm}, $R_1=(1007.9 \pm 0.2)$ \si{\ohm} e $C=(0.097 \pm 0.002)$ \si{\micro\farad}.
+I valori di resistenze e capacità utilizzati sono $R_2=(9.95 \pm 0.01)$ \si{\kilo\ohm}, $R_1=(1007.9 \pm 0.2)$ \si{\ohm} e $C=(0.097 \pm 0.002)$ \si{\micro\farad}.
 
 Come già fatto per il circuito integratore dobbiamo calcolare la frequenza di taglio prima di poter decidere la frequenza alla quale effettuare le misure.
-Risulta immediato dalle considerazioni fatte nella precedente sezione ricavare $f=\frac{1}{2 \pi R^* C}$ con $R^*=R+R_1$.
-Il valore numerico risulta esere $f \simeq \SI{144}{\hertz}$.
-In questo caso è evidente che il segnale sarà smorzato per frequenze inferiori a quella di taglio. Abbiamo dunque effettuato il campionamento alla frequenza di $\SI{23841203948102934801}{\hertz}$.
+Risulta immediato dalle considerazioni fatte nella precedente sezione ricavare $f=\frac{1}{2 \pi R^* C}$ con $R^*=R_2+R_1$.
+Il valore numerico risulta essere $f \simeq \SI{144}{\hertz}$.
+In questo caso è evidente che il segnale sarà smorzato per frequenze inferiori a quella di taglio. Abbiamo effettuato il campionamento alla frequenza di $\SI{100}{\hertz}$, abbastanza vicino alla frequenza di taglio da non avere smorzamenti evidenti.
 
 I risultati sono riportati nel seguente grafico.
 
