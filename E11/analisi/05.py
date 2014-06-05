@@ -40,7 +40,7 @@ out1 = ax1.errorbar(x=t_01, y=V2_01, fmt='--', c='green', linewidth=2)
 ax1.grid(True)
 
 # GRAFICO 2
-ax2 = host_subplot(222, axes_class=AA.Axes)
+ax2 = host_subplot(223, axes_class=AA.Axes)
 
 in2 = ax2.errorbar(x=t_02, y=V1_02, fmt='-', c='black', linewidth=2)
 out2 = ax2.errorbar(x=t_02, y=V2_02, fmt='--', c='green', linewidth=2)
@@ -48,7 +48,7 @@ out2 = ax2.errorbar(x=t_02, y=V2_02, fmt='--', c='green', linewidth=2)
 ax2.grid(True)
 
 # GRAFICO 3
-ax3 = host_subplot(223, axes_class=AA.Axes)
+ax3 = host_subplot(222, axes_class=AA.Axes)
 
 in3 = ax3.errorbar(x=t_03, y=V1_03, fmt='-', c='black', linewidth=2)
 out3 = ax3.errorbar(x=t_03, y=V2_03, fmt='--', c='green', linewidth=2)

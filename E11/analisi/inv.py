@@ -15,7 +15,7 @@ FREQ = dati[1:,1]
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(8, 8))
 # Titolo del grafico
-f1.suptitle("Amplificatore invertente", y=0.98, fontsize=15)
+f1.suptitle("Amplificatore invertente", y=0.985, fontsize=15)
 
 ######
 # GRAFICO 1
@@ -36,7 +36,7 @@ ax1.set_ylabel(u'Guadagno [$dB$]', labelpad=0, fontsize=14)
 
 ax1.grid(True)
 ax1.set_ylim((-21, 21))
-plt.setp(ax1.get_xticklabels(), visible=False)
+ax1.set_xlim((80,4E6))
     
 ######
 # GRAFICO 2 - grafico R-Scarti
@@ -49,8 +49,9 @@ ax2.set_ylabel(u'Fase [$^\circ$]', labelpad=0, fontsize=14)
 ax2.set_xlabel(u'Frequenza [$Hz$]', labelpad=0, fontsize=14)
 
 ax2.set_ylim((-0, 190))
-ax2.set_xlim((80,4E6))
 ax2.set_yticks(np.arange(0, 181, 45))
+ax2.set_xlim((80,4E6))
+plt.setp(ax2.get_xticklabels(), visible=False)
 
 ax2.grid(True)
 ax2.legend((fase, ), ("Dati sperimentali", ), 'upper right', prop={'size': 12})
@@ -58,6 +59,6 @@ ax2.legend((fase, ), ("Dati sperimentali", ), 'upper right', prop={'size': 12})
 ######
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.09, right=0.98, top=0.95, bottom=0.08, hspace=0.05, wspace=0.05)
+f1.subplots_adjust(left=0.09, right=0.98, top=0.955, bottom=0.045, hspace=0.085, wspace=0.05)
 # mostra grafico
 plt.show()
