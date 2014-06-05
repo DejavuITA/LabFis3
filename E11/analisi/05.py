@@ -29,13 +29,21 @@ rcParams['font.size'] = 15
 # Creo un grafico la dimensione è in pollici
 f1 = plt.figure(figsize=(15, 7), dpi=65)
 # Titolo del grafico
-f1.suptitle("Serie 05", y=0.97, fontsize=17)
+f1.suptitle("Sommatore", y=0.98, fontsize=17)
 
 # GRAFICO 1
 ax1 = host_subplot(221, axes_class=AA.Axes)
 
 in1 = ax1.errorbar(x=t_01, y=V1_01, fmt='-', c='black', linewidth=2)
 out1 = ax1.errorbar(x=t_01, y=V2_01, fmt='--', c='green', linewidth=2)
+
+ax1.set_ylim((-10, 10))
+ax1.set_xlim((-0.0012, 0.0012))
+
+ax1.axis["left"].major_ticklabels.set_visible(False)
+ax1.set_xticklabels((' ', '-1', '-0.5', '0', '0.5', '1'))
+
+ax1.text(-0.00126, 0, u'd.d.p. [$V$]', va='center', ha='center', rotation='vertical', fontsize=16)
 
 ax1.grid(True)
 
@@ -45,6 +53,15 @@ ax2 = host_subplot(223, axes_class=AA.Axes)
 in2 = ax2.errorbar(x=t_02, y=V1_02, fmt='-', c='black', linewidth=2)
 out2 = ax2.errorbar(x=t_02, y=V2_02, fmt='--', c='green', linewidth=2)
 
+ax2.set_ylim((-12.5, 12.5))
+ax2.set_xlim((-0.0012, 0.0012))
+
+ax2.text(-0.00126, 0, u'd.d.p. [$V$]', va='center', ha='center', rotation='vertical', fontsize=16)
+ax2.text(0, -13.8, u'tempo [$ms$]', va='center', ha='center', fontsize=16)
+
+ax2.axis["left"].major_ticklabels.set_visible(False)
+ax2.axis["bottom"].major_ticklabels.set_visible(False)
+
 ax2.grid(True)
 
 # GRAFICO 3
@@ -52,6 +69,11 @@ ax3 = host_subplot(222, axes_class=AA.Axes)
 
 in3 = ax3.errorbar(x=t_03, y=V1_03, fmt='-', c='black', linewidth=2)
 out3 = ax3.errorbar(x=t_03, y=V2_03, fmt='--', c='green', linewidth=2)
+
+ax3.set_ylim((-10, 10))
+ax3.set_xlim((-0.028, 0.028))
+
+ax3.set_xticklabels((' ', '-20', '-10', '0', '10', '20'))
 
 ax3.grid(True)
 
@@ -61,11 +83,17 @@ ax4 = host_subplot(224, axes_class=AA.Axes)
 in4 = ax4.errorbar(x=t_04, y=V1_04, fmt='-', c='black', linewidth=2)
 out4 = ax4.errorbar(x=t_04, y=V2_04, fmt='--', c='green', linewidth=2)
 
+ax4.set_ylim((-12.5, 12.5))
+ax4.set_xlim((-0.028, 0.028))
+
+ax4.axis["bottom"].major_ticklabels.set_visible(False)
+ax4.text(0, -13.8, u'tempo [$ms$]', va='center', ha='center', fontsize=16)
+
 ax4.grid(True)
 
 # questo imposta i bordi del grafico
-f1.subplots_adjust(left=0.04, right=0.98,
-    top=0.92, bottom=0.05, hspace=0.08, wspace=0.04)
+f1.subplots_adjust(left=0.03, right=0.985,
+    top=0.935, bottom=0.055, hspace=0.08, wspace=0.08)
 
 # mostra grafico
 plt.show()
