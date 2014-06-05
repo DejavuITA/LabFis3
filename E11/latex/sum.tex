@@ -11,10 +11,10 @@ Tale circuito permette di sommare più segnali in input e risulta particolarment
 Analizziamo il circuito sempre assumendo un op-amp ideale.
 Anche in questo caso $V_A$ sarà un ground virtuale ($V_A = 0$).
 Possiamo dunque imporre la seguente condizione: $\frac{V_1}{R_1}+\frac{V_2}{R_2}+\frac{V_3}{R_3}=\frac{-V_{out}}{R_0}$.
-Dunque, se $R_0=R_1=R_2=R_3$ segue immediatamente che $V_{out}=V_1+V_2+V_3$.
+Dunque, se $R_0=R_1=R_2=R_3$ segue immediatamente che $V_{out}=-(V_1+V_2+V_3)$.
 Ne abbiamo verificato il funzionamento utilizzando diversi segnali in input (tra cui onde quadre, segnali DC, ecc.).
 
-Nei seguenti grafici in Fig. \ref{fig:sum} sono riportati i segnali visualizzati a schermo sull'oscilloscopio per alcune combinazioni si segnali in input.
+Nei seguenti grafici in Fig. \ref{fig:sum} sono riportati i segnali visualizzati a schermo sull'oscilloscopio per alcune combinazioni di segnali in input.
 
 \begin{figure}[h]
 	\centering
@@ -23,4 +23,4 @@ Nei seguenti grafici in Fig. \ref{fig:sum} sono riportati i segnali visualizzati
 			\label{fig:sum}
 \end{figure}
 
-È evidente che il circuito si comporti da sommatore. I valori di resistenza utilizzate sono stati $R_0=(10.01\pm0.02)$ \si{\kilo\ohm}, $R_1=(9.95\pm0.01)$ \si{\kilo\ohm}, $R_2=(10.02\pm 0.01)$ \si{\kilo\ohm} e $R_3=(9.97\pm0.01)$ \si{\kilo\ohm}. \phantom{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+È evidente come il circuito si comporti da sommatore invertente. I valori di resistenza utilizzate sono stati $R_0=(10.01\pm0.02)$ \si{\kilo\ohm}, $R_1=(9.95\pm0.01)$ \si{\kilo\ohm}, $R_2=(10.02\pm 0.01)$ \si{\kilo\ohm} e $R_3=(9.97\pm0.01)$ \si{\kilo\ohm}. \phantom{xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
